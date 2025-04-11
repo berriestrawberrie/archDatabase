@@ -21,6 +21,10 @@ Route::middleware("auth")->group(function () {
 //ADMIN RESTRICTED VIEWS
 Route::middleware([AdminMiddleware::class])->group(function () {
     Route::get('/admin/dashboard', [AdminController::class, 'adminDashboard'])->name('admin.dashboard');
+    Route::get('/admin/collections', [AdminController::class, 'collections'])->name('collections');
+    Route::post('/admin/collections', [AdminController::class, 'collectionsPost'])->name('collections.post');
+    Route::post('/admin/updatecollections', [AdminController::class, 'collectionsUpdate'])->name('update.collections');
+    Route::post('/admin/updatecollectionpush', [AdminController::class, 'pushUpdate'])->name('push.collections');
 });
 
 

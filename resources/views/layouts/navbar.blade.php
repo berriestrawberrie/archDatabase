@@ -23,16 +23,22 @@
               <li><a class="dropdown-item" href="#">Site Queries</a></li>
             </ul>
           </li>
-          @if(Auth::check())
-            @if(Auth::user()->user_type === 'admin')
-            <li class="nav-item ">
-              <a class="nav-link" aria-current="page" href="{{route('admin.dashboard')}}">Admin Dashboard</a>
-            </li>
-            @endif
-          @endif
           <li class="nav-item ">
             <a class="nav-link" aria-current="page" href="#">About the Database</a>
           </li>
+          @if(Auth::check())
+          @if(Auth::user()->user_type === 'admin')
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="{{route('admin.dashboard')}}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="fa-solid fa-pen-to-square"></i>Admin Dashboard
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="{{route('collections')}}">Add Collection</a></li>
+              <li><a class="dropdown-item" href="#">Verify Data</a></li>
+            </ul>
+          </li>
+          @endif
+        @endif
         </ul>
         <form class="d-flex" role="search">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">

@@ -11,8 +11,10 @@
 </head>
 
     @include('layouts/navbar')
+    <div class="container">
     @include('layouts.alerts')
-    <div class="container text-bg-light col-lrg">
+    </div>
+    <div class="container text-bg-light">
         @yield('content')
     </div>
   
