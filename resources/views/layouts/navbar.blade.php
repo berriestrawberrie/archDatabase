@@ -39,6 +39,11 @@
           </li>
           @endif
         @endif
+        @if(Auth::check())
+        <li class="nav-item ">
+          <a class="nav-link" aria-current="page" href="{{route('typeselect')}}">Add Artifact <i class="fa-regular fa-square-plus"></i></a>
+        </li>
+        @endif
         </ul>
         <form class="d-flex" role="search">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">

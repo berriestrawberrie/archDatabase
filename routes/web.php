@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ArtifactController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\AdminMiddleware;
@@ -12,9 +13,10 @@ Route::get('/', function () {
     return view('dashboard');
 })->name('home');
 
-//ALL USER SPECIFIC ROUTES
+//REQUIRE LOGGED IN ROUTES
 Route::middleware("auth")->group(function () {
     Route::get('/user/dashboard', [UserController::class, 'userDashboard'])->name('users.dashboard');
+    Route::get('/selectType', [ArtifactController::class, 'typeSelect'])->name('typeselect');
 });
 
 
