@@ -6,13 +6,13 @@ use App\Http\Controllers\UserController;
 use App\Http\Middleware\AdminMiddleware;
 use Illuminate\Support\Facades\Route;
 
-//HOMEPAGE
+//HOMEPAGE & PUBLIC ROUTES
 Route::get('/', function () {
 
     return view('dashboard');
 })->name('home');
 
-//ALL USER DASHBOARD
+//ALL USER SPECIFIC ROUTES
 Route::middleware("auth")->group(function () {
     Route::get('/user/dashboard', [UserController::class, 'userDashboard'])->name('users.dashboard');
 });
@@ -24,11 +24,12 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     Route::get('/admin/collections', [AdminController::class, 'collections'])->name('collections');
     Route::post('/admin/collections', [AdminController::class, 'collectionsPost'])->name('collections.post');
     Route::post('/admin/updatecollections', [AdminController::class, 'collectionsUpdate'])->name('update.collections');
+    Route::get('/admin/update/{id}', [AdminController::class, 'reUpdate'])->name('return.update');
     Route::post('/admin/updatecollectionpush', [AdminController::class, 'pushUpdate'])->name('push.collections');
 });
 
 
-//ALL USER ACCESS LOGIN
+//ALL USER ACCESS TO LOGIN
 Route::get('/login', [AuthController::class, "login"])->name('login');
 Route::post('/login', [AuthController::class, "loginPost"])->name('login.post');
 Route::get('/register', [AuthController::class, "register"])->name('register');

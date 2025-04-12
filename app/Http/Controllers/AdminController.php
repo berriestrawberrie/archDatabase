@@ -43,6 +43,14 @@ class AdminController extends Controller
         return view('admin.updatecollection', compact('collection'));
     }
 
+    //NAVIGATE TO UPDATE PAGE BASED ON SELECTION
+    public function reUpdate($id)
+    {
+        $collection = Collection::where('id', $id)->get();
+
+        return view('admin.updatecollection', compact('collection'));
+    }
+
 
 
     public function pushUpdate(Request $request)
@@ -71,11 +79,10 @@ class AdminController extends Controller
                         'collection' => $request->title
                     ]);
             }
-
-            return redirect(route('collections'))
-                ->with("success", "Successfully collection information udpated!");
+            return redirect()->route('return.update', ['id' => $request->id])
+                ->with("success", "You have successfully updated the collection");
         } else {
-            return redirect(route('collections'))
+            return redirect()->route('return.update', ['id' => $request->id])
                 ->with("error", "You must enter data to update");
         }
     } //END PUSH FUNCTION
