@@ -11,7 +11,11 @@ class ArtifactController extends Controller
     public function typeSelect()
     {
         $collections = Collection::all();
+        $art_types = [];
+        for ($i = 0; $i < count($collections); $i++) {
+            $art_types[$i] = explode(",", $collections[$i]["artifact_type"]);
+        }
 
-        return view('typeselects', compact('collections'));
+        return view('typeselects', compact('collections', 'art_types'));
     }
 }

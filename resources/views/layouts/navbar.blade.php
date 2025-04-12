@@ -41,7 +41,7 @@
         @endif
         @if(Auth::check())
         <li class="nav-item ">
-          <a class="nav-link" aria-current="page" href="{{route('typeselect')}}">Add Artifact <i class="fa-regular fa-square-plus"></i></a>
+          <a class="nav-link" aria-current="page" href="{{route('typeselect')}}"><i class="fa-regular fa-square-plus"></i>Add Artifact</a>
         </li>
         @endif
         </ul>
