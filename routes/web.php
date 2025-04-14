@@ -17,6 +17,7 @@ Route::get('/', function () {
 Route::middleware("auth")->group(function () {
     Route::get('/user/dashboard', [UserController::class, 'userDashboard'])->name('users.dashboard');
     Route::get('/selectType', [ArtifactController::class, 'typeSelect'])->name('typeselect');
+    Route::get('/getForm/{collection}/{art_type}', [ArtifactController::class, 'getForm']);
 });
 
 

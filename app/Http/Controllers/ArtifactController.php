@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Artifact;
 use App\Models\Collection;
 use Illuminate\Http\Request;
 
@@ -17,5 +18,13 @@ class ArtifactController extends Controller
         }
 
         return view('typeselects', compact('collections', 'art_types'));
+    }
+
+    //ROUTE TO COLLECTION & ARTIFACT SPECIFIC FORM
+    public function getForm($collection, $art_type)
+    {
+        $collections = Collection::where('id', $collection)->get();
+
+        return view('forms.' . $art_type, compact('collections'));
     }
 }

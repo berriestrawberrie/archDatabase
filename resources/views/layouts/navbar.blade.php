@@ -1,7 +1,7 @@
 <!--STYLED IN BANNER SCSS-->
 <div class="banner">
         <img src="{{asset('storage/images/dc-logo.png')}}">
-        <h2 id="title-tag">Digital Archaeological Archive of Davidson College</h2>
+        <h2 id="title-tag">Digital Archive of Davidson Archaeology</h2>
 </div>
 
 <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">

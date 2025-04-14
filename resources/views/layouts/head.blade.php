@@ -6,4 +6,5 @@
     <script src="https://kit.fontawesome.com/df8ac4cd23.js" crossorigin="anonymous"></script>
     <!--CSS IMPORT-->
     <link rel="stylesheet" href="{{asset('storage/css/styles.css')}}">
-    
+
+
