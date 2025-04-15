@@ -31,7 +31,7 @@
     @for($i=0;$i< count($collections); $i++)
     <div style="display:none;"class="container-sm flex-wrap  justify-content-start position-relative" id="{{$collections[$i]["id"]}}">
         <h3 class="position-absolute" style="top: -30px;">{{$collections[$i]["id"]}}: {{$collections[$i]["collection"]}}</h3>
-     @for($y=0; $y<2;$y++)
+     @for($y=0; $y<count($art_types[$i]);$y++)
      <a href="/getForm/{{$collections[$i]["id"]}}/{{$art_types[$i][$y]}}">
         <div class="d-flex align-items-center border rounded-3 m-2 p-2" >
             <img src="{{asset('storage/images/picture.png')}}" width="100">

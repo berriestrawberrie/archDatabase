@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Artifact;
+use App\Models\Ceramic;
 use App\Models\Collection;
 use Illuminate\Http\Request;
 
@@ -25,6 +26,10 @@ class ArtifactController extends Controller
     {
         $collections = Collection::where('id', $collection)->get();
 
-        return view('forms.' . $art_type, compact('collections'));
+        $artifacts = Ceramic::all();
+
+
+
+        return view('forms.' . $art_type, compact('collections', 'artifacts'));
     }
 }
