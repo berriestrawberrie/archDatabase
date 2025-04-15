@@ -20,9 +20,15 @@
     @include('forms.ceramics.fieldsI')
   </fieldset>
 
+  <fieldset>
+    <legend>Fields II Information</legend>
+    @include('forms.ceramics.fieldsII')
+  </fieldset>
+
   <fieldset class="mt-2">
     <input type="submit" class="btn btn-primary">
   </fieldset>
+
 
 </form>
 

@@ -421,10 +421,10 @@ return new class extends Migration
                 'fence',
                 'fish',
                 'fish roe  ',
-                'fish roe band  ',
+                'fish roe band',
                 'flag/banner',
                 'floral medallion',
-                'floral radiating bloom  ',
+                'floral radiating bloom',
                 'fluted',
                 'folded rim',
                 'fruit',
@@ -436,7 +436,7 @@ return new class extends Migration
                 'granulated band',
                 'grass',
                 'grass and leaves molded edge',
-                'half-circle band  '
+                'half-circle band'
             ])->nullable();
             $table->tinyInteger('stylistic_element_number')->nullable();
             $table->set('motif', [

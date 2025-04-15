@@ -331,3 +331,434 @@
 
 
 </div><!--END ROW-->
+
+<!--FIELDS I  ROW 4-->
+<div class="row">
+
+    <!--POST MANUFACTURING MOD-->
+    <div class="col">
+        <label for="post_manufacturing_mod" class="form-label">Post Manufact. Mod</label>
+        <select class="form-control " id="post_manufacturing_mod"  name="post_manufacturing_mod" required>
+            <option disabled selected value> -- select an option -- </option>
+            <option  value="yes">yes</option>
+            <option  value="no">no</option>
+            <option  value="not recorded">not recorded</option>
+
+        </select>
+        <div class="invalid-feedback">
+            Must select a post manufacturing modification. 
+        </div>
+    </div><!--END COL-->
+
+    <!--INTERIOR EXTERIOR-->
+    <div class="col">
+        <label for="interior_exterior" class="form-label">Interior Exterior 
+            <button type="button" class="btn btn-secondary btn-xsm" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Helpful field explainer here?">
+                <i class="fa-solid fa-question"></i></button>
+        </label>
+        <select class="form-control " id="interior_exterior"  name="interior_exterior" required>
+            <option disabled selected value> -- select an option -- </option>
+            <option  value="exterior">exterior</option>
+            <option  value="interior">interior</option>
+            <option  value="perforate">perforate</option>
+        </select>
+        <div class="invalid-feedback">
+            Must select an interior exterior
+        </div>
+    </div><!--END COL-->
+
+    <!--LOCATION-->
+    <div class="col-2">
+        <label for="location" class="form-label">Location??</label>
+        <select class="form-control " id="location"  name="location" required>
+            <option disabled selected value> -- select an option -- </option>
+            <option  value="base">base</option>
+            <option  value="body">body</option>
+            <option  value="finial">finial</option>
+            <option  value="foot ring">foot ring</option>
+            <option  value="handle">handle</option>
+            <option  value="lid">lid</option>
+            <option  value="neck">neck</option>
+            <option  value="proximal rim">proximal rim</option>
+            <option  value="rim">rim</option>
+            <option  value="shoulder">shoulder</option>
+            <option  value="spout">spout</option>
+            <option  value="terminal">terminal</option>
+            <option  value="unidentified">unidentified</option>
+
+        </select>
+        <div class="invalid-feedback">
+            Must select location for?
+        </div>
+    </div><!--END COL-->
+
+</div><!--END ROW-->
+
+
+<!--FIELDS I  ROW 4-->
+<div class="row">
+    <!--EXTERIOR SURFACE-->
+    <div class="col">
+        <label for="exterior_surface" class="form-label">Exterior Surface</label>
+        <select class="form-control " id="exterior_surface"  name="exterior_surface" required>
+            <option disabled selected value> -- select an option -- </option>
+            <option  value="albany slip">albany slip</option>
+            <option  value="alkaline glaze">alkaline glaze</option>
+            <option  value="bristol glaze">bristol glaze</option>
+            <option  value="feldspathic glaze">feldspathic glaze</option>
+            <option  value="glaze unidentifiable">glaze unidentifiable</option>
+            <option  value="lead glaze">lead glaze</option>
+            <option  value="missing">missing</option>
+            <option  value="not applicable">not applicable</option>
+            <option  value="not recorded">not recorded</option>
+            <option  value="salt glaze">salt glaze</option>
+            <option  value="tin glaze">tin glaze</option>
+            <option  value="unglazed/bisque">unglazed/bisque</option>
+            <option  value="unidentifiable">unidentifiable</option>
+            <option  value="wash">wash</option>
+            <option  value="zinc emulsion glaze">zinc emulsion glaze</option>
+        </select>
+        <div class="invalid-feedback">
+            Must select exterior surface. 
+        </div>
+    </div><!--END COL-->
+
+    <!--EXTERIOR COLOR-->
+    <div class="col-2">
+        <label for="exterior_color" class="form-label">Exterior Color</label>
+        <input type="text" class="form-control " id="exterior_color"  name="exterior_color" required>
+        <div class="invalid-feedback">
+            Must enter an exterior color.
+        </div>
+    </div><!--END COL-->
+
+    <!--INTERIOR SURFACE-->
+    <div class="col">
+        <label for="interior_surface" class="form-label">Interior Surface</label>
+        <select class="form-control " id="interior_surface"  name="interior_surface" required>
+            <option disabled selected value> -- select an option -- </option>
+            <option  value="albany slip">albany slip</option>
+            <option  value="alkaline glaze">alkaline glaze</option>
+            <option  value="bristol glaze">bristol glaze</option>
+            <option  value="feldspathic glaze">feldspathic glaze</option>
+            <option  value="glaze unidentifiable">glaze unidentifiable</option>
+            <option  value="lead glaze">lead glaze</option>
+            <option  value="missing">missing</option>
+            <option  value="not applicable">not applicable</option>
+            <option  value="not recorded">not recorded</option>
+            <option  value="salt glaze">salt glaze</option>
+            <option  value="tin glaze">tin glaze</option>
+            <option  value="unglazed/bisque">unglazed/bisque</option>
+            <option  value="unidentifiable">unidentifiable</option>
+            <option  value="wash">wash</option>
+            <option  value="zinc emulsion glaze">zinc emulsion glaze</option>
+   
+
+        </select>
+        <div class="invalid-feedback">
+            Must select interior surface. 
+        </div>
+    </div><!--END COL-->
+
+    <!--EXTERIOR COLOR-->
+    <div class="col-2">
+        <label for="interior_color" class="form-label">Interior Color</label>
+        <input type="text" class="form-control " id="interior_color"  name="interior_color" required>
+        <div class="invalid-feedback">
+            Must enter an interior color.
+        </div>
+    </div><!--END COL-->
+
+</div><!--END ROW-->
+
+<!--FIELDS I ROW 5-->
+<div class="row">
+    <!--PASTE COLOR-->
+    <div class="col">
+        <label for="paste_color" class="form-label">Paste Color</label>
+        <input type="text" class="form-control " id="paste_color"  name="paste_color">
+    </div><!--END COL-->
+
+    <!--GENRE -->
+    <div class="col">
+        <label for="genre" class="form-label">Genre</label>
+        <select class="form-control " id="genre"  name="genre" required>
+            <option disabled selected value> -- select an option -- </option>
+            <option  value="an hua">an hua</option>
+            <option  value="applied powder crystals purple">applied powder crystals purple</option>
+            <option  value="barley">barley</option>
+            <option  value="bartmann">bartmann</option>
+            <option  value="batavian">batavian</option>
+            <option  value="bead and reel">bead and reel</option>
+            <option  value="blue and gray">blue and gray</option>
+            <option  value="blue molded/stamped/incised">blue molded/stamped/incised</option>
+            <option  value="cauliflower">cauliflower</option>
+            <option  value="decalcomania">decalcomania</option>
+            <option  value="dot/diaper/basketweave">dot/diaper/basketweave</option>
+            <option  value="feather edge">feather edge</option>
+            <option  value="flow transfer print blue">flow transfer print blue</option>
+            <option  value="flow transfer print purple/black">flow transfer print purple/black</option>
+            <option  value="handpainted blue">handpainted blue</option>
+            <option  value="imari">imari</option>
+            <option  value="littlers blue">littlers blue</option>
+            <option  value="luster decoration">luster decoration</option>
+            <option  value="molded edge decoration other">molded edge decoration other</option>
+            <option  value="not applicable">not applicable</option>
+            <option  value="overglaze handpainted">overglaze handpainted</option>
+            <option  value="polychrome cool">polychrome cool</option>
+            <option  value="polychrome other">polychrome other</option>
+            <option  value="polychrome warm">polychrome warm</option>
+            <option  value="purple molded/stamped/incised">purple molded/stamped/incised</option>
+            <option  value="queens shape">queens shape</option>
+            <option  value="royal pattern">royal pattern</option>
+            <option  value="scratch blue">scratch blue</option>
+            <option  value="scratch brown">scratch brown</option>
+            <option  value="shell edge blue">shell edge blue</option>
+            <option  value="shell edge green">shell edge green</option>
+            <option  value="shell edge mulberry">shell edge mulberry</option>
+            <option  value="shell edge unidentifiable">shell edge unidentifiable</option>
+            <option  value="slipware factory made">slipware factory made</option>
+            <option  value="sponge/spatter">sponge/spatter</option>
+            <option  value="transfer print over">transfer print over</option>
+            <option  value="transfer print under black">transfer print under black</option>
+            <option  value="transfer print under blue">transfer print under blue</option>
+            <option  value="transfer print under brown">transfer print under brown</option>
+            <option  value="transfer print under gray">transfer print under gray</option>
+            <option  value="transfer print under green">transfer print under green</option>
+            <option  value="transfer print under light blue">transfer print under light blue</option>
+            <option  value="transfer print under pink">transfer print under pink</option>
+            <option  value="transfer print under polychrome">transfer print under polychrome</option>
+            <option  value="transfer print under purple">transfer print under purple</option>
+            <option  value="transfer print under red">transfer print under red</option>
+            <option  value="transfer print under unidentifiable">transfer print under unidentifiable</option>
+            <option  value="victorian majolica">victorian majolica</option>
+
+        </select>
+        <div class="invalid-feedback">
+            Must select a genre.
+        </div>
+    </div><!--END COL-->
+
+    <!--CERAMIC COMPLETENESS-->
+    <div class="col">
+        <label for="ceramic_completeness" class="form-label">Ceramic Completeness</label>
+        <select class="form-control " id="ceramic_completeness"  name="ceramic_completeness" required>
+            <option disabled selected value> -- select an option -- </option>
+            <option  value="base">base</option>
+            <option  value="body">body</option>
+            <option  value="finial">finial</option>
+            <option  value="finial lid">finial lid</option>
+            <option  value="foot">foot</option>
+            <option  value="handle">handle</option>
+            <option  value="handle terminal">handle terminal</option>
+            <option  value="lid">lid</option>
+            <option  value="neck">neck</option>
+            <option  value="rim">rim</option>
+            <option  value="shoulder">shoulder</option>
+            <option  value="spout">spout</option>
+            <option  value="unidentifiable">unidentifiable</option>
+
+        </select>
+        <div class="invalid-feedback">
+            Must select ceramic form. 
+        </div>
+    </div><!--END COL-->
+
+</div><!--END ROW-->
+
+
+<!--FIELDS I ROW 6-->
+<div class="row">
+    <!--DECORATIVE TECHNIQUE-->
+    <div class="col">
+        <label for="decorative_technique" class="form-label">Decorative Technique</label>
+        <select class="form-control " id="decorative_technique"  name="decorative_technique" required>
+            <option disabled selected value> -- select an option -- </option>
+            <option  value="applied clay">applied clay</option>
+            <option  value="applied powder/crystals">applied powder/crystals</option>
+            <option  value="bulls eye inlay">bulls eye inlay</option>
+            <option  value="burnished (w/ visible facets)">burnished (w/ visible facets)</option>
+            <option  value="cord marked">cord marked</option>
+            <option  value="cut">cut</option>
+            <option  value="decalcomania">decalcomania</option>
+            <option  value="dendritic">dendritic</option>
+            <option  value="dipped">dipped</option>
+            <option  value="impressed">impressed</option>
+            <option  value="impressed/ fabric">impressed/ fabric</option>
+            <option  value="impressed/ fingerprints">impressed/ fingerprints</option>
+            <option  value="incised/free hand">incised/free hand</option>
+
+        </select>
+        <div class="invalid-feedback">
+            Must select a decorative technique.
+        </div>
+    </div><!--END COL-->
+
+    <!--DECORATIVE COLOR -->
+    <div class="col-2">
+        <label for="decoration_color" class="form-label">Decorative Color</label>
+        <input type="text" class="form-control " id="decoration_color"  name="decoration_color" required>
+        <div class="invalid-feedback">
+            Must select enter decoration color.
+        </div>
+    </div><!--END COL-->
+
+    <!--MOTIF-->
+    <div class="col">
+        <label for="motif" class="form-label">Motif</label>
+        <select class="form-control " id="motif"  name="motif" required>
+            <option disabled selected value> -- select an option -- </option>
+            <option  value="adjacent combination b">adjacent combination b</option>
+            <option  value="adjacent/stacked combo a">adjacent/stacked combo a</option>
+            <option  value="adjacent/stacked combo b">adjacent/stacked combo b</option>
+            <option  value="individual a">individual a</option>
+            <option  value="individual b">individual b</option>
+            <option  value="individual c">individual c</option>
+            <option  value="individual d">individual d</option>
+            <option  value="individual e">individual e</option>
+            <option  value="individual f">individual f</option>
+            <option  value="individual g">individual g</option>
+            <option  value="individual h">individual h</option>
+            <option  value="individual i">individual i</option>
+            <option  value="individual j">individual j</option>
+            <option  value="individual repeated a">individual repeated a</option>
+            <option  value="individual repeated b">individual repeated b</option>
+            <option  value="individual repeated c">individual repeated c</option>
+            <option  value="not applicable">not applicable</option>
+            <option  value="scene combination a">scene combination a</option>
+            <option  value="scene combination b">scene combination b</option>
+            <option  value="stacked combination a">stacked combination a</option>
+            <option  value="stacked combination b">stacked combination b</option>
+
+        </select>
+        <div class="invalid-feedback">
+            Must select a motif
+        </div>
+    </div><!--END COL-->
+
+</div><!--END ROW-->
+
+
+<!--FIELDS I ROW 7-->
+<div class="row">
+    <!--STYLISTIC ELEMENT_1-->
+    <div class="col">
+        <label for="stylistic_element_1" class="form-label">Stylistic Element I</label>
+        <select onchange="getStylistic1()"class="form-control " id="stylistic_element_1"  name="stylistic_element_1" required>
+            <option disabled selected value> -- only (1) style can apply -- </option>
+            <option  value="acanthus leaves">acanthus leaves</option>
+            <option  value="angular edge">angular edge</option>
+            <option  value="animal">animal</option>
+            <option  value="bamboo">bamboo</option>
+            <option  value="band">band</option>
+            <option  value="barley">barley</option>
+            <option  value="basket weave">basket weave</option>
+            <option  value="basketwork">basketwork</option>
+            <option  value="bead and reel">bead and reel</option>
+            <option  value="beaded band">beaded band</option>
+            <option  value="bird">bird</option>
+            <option  value="bird stylized">bird stylized</option>
+            <option  value="boat">boat</option>
+            <option  value="botanical band">botanical band</option>
+            <option  value="botanical composite">botanical composite</option>
+            <option  value="botanical sprig">botanical sprig</option>
+            <option  value="botanical">botanical</option>
+            <option  value="bridge">bridge</option>
+            <option  value="bulls eye">bulls eye</option>
+            <option  value="butterfly">butterfly</option>
+            <option  value="cable band">cable band</option>
+            <option  value="cartouche">cartouche</option>
+            <option  value="cats eye combed">cats eye combed</option>
+            <option  value="cats eye single">cats eye single</option>
+            <option  value="checkerboard band">checkerboard band</option>
+            <option  value="checkerboard/diamonds">checkerboard/diamonds</option>
+            <option  value="checkerboard/dot">checkerboard/dot</option>
+            <option  value="child">child</option>
+            <option  value="chinese characters">chinese characters</option>
+            <option  value="church christian">church christian</option>
+            <option  value="circle">circle</option>
+            <option  value="circle band">circle band</option>
+            <option  value="circle open">circle open</option>
+            <option  value="cloud band">cloud band</option>
+            <option  value="clouded">clouded</option>
+            <option  value="columns">columns</option>
+            <option  value="combed">combed</option>
+            <option  value="common cable">common cable</option>
+            <option  value="cord and hanging fern">cord and hanging fern</option>
+            <option  value="cord and herringbone">cord and herringbone</option>
+            <option  value="cordoned">cordoned</option>
+            <option  value="cordoned wavy">cordoned wavy</option>
+            <option  value="crab stock">crab stock</option>
+            <option  value="crenelated edge">crenelated edge</option>
+            <option  value="not applicable" id="style1_notapply">not applicable</option>
+
+        </select>
+        <div class="invalid-feedback">
+            Must select at least (1) stylish element. 
+        </div>
+    </div><!--END COL-->
+
+    <!--STYLISTIC ELEMENT_2-->
+    <div class="col">
+        <label for="stylistic_element_2" class="form-label">Stylistic Element II</label>
+        <select onchange="getStylistic2()" class="form-control " id="stylistic_element_2"  name="stylistic_element_2" required>
+            <option disabled selected value> -- select an option -- </option>
+            <option  value="dart band">dart band</option>
+            <option  value="dash band">dash band</option>
+            <option  value="dendritic">dendritic</option>
+            <option  value="dentil band">dentil band</option>
+            <option  value="diamond band">diamond band</option>
+            <option  value="diaper/1 dot">diaper/1 dot</option>
+            <option  value="diaper/4 dot">diaper/4 dot</option>
+            <option  value="diaper/5 dot">diaper/5 dot</option>
+            <option  value="diaper/dot band">diaper/dot band</option>
+            <option  value="diaper/star">diaper/star</option>
+            <option  value="diced squares">diced squares</option>
+            <option  value="dogtooth band">dogtooth band</option>
+            <option  value="dot band">dot band</option>
+            <option  value="dot cluster">dot cluster</option>
+            <option  value="dot dash band">dot dash band</option>
+            <option  value="dot plume edge">dot plume edge</option>
+            <option  value="dots">dots</option>
+            <option  value="dotted/terraced rectangle">dotted/terraced rectangle</option>
+            <option  value="facet/panel">facet/panel</option>
+            <option  value="fanning">fanning</option>
+            <option  value="feather edge">feather edge</option>
+            <option  value="fence">fence</option>
+            <option  value="fish">fish</option>
+            <option  value="fish roe">fish roe</option>
+            <option  value="fish roe band">fish roe band</option>
+            <option  value="flag/banner">flag/banner</option>
+            <option  value="floral medallion">floral medallion</option>
+            <option  value="floral radiating bloom">floral radiating bloom</option>
+            <option  value="fluted">fluted</option>
+            <option  value="folded rim">folded rim</option>
+            <option  value="fruit">fruit</option>
+            <option  value="garland">garland</option>
+            <option  value="geometric band">geometric band</option>
+            <option  value="geometric circle">geometric circle</option>
+            <option  value="geometric column">geometric column</option>
+            <option  value="geometric">geometric</option>
+            <option  value="granulated band">granulated band</option>
+            <option  value="grass">grass</option>
+            <option  value="grass and leaves molded edge">grass and leaves molded edge</option>
+            <option  value="half-circle band">half-circle band</option>
+            <option  value="not applicable" id="style2_notapply">not applicable</option>
+
+        </select>
+        <div class="invalid-feedback">
+            Must select at least (1) stylish element. 
+        </div>
+    </div><!--END COL-->
+
+    <!--STYLISTIC ELEMENT NUMBER-->
+    <div class="col">
+        <label for="stylistic_element_number" class="form-label">Stylistic Element No.</label>
+        <input type="number" class="form-control " id="stylistic_element_number"  name="stylistic_element_number" min="1" max="60">
+        <div class="invalid-feedback">
+            Stylistic number must be at least (1) and less than (60).  
+        </div>
+    </div><!--END COL-->
+
+
+</div><!--END ROW-->
