@@ -2,22 +2,27 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Ceramic;
 use App\Models\Collection;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
-    //
+    //GET THE ADMIN DASHBOARD
     public function adminDashboard()
     {
         return view('admin.dashboard');
     }
 
+    //GET THE MANAGE COLLECTIONS PAGE
     public function collections()
     {
         $collections = Collection::orderByDesc('id')->get();
         return view('admin.addcollection', compact('collections'));
     }
+
+    //ADD A NEW COLLECTION
     public function collectionsPost(Request $request)
     {
 
@@ -86,4 +91,79 @@ class AdminController extends Controller
                 ->with("error", "You must enter data to update");
         }
     } //END PUSH FUNCTION
+
+
+    public function verifyData()
+    {
+        $ceramics = Ceramic::all();
+        $unassigned_ceramics = [];
+
+        for ($i = 0; $i < count($ceramics); $i++) {
+
+            if ($ceramics[$i]["checkout_by"]) {
+                continue;
+            } else {
+                array_push($unassigned_ceramics, $ceramics[$i]);
+            }
+        } //END FOR CERAMICS
+
+
+
+
+        return view('admin.verifydata', compact('ceramics', 'unassigned_ceramics'));
+    }
+
+    public function checkoutData(Request $request)
+    {
+        //GET THE USER INPUT
+        $user = Auth::user()->id;
+        $ceramics = intval($request->ceramics);
+        $bones = intval($request->bones);
+
+        //PULL THE RECORDS REQUESTED
+        $assign_ceramics = Ceramic::where('isValid', 0)->limit($ceramics)->get();
+
+        //ASSIGN THEM TO THE USER
+        foreach ($assign_ceramics as $item) {
+
+            Ceramic::where('id', $item->id)->update([
+                'checkout_by' => $user
+            ]);
+        } //END OF FOREACH
+
+        return redirect()->route('verify.data')
+            ->with("success", "Successfully checked out records");
+    }
+
+    public function releaseData(Request $request)
+    {
+
+        $user = Auth::user()->id;
+        $ceramic = $request->release_ceramic;
+
+        if ($request->release_ceramic) {
+            Ceramic::where('id', $ceramic)
+                ->where('checkout_by', $user)
+                ->update([
+                    'checkout_by' =>
+                    null
+                ]);
+            return redirect()->route('verify.data')
+                ->with("success", "Successfully released Ceramic #:" . $ceramic);
+        } //END CERAMIC IF
+
+        return redirect()->route('verify.data')
+            ->with("error", "Failed to release Ceramic #:" . $ceramic);
+    }
+
+    public function reviewData($artifact_type, $id)
+    {
+
+        if ($artifact_type == "ceramic") {
+
+            $artifact = Ceramic::where('id', $id)->get();
+
+            return view('forms.verifyceramic', compact('artifact'));
+        }
+    }
 }

@@ -1,7 +1,11 @@
 <!--STYLED IN BANNER SCSS-->
-<div class="banner">
+<div class="banner d-flex justify-content-between align-items-center">
         <img src="{{asset('storage/images/dc-logo.png')}}">
-        <h2 id="title-tag">Digital Archive of Davidson Archaeology</h2>
+        <div class="logotitle">
+          <h3><span>D</span>igital <span>A</span>rchive of <span>D</span>avidson <span>A</span>rchaeology</h3>
+
+        </div>
+        
 </div>
 
 <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
@@ -14,54 +18,55 @@
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link navfont dropdown-toggle " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Query the Database
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Artifact Queries</a></li>
-              <li><a class="dropdown-item" href="#">Image Queries</a></li>
-              <li><a class="dropdown-item" href="#">Site Queries</a></li>
+              <li><a class="dropdown-item navfont" href="#">Artifact Queries</a></li>
+              <li><a class="dropdown-item navfont" href="#">Image Queries</a></li>
+              <li><a class="dropdown-item navfont" href="#">Site Queries</a></li>
             </ul>
           </li>
           <li class="nav-item ">
-            <a class="nav-link" aria-current="page" href="#">About the Database</a>
+            <a class="nav-link navfont disabled " aria-current="page" href="#">About the Database</a>
           </li>
           @if(Auth::check())
           @if(Auth::user()->user_type === 'admin')
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="{{route('admin.dashboard')}}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link navfont dropdown-toggle" href="{{route('admin.dashboard')}}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               <i class="fa-solid fa-pen-to-square"></i>Admin Dashboard
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="{{route('collections')}}">Add Collection</a></li>
-              <li><a class="dropdown-item" href="#">Verify Data</a></li>
+              <li><a class="dropdown-item navfont" href="{{route('collections')}}">Add Collection</a></li>
+              <li><a class="dropdown-item navfont" href="{{route('verify.data')}}">Verify Data</a></li>
             </ul>
           </li>
           @endif
         @endif
+        
         @if(Auth::check())
         <li class="nav-item ">
-          <a class="nav-link" aria-current="page" href="{{route('typeselect')}}"><i class="fa-regular fa-square-plus"></i>Add Artifact</a>
+          <a class="nav-link navfont" aria-current="page" href="{{route('typeselect')}}"><i class="fa-regular fa-square-plus"></i>Add Artifact</a>
         </li>
         @endif
         </ul>
         <form class="d-flex" role="search">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-light" type="submit">Search</button>
+          <button class="btn btn-light navfont" type="submit">Search</button>
         </form>
         @if(Auth::check())
         <form action="{{route('logout')}}" method="POST">
           @csrf
           @method('POST')
-          <button type="submit" class="btn btn-light ms-1">Logout</button>
+          <button type="submit" class="btn navfont btn-light ms-1">Logout</button>
       </form>
         @else
-        <a href="{{route('login')}}"><button class="btn btn-light ms-1" type="submit">Login</button></a>
+        <a href="{{route('login')}}"><button class="btn navfont btn-light ms-1" type="submit">Login</button></a>
         @endif
 
       </div>
     </div>
   </nav>
   @if(Auth::check())
-  <h2>{{Auth::user()->name}}</h2>
+  <h2 id="usersname">{{Auth::user()->name}}</h2>
   @endif

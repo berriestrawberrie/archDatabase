@@ -5,28 +5,25 @@
 @section('content')
 
 
-<h1>Ceramic Form Here!</h1>
-
-<form class=" needs-validation" method="POST" action="{{route('submit.ceramic')}}" novalidate enctype="multipart/form-data">
+<h1>Verify Ceramic#{{$artifact[0]["id"]}}</h1>
+<p>The form is pre-populated with the existing inputs for this artifact. Please verify each field,
+  if all the fields are correct publish the artifact</p>
+<form class=" needs-validation" method="POST" action="" novalidate enctype="multipart/form-data">
   @csrf
   <!--GENERAL INFORMATION & SITE -->
   <fieldset>
     <legend>Site & General Information</legend>
-    @include('forms.ceramics.site')
+    @include('forms.ceramics.verifysite')
   </fieldset>
 
   <fieldset>
     <legend>Fields I Information</legend>
-    @include('forms.ceramics.fieldsI')
+    @include('forms.ceramics.verifyfieldsI')
   </fieldset>
-
-  <fieldset>
-    <legend>Fields II Information</legend>
-    @include('forms.ceramics.fieldsII')
-  </fieldset>
+ 
 
   <fieldset class="mt-2">
-    <input type="submit" class="btn btn-primary">
+    <button class="btn btn-success" type="submit">Publish</button>
   </fieldset>
 
 
