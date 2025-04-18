@@ -20,6 +20,12 @@
     <legend>Fields I Information</legend>
     @include('forms.ceramics.verifyfieldsI')
   </fieldset>
+
+  <fieldset>
+    <legend>Fields II Information</legend>
+    @include('forms.ceramics.verifyfieldsII')
+  </fieldset>
+ 
  
 
   <fieldset class="mt-2">
@@ -35,7 +41,7 @@
   const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
   const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl)) 
 </script>
-<script src="{{asset('storage/js/nextform.js')}}"></script>
+<script src="{{asset('storage/js/verifynextform.js')}}"></script>
 
 
 @endsection

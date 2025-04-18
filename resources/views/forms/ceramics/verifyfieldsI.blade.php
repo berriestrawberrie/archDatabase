@@ -6,7 +6,7 @@
         <div class="col">
             <label for="manufacturing_technique" class="form-label">Manufacturing Tech.</label>
             <select class="form-control border-primary" id="manufacturing_technique" name="manufacturing_technique" required>
-                <option selected value="{{$artifact[0]["manufacturing_technique"]}}">{{$artifact[0]["manufacturing_technique"]}}</option>
+                <option   value="{{$artifact[0]["manufacturing_technique"]}}">{{$artifact[0]["manufacturing_technique"]}}</option>
                 <option value="handbuild coil">handbuild coil</option>
                 <option value="handbuild unidentifiable">handbuild unidentifiable</option>
                 <option value="missing">missing</option>
@@ -25,7 +25,7 @@
         <div class="col">
             <label for="material" class="form-label">Material</label>
             <select class="form-control border-primary" id="material" name="material" required>
-                <option selected value="{{$artifact[0]["material"]}}"> {{$artifact[0]["material"]}}</option>
+                <option   value="{{$artifact[0]["material"]}}"> {{$artifact[0]["material"]}}</option>
                 <option value="coarse earthenware">Coarse Earthenware</option>
                 <option value="porcelain">Porcelain</option>
                 <option value="refined earthenware">Refined Earthenware</option>
@@ -42,7 +42,7 @@
         <div class="col">
             <label for="ware" class="form-label">Ware</label>
             <select class="form-select border-primary" id="ware" required>
-                <option selected value="{{$artifact[0]["ware"]}}"> {{$artifact[0]["ware"]}} </option>
+                <option   value="{{$artifact[0]["ware"]}}"> {{$artifact[0]["ware"]}} </option>
                 <option value="afro-caribbean ware">afro-caribbean ware</option>
                 <option value="agate refined">agate refined</option>
                 <option value="american stoneware">american stoneware</option>
@@ -117,7 +117,7 @@
         <div class="col">
             <label for="form" class="form-label">Ceramic Form</label>
             <select class="form-control border-primary" id="form" name="form" required>
-                <option selected value="{{$artifact[0]["form"]}}">{{$artifact[0]["form"]}}</option>
+                <option   value="{{$artifact[0]["form"]}}">{{$artifact[0]["form"]}}</option>
                 <option value="basket">basket</option>
                 <option value="berry dish">berry dish</option>
                 <option value="bottle">bottle</option>
@@ -191,14 +191,17 @@
 
         <!--HAS IMAGE -->
         <div class="col-2 form-check d-flex flex-column ">
-            <p style="margin-left: -30px;">Has Photo?</p>
+            <p style="margin-left: -30px;">Photo</p>
             
             <label class="form-check-label" for="has_photo1">
-                <input onchange="showImgUpload(this)" class="form-check-input" type="radio" name="has_photo" id="has_photo1" value="Yes"
-                @if($artifact[0]["has_photo"] ==  1)checked @endif>Yes</label>
+                <input onchange="showImgUpload(this)" class="form-check-input" type="radio" name="has_photo" id="has_photo1" value="Keep"
+                @if($artifact[0]["has_photo"] ==  1)checked @endif>Keep</label>
             <label class="form-check-label mt-3" for="has_photo2">
-                <input onchange="showImgUpload(this)" class="form-check-input" type="radio" name="has_photo" id="has_photo2" value="No"
-                @if($artifact[0]["has_photo"] ==  0)checked @endif>No</label>
+                <input onchange="showImgUpload(this)" class="form-check-input" type="radio" name="has_photo" id="has_photo2" value="Remove"
+                @if($artifact[0]["has_photo"] ==  0)checked @endif>Remove</label>
+            <label class="form-check-label mt-3" for="has_photo2">
+                <input onchange="showImgUpload(this)" class="form-check-input" type="radio" name="has_photo" id="has_photo2" value="Replace"
+                @if($artifact[0]["has_photo"] ==  0)checked @endif>Replace</label>
 
             <div class="invalid-feedback">
                 Must make a selection.
@@ -209,12 +212,13 @@
             <img  id="file-ip-1-preview" src="{{asset($artifact[0]["photo"])}}"style="width: 200px; ">
             <img id="file-noimage" src="{{asset('storage/images/picture.png')}}" style="width: 200px; display:none; opacity: .5;">
             <!--IMAGE UPLOAD -->
-            <div id="image-uploader">
+            <div class="position-relative"id="image-uploader" style="opacity: 0;">
                 <label for="photo" class="form-label">Upload Photo</label>
-                <input onchange="showPreview(event);" type="file" class="form-control " id="file-ip-1" name="photo" accept="image/png, image/jpeg, image/jpg" />
+                <input onchange="showPreview(event);" type="file" class="form-control " id="file-ip-1" name="photo" accept="image/png, image/jpeg, image/jpg"/>
                 <div class="invalid-feedback">
                     Must include image (png, jpeg).
                 </div>
+                <button class="d-none position-absolute top-0 end-0 btn-x" type="button" id="cancel_photo"><i class="fa-solid fa-circle-xmark"></i></button>
             </div><!--END COL-->
         </div>
 
@@ -231,7 +235,7 @@
     <div class="col">
         <label for="oxidized_vs_reduced_fabric" class="form-label">Oxidized vs. Reduced Fabric</label>
         <select class="form-control border-primary" id="oxidized_vs_reduced_fabric" name="oxidized_vs_reduced_fabric" required>
-            <option selected value="{{$artifact[0]["oxidized_vs_reduced_fabric"]}}"> {{$artifact[0]["oxidized_vs_reduced_fabric"]}} </option>
+            <option   value="{{$artifact[0]["oxidized_vs_reduced_fabric"]}}"> {{$artifact[0]["oxidized_vs_reduced_fabric"]}} </option>
             <option value="not recorded">not recorded</option>
             <option value="not reduced">not reduced</option>
             <option value="reduced">reduced</option>
@@ -246,7 +250,7 @@
     <div class="col">
         <label for="evidence_of_burning" class="form-label">Evidence of Burning</label>
         <select class="form-control border-primary" id="evidence_of_burning" name="evidence_of_burning" required>
-            <option selected value="{{$artifact[0]["evidence_of_burning"]}}"> {{$artifact[0]["evidence_of_burning"]}} </option>
+            <option   value="{{$artifact[0]["evidence_of_burning"]}}"> {{$artifact[0]["evidence_of_burning"]}} </option>
             <option value="both interior and exterior">both interior and exterior</option>
             <option value="exterior burned">exterior burned</option>
             <option value="interior burned">interior burned</option>
@@ -265,7 +269,7 @@
     <div class="col-2">
         <label for="vessel_category" class="form-label">Vessel Category</label>
         <select class="form-control border-primary" id="vessel_category" name="vessel_category" required>
-            <option selected value="{{$artifact[0]["vessel_category"]}}"> {{$artifact[0]["vessel_category"]}} </option>
+            <option   value="{{$artifact[0]["vessel_category"]}}"> {{$artifact[0]["vessel_category"]}} </option>
             <option value="vessel_category">vessel_category</option>
             <option value="hollow">hollow</option>
             <option value="flat">flat</option>
@@ -286,7 +290,7 @@
     <div class="col">
         <label for="post_manufacturing_mod" class="form-label">Post Manufact. Mod</label>
         <select class="form-control border-primary" id="post_manufacturing_mod" name="post_manufacturing_mod" required>
-            <option selected value="{{$artifact[0]["post_manufacturing_mod"]}}"> {{$artifact[0]["post_manufacturing_mod"]}}</option>
+            <option   value="{{$artifact[0]["post_manufacturing_mod"]}}"> {{$artifact[0]["post_manufacturing_mod"]}}</option>
             <option value="yes">yes</option>
             <option value="no">no</option>
             <option value="not recorded">not recorded</option>
@@ -304,7 +308,7 @@
                 <i class="fa-solid fa-question"></i></button>
         </label>
         <select class="form-control border-primary" id="interior_exterior" name="interior_exterior" required>
-            <option selected value={{$artifact[0]["interior_exterior"]}}> {{$artifact[0]["interior_exterior"]}} </option>
+            <option   value={{$artifact[0]["interior_exterior"]}}> {{$artifact[0]["interior_exterior"]}} </option>
             <option value="exterior">exterior</option>
             <option value="interior">interior</option>
             <option value="perforate">perforate</option>
@@ -318,7 +322,7 @@
     <div class="col-2">
         <label for="location" class="form-label">Location??</label>
         <select class="form-control border-primary" id="location" name="location" required>
-            <option selected value="{{$artifact[0]["location"]}}">{{$artifact[0]["location"]}}</option>
+            <option   value="{{$artifact[0]["location"]}}">{{$artifact[0]["location"]}}</option>
             <option value="base">base</option>
             <option value="body">body</option>
             <option value="finial">finial</option>
@@ -348,7 +352,7 @@
     <div class="col">
         <label for="ceramic_completeness" class="form-label">Ceramic Completeness</label>
         <select class="form-control border-primary" id="ceramic_completeness" name="ceramic_completeness" required>
-            <option selected value="{{$artifact[0]["ceramic_completeness"]}}">{{$artifact[0]["ceramic_completeness"]}}</option>
+            <option   value="{{$artifact[0]["ceramic_completeness"]}}">{{$artifact[0]["ceramic_completeness"]}}</option>
             <option value="base">base</option>
             <option value="body">body</option>
             <option value="finial">finial</option>
@@ -373,7 +377,7 @@
     <div class="col-2">
         <label for="mended" class="form-label">Mended?</label>
         <select class="form-control border-primary" id="mended" name="mended" required onchange="getMended()">
-            <option selected value="{{$artifact[0]["mended"]}}"> {{$artifact[0]["mended"]}} </option>
+            <option   value="{{$artifact[0]["mended"]}}"> {{$artifact[0]["mended"]}} </option>
             <option value="yes">yes</option>
             <option value="no">no</option>
             <option value="not recorded">not recorded</option>
@@ -388,7 +392,7 @@
     <div class="col">
         <label for="mended_form" class="form-label">Mended Form</label>
         <select class="form-control border-primary" id="mended_form" name="mended_form" required>
-            <option selected value id="{{$artifact[0]["mended_form"]}} "> {{$artifact[0]["mended_form"]}} </option>
+            <option   value id="{{$artifact[0]["mended_form"]}} "> {{$artifact[0]["mended_form"]}} </option>
             <option value="basket">basket</option>
             <option value="berry dish">berry dish</option>
             <option value="bottle">bottle</option>
@@ -471,8 +475,8 @@
     <!--EXTERIOR SURFACE-->
     <div class="col">
         <label for="exterior_surface" class="form-label">Exterior Surface</label>
-        <select class="form-control " id="exterior_surface" name="exterior_surface" required>
-            <option disabled selected value> -- select an option -- </option>
+        <select class="form-control border-primary" id="exterior_surface" name="exterior_surface" required>
+            <option   value="{{$artifact[0]["exterior_surface"]}}"> {{$artifact[0]["exterior_surface"]}} </option>
             <option value="albany slip">albany slip</option>
             <option value="alkaline glaze">alkaline glaze</option>
             <option value="bristol glaze">bristol glaze</option>
@@ -497,7 +501,7 @@
     <!--EXTERIOR COLOR-->
     <div class="col-2">
         <label for="exterior_color" class="form-label">Exterior Color</label>
-        <input type="text" class="form-control " id="exterior_color" name="exterior_color" required>
+        <input type="text" class="form-control border-primary" id="exterior_color" name="exterior_color" value="{{$artifact[0]["exterior_color"]}}" required>
         <div class="invalid-feedback">
             Must enter an exterior color.
         </div>
@@ -506,8 +510,8 @@
     <!--INTERIOR SURFACE-->
     <div class="col">
         <label for="interior_surface" class="form-label">Interior Surface</label>
-        <select class="form-control " id="interior_surface" name="interior_surface" required>
-            <option disabled selected value> -- select an option -- </option>
+        <select class="form-control border-primary" id="interior_surface" name="interior_surface" required>
+            <option   value="{{$artifact[0]["interior_surface"]}}">{{$artifact[0]["interior_surface"]}}</option>
             <option value="albany slip">albany slip</option>
             <option value="alkaline glaze">alkaline glaze</option>
             <option value="bristol glaze">bristol glaze</option>
@@ -534,7 +538,7 @@
     <!--EXTERIOR COLOR-->
     <div class="col-2">
         <label for="interior_color" class="form-label">Interior Color</label>
-        <input type="text" class="form-control " id="interior_color" name="interior_color" required>
+        <input type="text" class="form-control border-primary" id="interior_color" name="interior_color" value="{{$artifact[0]["interior_color"]}}" required>
         <div class="invalid-feedback">
             Must enter an interior color.
         </div>
@@ -548,8 +552,8 @@
     <!--GENRE -->
     <div class="col">
         <label for="genre" class="form-label">Genre</label>
-        <select class="form-control " id="genre" name="genre" required>
-            <option disabled selected value> -- select an option -- </option>
+        <select class="form-control border-primary" id="genre" name="genre" required>
+            <option   value="{{$artifact[0]["genre"]}}">{{$artifact[0]["genre"]}}</option>
             <option value="an hua">an hua</option>
             <option value="applied powder crystals purple">applied powder crystals purple</option>
             <option value="barley">barley</option>
@@ -608,8 +612,8 @@
     <!--MOTIF-->
     <div class="col-2">
         <label for="motif" class="form-label">Motif</label>
-        <select class="form-control " id="motif" name="motif" required>
-            <option disabled selected value> -- select an option -- </option>
+        <select class="form-control border-primary" id="motif" name="motif" required>
+            <option value="{{$artifact[0]["motif"]}} "> {{$artifact[0]["motif"]}} </option>
             <option value="adjacent combination b">adjacent combination b</option>
             <option value="adjacent/stacked combo a">adjacent/stacked combo a</option>
             <option value="adjacent/stacked combo b">adjacent/stacked combo b</option>
@@ -641,8 +645,8 @@
     <!--DECORATIVE TECHNIQUE-->
     <div class="col">
         <label for="decorative_technique" class="form-label">Decorative Technique</label>
-        <select class="form-control " id="decorative_technique" name="decorative_technique" required>
-            <option disabled selected value> -- select an option -- </option>
+        <select class="form-control border-primary" id="decorative_technique" name="decorative_technique" required>
+            <option  value="{{$artifact[0]["decorative_technique"]}}">{{$artifact[0]["decorative_technique"]}}</option>
             <option value="applied clay">applied clay</option>
             <option value="applied powder/crystals">applied powder/crystals</option>
             <option value="bulls eye inlay">bulls eye inlay</option>
@@ -666,7 +670,7 @@
     <!--DECORATIVE COLOR -->
     <div class="col-2">
         <label for="decoration_color" class="form-label">Decorative Color</label>
-        <input type="text" class="form-control " id="decoration_color" name="decoration_color" required>
+        <input type="text" value="decoration_color"class="form-control border-primary" id="decoration_color" name="decoration_color" required>
         <div class="invalid-feedback">
             Must select enter decoration color.
         </div>
@@ -680,8 +684,8 @@
     <!--STYLISTIC ELEMENT-->
     <div class="col">
         <label for="stylistic_element_1" class="form-label">Stylistic Element I</label>
-        <select class="form-control " id="stylistic_element_1" name="stylistic_element_1" required>
-            <option disabled selected value> -- select an option -- </option>
+        <select class="form-control border-primary" id="stylistic_element_1" name="stylistic_element_1" required>
+            <option disabled   value="{{$artifact[0]["stylistic_element_1"]}}">{{$artifact[0]["stylistic_element_1"]}}</option>
             <option value="acanthus leaves">acanthus leaves</option>
             <option value="angular edge">angular edge</option>
             <option value="animal">animal</option>
@@ -780,7 +784,7 @@
     <!--STYLISTIC ELEMENT NUMBER-->
     <div class="col-2">
         <label for="stylistic_element_number" class="form-label">Stylistic Element No.</label>
-        <input type="number" class="form-control " id="stylistic_element_number" name="stylistic_element_number" min="1" max="60">
+        <input type="number" value="{{$artifact[0]["stylistic_element_number"]}}" class="form-control border-primary" id="stylistic_element_number" name="stylistic_element_number" min="1" max="60">
         <div class="invalid-feedback">
             Stylistic number must be at least (1) and less than (60).
         </div>

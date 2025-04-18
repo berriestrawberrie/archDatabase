@@ -206,12 +206,13 @@
             <img id="file-ip-1-preview" style="width: 200px; display: none;">
             <img id="file-noimage" src="{{asset('storage/images/picture.png')}}" style="width: 200px; display:none; opacity: .5;">
             <!--IMAGE UPLOAD -->
-            <div id="image-uploader">
+            <div class="position-relative"id="image-uploader">
                 <label for="photo" class="form-label">Upload Photo</label>
                 <input onchange="showPreview(event);"type="file" class="form-control " id="file-ip-1"  name="photo" accept="image/png, image/jpeg, image/jpg" />
                 <div class="invalid-feedback">
                     Must include image (png, jpeg).
                 </div>
+                <button class="d-none position-absolute top-0 end-0 btn-x" type="button" id="cancel_photo"><i class="fa-solid fa-circle-xmark"></i></button>
             </div><!--END COL-->
         </div>
 
@@ -297,8 +298,8 @@
     <!--INTERIOR EXTERIOR-->
     <div class="col">
         <label for="interior_exterior" class="form-label">Interior Exterior 
-            <button type="button" class="btn btn-secondary btn-xsm" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Helpful field explainer here?">
-                <i class="fa-solid fa-question"></i></button>
+            <button type="button" class="btn-xsm" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Helpful field explainer here?">
+                <i class="fa-solid fa-circle-question"></i></button>
         </label>
         <select class="form-control " id="interior_exterior"  name="interior_exterior" required>
             <option disabled selected value> -- select an option -- </option>

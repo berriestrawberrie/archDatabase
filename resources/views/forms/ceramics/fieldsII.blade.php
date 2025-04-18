@@ -188,8 +188,8 @@
     <!--MAX RIM WIDTH-->
     <div class="col-2">
         <label for="max_rim_width" class="form-label">Max Width  
-            <button type="button" class="btn btn-secondary btn-xsm" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Decimal up to (2) places">
-            <i class="fa-solid fa-question"></i></button></label>
+            <button type="button" class=" btn-xsm" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Decimal up to (2) places">
+                <i class="fa-solid fa-circle-question"></i></button></label>
         <input type="number" class="form-control " id="max_rim_width"  name="max_rim_width" min="0" required>
         <div class="invalid-feedback">
             Must enter max rim width. 

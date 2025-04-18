@@ -22,7 +22,7 @@
     <div class="col-3">
         <label for="completeness" class="form-label">Completeness</label>
         <select class="form-control border-primary" id="completeness"  name="completeness" required>
-            <option selected value="{{$artifact[0]["completeness"]}}">{{$artifact[0]["completeness"]}}</option>
+            <option   value="{{$artifact[0]["completeness"]}}">{{$artifact[0]["completeness"]}}</option>
             <option  value="base">base</option>
             <option  value="base/body">base/body</option>
             <option  value="base/body/handle">base/body/handle</option>

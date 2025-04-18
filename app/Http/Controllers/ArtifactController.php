@@ -126,4 +126,22 @@ class ArtifactController extends Controller
         return redirect(route('home'))
             ->with("success", "Successfully added ceramic artifact");
     } //END OF CERAMIC
+
+    //PROCESS THE CERAMIC PUBLISH FORM 
+    public function validateCeramic(Request $request)
+    {
+
+        //PROCESS THE PHOTO
+        if ($request->has('photo')) {
+
+            $file = $request->file('photo');
+            $extension = $file->getClientOriginalExtension();
+
+            $path = 'uploads/ceramics/';
+            $filename = time() . '.' . $extension;
+            $file->move($path, $filename);
+        } else {
+            $filename = $request->photo;
+        }
+    }
 }

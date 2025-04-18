@@ -91,8 +91,8 @@
     <!--NOTES-->
     <div class="col">
         <label for="notes" class="form-label">Notes 
-            <button type="button" class="btn btn-secondary btn-xsm" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Field notes describe your artifact notes">
-            <i class="fa-solid fa-question"></i>
+            <button type="button" class="btn-xsm" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Field notes describe your artifact notes">
+                <i class="fa-solid fa-circle-question"></i>
           </button>
         </label>
         <textarea class="form-control " id="notes"  name="notes" placeholder="(Optional)" rows="3"></textarea>
