@@ -96,16 +96,11 @@ class AdminController extends Controller
     public function verifyData()
     {
         $ceramics = Ceramic::all();
-        $unassigned_ceramics = [];
+        $unassigned_ceramics = Ceramic::where('isValid', 0)
+            ->where('checkout_by', null)
+            ->get();
 
-        for ($i = 0; $i < count($ceramics); $i++) {
 
-            if ($ceramics[$i]["checkout_by"]) {
-                continue;
-            } else {
-                array_push($unassigned_ceramics, $ceramics[$i]);
-            }
-        } //END FOR CERAMICS
 
 
 

@@ -41,7 +41,7 @@
       <div class="row">
           <!--CERAMICS CHECKOUT-->
           <div class="col-md-2">
-              <label for="ceramics" class="form-label">Max ({{count($ceramics)}})</label>
+              <label for="ceramics" class="form-label">Max ({{count($unassigned_ceramics)}})</label>
               <div class="input-group has-validation">
                   <span class="input-group-text" id="inputGroupPrepend">Ceramics</span>
                   <select type="text" class="form-control" id="ceramics" name="ceramics" aria-describedby="inputGroupPrepend">
@@ -106,7 +106,7 @@
                 </thead>
                 <tbody>
                   @foreach($ceramics as $ceramic)
-                    @if($ceramic->checkout_by == Auth::user()->id)
+                    @if($ceramic->checkout_by == Auth::user()->id && $ceramic->isValid == 0)
                         <tr>
                             <td>{{$ceramic->id}}</td>
                             <td>ceramic</td>

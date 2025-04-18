@@ -39,6 +39,7 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     Route::post('/verifyData', [AdminController::class, 'checkoutData'])->name('checkout.data');
     Route::post('/releaseData', [AdminController::class, 'releaseData'])->name('release.data');
     Route::get('/reviewData/{artifact_type}/{id}', [AdminController::class, 'reviewData']);
+    Route::put('/validateData/{id}', [ArtifactController::class, 'validateCeramic']);
 });
 
 

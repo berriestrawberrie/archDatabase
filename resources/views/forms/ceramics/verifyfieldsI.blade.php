@@ -41,7 +41,7 @@
         <!--WARE-->
         <div class="col">
             <label for="ware" class="form-label">Ware</label>
-            <select class="form-select border-primary" id="ware" required>
+            <select class="form-select border-primary" id="ware" name="ware" required>
                 <option   value="{{$artifact[0]["ware"]}}"> {{$artifact[0]["ware"]}} </option>
                 <option value="afro-caribbean ware">afro-caribbean ware</option>
                 <option value="agate refined">agate refined</option>
@@ -194,13 +194,13 @@
             <p style="margin-left: -30px;">Photo</p>
             
             <label class="form-check-label" for="has_photo1">
-                <input onchange="showImgUpload(this)" class="form-check-input" type="radio" name="has_photo" id="has_photo1" value="Keep"
+                <input onchange="showImgUpload(this)" class="form-check-input" type="radio" name="has_photo" id="has_photo1" value="1"
                 @if($artifact[0]["has_photo"] ==  1)checked @endif>Keep</label>
             <label class="form-check-label mt-3" for="has_photo2">
-                <input onchange="showImgUpload(this)" class="form-check-input" type="radio" name="has_photo" id="has_photo2" value="Remove"
+                <input onchange="showImgUpload(this)" class="form-check-input" type="radio" name="has_photo" id="has_photo2" value="0"
                 @if($artifact[0]["has_photo"] ==  0)checked @endif>Remove</label>
             <label class="form-check-label mt-3" for="has_photo2">
-                <input onchange="showImgUpload(this)" class="form-check-input" type="radio" name="has_photo" id="has_photo2" value="Replace"
+                <input onchange="showImgUpload(this)" class="form-check-input" type="radio" name="has_photo" id="has_photo2" value="2"
                 @if($artifact[0]["has_photo"] ==  0)checked @endif>Replace</label>
 
             <div class="invalid-feedback">
@@ -209,8 +209,8 @@
         </div><!--END COL-->
 
         <div class="col-8">
-            <img  id="file-ip-1-preview" src="{{asset($artifact[0]["photo"])}}"style="width: 200px; ">
-            <img id="file-noimage" src="{{asset('storage/images/picture.png')}}" style="width: 200px; display:none; opacity: .5;">
+            <img  id="file-ip-1-preview" src="{{asset('uploads/ceramics/'.$artifact[0]["photo"])}}"style="width: 200px; ">
+            <img id="file-noimage" src="{{asset('uploads/ceramics/null.png')}}" style="width: 200px; display:none; opacity: .5;">
             <!--IMAGE UPLOAD -->
             <div class="position-relative"id="image-uploader" style="opacity: 0;">
                 <label for="photo" class="form-label">Upload Photo</label>
@@ -392,7 +392,7 @@
     <div class="col">
         <label for="mended_form" class="form-label">Mended Form</label>
         <select class="form-control border-primary" id="mended_form" name="mended_form" required>
-            <option   value id="{{$artifact[0]["mended_form"]}} "> {{$artifact[0]["mended_form"]}} </option>
+            <option   value="{{$artifact[0]["mended_form"]}}"> {{$artifact[0]["mended_form"]}} </option>
             <option value="basket">basket</option>
             <option value="berry dish">berry dish</option>
             <option value="bottle">bottle</option>
@@ -683,8 +683,8 @@
 <div class="row">
     <!--STYLISTIC ELEMENT-->
     <div class="col">
-        <label for="stylistic_element_1" class="form-label">Stylistic Element I</label>
-        <select class="form-control border-primary" id="stylistic_element_1" name="stylistic_element_1" required>
+        <label for="stylistic_element" class="form-label">Stylistic Element I</label>
+        <select class="form-control border-primary" id="stylistic_element" name="stylistic_element" required>
             <option disabled   value="{{$artifact[0]["stylistic_element_1"]}}">{{$artifact[0]["stylistic_element_1"]}}</option>
             <option value="acanthus leaves">acanthus leaves</option>
             <option value="angular edge">angular edge</option>
