@@ -1,9 +1,12 @@
 @extends('layouts.app')
 @section('title')Home @endsection
 
+@section('page-title')
+<h1 class="text-center">Welcome</h1>
+@endsection
+
 @section('content')
 <div class="dash">
-    <h1>Page Title</h1>
 <div class="dash__top">
     <img src="{{asset('storage/images/picture.png')}}">
     <div class="dash__topdesc">

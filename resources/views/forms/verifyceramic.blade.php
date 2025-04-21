@@ -2,10 +2,12 @@
 
 @section('title') Ceramic Form @endsection
 
+
+@section('page-title')
+<h1 class="text-center">Verify Ceramic#{{$artifact[0]["id"]}}</h1>
+@endsection
+
 @section('content')
-
-
-<h1>Verify Ceramic#{{$artifact[0]["id"]}}</h1>
 <p>The form is pre-populated with the existing inputs for this artifact. Please verify each field,
   if all the fields are correct publish the artifact</p>
 <form class=" needs-validation" method="POST" action="{{url('validateData/'.$artifact[0]["id"])}}" novalidate enctype="multipart/form-data">

@@ -57,7 +57,7 @@ class ArtifactController extends Controller
             $filename = time() . '.' . $extension;
             $file->move($path, $filename);
         } else {
-            $filename = null;
+            $filename = 'null.png';
         }
 
         Ceramic::create([
@@ -121,7 +121,7 @@ class ArtifactController extends Controller
             'base_diameter' => $request->base_diameter,
             'mended_base_diameter' => $request->mended_base_diameter,
             'has_photo' => $request->has_photo,
-            'photo' => $path . $filename,
+            'photo' => $filename,
         ]);
 
         return redirect(route('home'))
@@ -147,7 +147,7 @@ class ArtifactController extends Controller
         } else {
             //USE THE SAME PHOTO OR KEEP NULL
             if ($request->has_photo == 0) {
-                $filename = null;
+                $filename = 'null.png';
             } else {
                 $filename = $ceramic->photo;
             }

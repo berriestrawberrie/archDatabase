@@ -1,9 +1,13 @@
 @extends('layouts.app')
 @section('title') New Collection @endsection
 
-@section('content')
-<h1 class="text-center">Admin Collections:</h1>
+@section('page-title')
 
+<h1 class="text-center">Admin Manage Collections</h1>
+
+@endsection
+
+@section('content')
 <h2>Adding a New Collection:</h2>
 <p>Use this page to create and catalog a new archival collection. 
     Provide key details such as the collection title, description, 
@@ -33,6 +37,21 @@
         <form method="POST" action="{{route('collections.post')}}">
             @csrf
             <h3>Enter Collection Information:</h3>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="isPublic" id="isPublic-1" checked>
+                  <label class="form-check-label" for="isPublic-1">
+                    <b>Public Collection: </b>
+                  </label>
+                  <p>Public collection showcases a diverse array of artifacts that highlight cultural, historical, and artistic achievements from around the world. Open to all visitors, it invites exploration and discovery through carefully curated exhibits and interactive displays.</p>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="isPublic" id="isPublic-2">
+                  <label class="form-check-label" for="radioDefault2">
+                    <b>Private Collection:</b>
+                  </label>
+                  <p>Access is strictly limited to administrative users to ensure the integrity and confidentiality of the items. Each piece holds significant cultural or historical value, offering unique insights not available to the general public. 
+                    The collection is securely housed in a restricted digital archive with advanced access controls.</p>
+                </div>
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon1">Title *:</span>
                     <input type="text" class="form-control" placeholder="Enter the collection title" aria-label="Username" aria-describedby="basic-addon1" name="title" required>
@@ -49,7 +68,7 @@
                     <span class="input-group-text">Collection Description*</span>
                     <textarea class="form-control" aria-label="With textarea"  aria-describedby="basic-addon4" name="text" required></textarea>
                   </div>
-                  <div class="input-group">
+                  <div class="input-group mt-2">
                     <input type="submit" class="btn btn-primary">
                   </div>
     </form>
@@ -101,7 +120,13 @@
         <div class="accordion-item">
             <h2 class="accordion-header">
             <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{$collection->id}}" aria-expanded="true" aria-controls="collapse{{$collection->id}}">
-                {{$collection->collection}}
+                {{$collection->collection}} 
+                (@if($collection->isPublic ==1)
+                  Public
+                  @else 
+                  Private
+                  @endif
+                )
             </button>
             </h2>
             <div id="collapse{{$collection->id}}" class="accordion-collapse collapse" data-bs-parent="#accordionExample">

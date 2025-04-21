@@ -22,7 +22,7 @@
               Query the Database
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item navfont" href="#">Artifact Queries</a></li>
+              <li><a class="dropdown-item navfont" href="{{route('query.artifact')}}">Artifact Queries</a></li>
               <li><a class="dropdown-item navfont" href="#">Image Queries</a></li>
               <li><a class="dropdown-item navfont" href="#">Site Queries</a></li>
             </ul>
@@ -34,9 +34,10 @@
           @if(Auth::user()->user_type === 'admin')
           <li class="nav-item dropdown">
             <a class="nav-link navfont dropdown-toggle" href="{{route('admin.dashboard')}}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              <i class="fa-solid fa-pen-to-square"></i>Admin Dashboard
+              <i class="fa-solid fa-pen-to-square"></i>Admin
             </a>
             <ul class="dropdown-menu">
+              <li><a class="dropdown-item navfont" href="{{route('admin.dashboard')}}">Dashboard</a></li>
               <li><a class="dropdown-item navfont" href="{{route('collections')}}">Add Collection</a></li>
               <li><a class="dropdown-item navfont" href="{{route('verify.data')}}">Verify Data</a></li>
             </ul>
@@ -69,4 +70,6 @@
   </nav>
   @if(Auth::check())
   <h2 id="usersname">{{Auth::user()->name}}</h2>
+  @else
+  <div class="spacer" style="height: 40px;"></div>
   @endif

@@ -2,11 +2,14 @@
 
 @section('title') Ceramic Form @endsection
 
+
+@section('page-title')
+
+<h1 class="text-center">Ceramic Artifact Entry Form</h1>
+
+@endsection
+
 @section('content')
-
-
-<h1>Ceramic Form Here!</h1>
-
 <form class=" needs-validation" method="POST" action="{{route('submit.ceramic')}}" novalidate enctype="multipart/form-data">
   @csrf
   <!--GENERAL INFORMATION & SITE -->

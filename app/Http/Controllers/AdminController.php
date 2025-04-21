@@ -12,7 +12,12 @@ class AdminController extends Controller
     //GET THE ADMIN DASHBOARD
     public function adminDashboard()
     {
-        return view('admin.dashboard');
+        $allceramics = Ceramic::count();
+        $unvalid_ceramics = Ceramic::where('isValid', 0)->count();
+        $valid_ceramics = Ceramic::where('isValid', 1)->count();
+
+
+        return view('admin.dashboard', compact('allceramics', 'unvalid_ceramics', 'valid_ceramics'));
     }
 
     //GET THE MANAGE COLLECTIONS PAGE
@@ -100,11 +105,6 @@ class AdminController extends Controller
             ->where('checkout_by', null)
             ->get();
 
-
-
-
-
-
         return view('admin.verifydata', compact('ceramics', 'unassigned_ceramics'));
     }
 
@@ -113,11 +113,13 @@ class AdminController extends Controller
         //GET THE USER INPUT
         $user = Auth::user()->id;
         $ceramics = intval($request->ceramics);
+
         $bones = intval($request->bones);
 
         //PULL THE RECORDS REQUESTED
-        $assign_ceramics = Ceramic::where('isValid', 0)->limit($ceramics)->get();
-
+        $assign_ceramics = Ceramic::where('isValid', 0)
+            ->where('checkout_by', null)
+            ->take($ceramics)->get();
         //ASSIGN THEM TO THE USER
         foreach ($assign_ceramics as $item) {
 
@@ -151,14 +153,35 @@ class AdminController extends Controller
             ->with("error", "Failed to release Ceramic #:" . $ceramic);
     }
 
-    public function reviewData($artifact_type, $id)
+    public function reviewData($user, $artifact_type, $id)
     {
-
+        //DEFINE THE ARTIFACT TYPE FIRST
         if ($artifact_type == "ceramic") {
-
             $artifact = Ceramic::where('id', $id)->get();
-
-            return view('forms.verifyceramic', compact('artifact'));
         }
-    }
+
+
+
+        //VERIFY THAT THE USER REVIEWING IS THE USER THAT CHECKED IT OUT
+        if ($artifact[0]["checkout_by"] == $user) {
+            //RETURN THE CERAMIC REIVEW FORM
+            if ($artifact_type == "ceramic") {
+                return view('forms.verifyceramic', compact('artifact'));
+            } //END OF CERAMIC IF
+
+            //RETURN THE BONES REVIEW FORM..
+
+
+        } else {
+
+            //CHANGE ERROR MESSAGE IF RECORD IS NOT YET CHECKED OUT
+            if ($artifact[0]["checkout_by"]) {
+                return redirect()->route('verify.data')
+                    ->with("error", "Record is already being reviewed by User #: " . $artifact[0]["checkout_by"]);
+            } else {
+                return redirect()->route('verify.data')
+                    ->with("error", "Record needs to be checked out before you can review it");
+            }
+        }
+    } //END OF REVIEW DATA
 }

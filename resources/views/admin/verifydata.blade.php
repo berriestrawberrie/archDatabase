@@ -1,9 +1,13 @@
 @extends('layouts.app')
 @section('title')Verify Data @endsection
 
-@section('content')
+@section('page-title')
 
-<h1>Data Verification Queue:</h1>
+<h1 class="text-center">Data Verification Queue</h1>
+
+@endsection
+
+@section('content')
 <p>The following table shows how many artifacts have been submitted for validation. 
     These submissions will not be viewable in database queries until an an administrator reviews accepts the submission. 
 </p>
@@ -46,7 +50,7 @@
                   <span class="input-group-text" id="inputGroupPrepend">Ceramics</span>
                   <select type="text" class="form-control" id="ceramics" name="ceramics" aria-describedby="inputGroupPrepend">
                       <option value="0">-</option>
-                      @for($i=1; $i <= count($ceramics); $i++)
+                      @for($i=1; $i <= count($unassigned_ceramics); $i++)
                           <option value="{{$i}}">{{$i}}</option>
                       @endfor
                   </select>
@@ -119,7 +123,7 @@
                             </td>
                             <td>{{$ceramic->collection}}</td>
                             <td>{{$ceramic->material}}</td>
-                            <td><a href="/reviewData/ceramic/{{$ceramic->id}}"><button class="btn btn-success">Review</button></a></td>
+                            <td><a href="/reviewData/{{Auth::user()->id}}/ceramic/{{$ceramic->id}}"><button class="btn btn-success">Review</button></a></td>
                             <td>
                                 <form method="POST" action="{{route('release.data')}}">@csrf<input type="number" class="d-none" value="{{$ceramic->id}}" name="release_ceramic">
                                 </select><button class="btn btn-danger" type="submit">Release</button></form>

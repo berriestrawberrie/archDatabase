@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ArtifactController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ImageController;
+use App\Http\Controllers\QueryController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\AdminMiddleware;
 use Database\Seeders\AdminSeeder;
@@ -17,6 +18,7 @@ Route::get('view/{id}', [ArtifactController::class, 'singleItem']);
 Route::get('/testhome', function () {
     return view('layouts.newapp');
 });
+Route::get('/query/artifact', [QueryController::class, 'queryArtifact'])->name('query.artifact');
 
 //REQUIRE LOGGED IN ROUTES
 Route::middleware("auth")->group(function () {
@@ -38,7 +40,7 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     Route::get('/verifyData', [AdminController::class, 'verifyData'])->name('verify.data');
     Route::post('/verifyData', [AdminController::class, 'checkoutData'])->name('checkout.data');
     Route::post('/releaseData', [AdminController::class, 'releaseData'])->name('release.data');
-    Route::get('/reviewData/{artifact_type}/{id}', [AdminController::class, 'reviewData']);
+    Route::get('/reviewData/{user}/{artifact_type}/{id}', [AdminController::class, 'reviewData']);
     Route::put('/validateData/{id}', [ArtifactController::class, 'validateCeramic']);
 });
 

@@ -2,6 +2,12 @@
 
 @section('title')Select Collection @endsection
 
+@section('page-title')
+
+<h1 class="text-center">Add an Artifact</h1>
+
+@endsection
+
 
 @section('content')
 <select id="max" class="d-none"><option selected value="{{count($collections)}}">MaxCollections</option></select>
@@ -22,11 +28,10 @@
           </select>
 
       </div>
-      <button type="submit" class="col-sm-1 btn btn-primary">Update</button>
     </div>
   </form>
   <h2>2. Select Artifact Type </h2>
-  <p class="mb-5">After selecting collection the available artifact types will populate. </p>
+  <p class="mb-5">Then you must select the type of artifact to add.  </p>
  
     @for($i=0;$i< count($collections); $i++)
     <div style="display:none;"class="container-sm flex-wrap  justify-content-start position-relative" id="{{$collections[$i]["id"]}}">

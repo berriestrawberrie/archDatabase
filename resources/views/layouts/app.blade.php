@@ -15,8 +15,13 @@
     <div class="container">
     @include('layouts.alerts')
     </div>
-    <div class="container text-bg-light rounded">
-        @yield('content')
+    <div class="container p-0  bg-white rounded">
+        @yield('page-title')
+       
+        <div class="container p-3">
+            @yield('content')
+        </div>
+
     </div>
 
   

@@ -193,9 +193,9 @@
         <div class="col-2 form-check d-flex flex-column ">
             <p style="margin-left: -30px;">Has Photo?</p>
             <label class="form-check-label" for="has_photo1">
-                <input onchange="showImgUpload(this)" class="form-check-input" type="radio" name="has_photo" id="has_photo1" value="Yes">Yes</label>
+                <input onchange="showImgUpload(this)" class="form-check-input" type="radio" name="has_photo" id="has_photo1" value="1">Yes</label>
             <label class="form-check-label mt-3" for="has_photo2">
-                <input onchange="showImgUpload(this)" class="form-check-input" type="radio" name="has_photo" id="has_photo2" value="No">No</label>
+                <input onchange="showImgUpload(this)" class="form-check-input" type="radio" name="has_photo" id="has_photo2" value="0">No</label>
 
             <div class="invalid-feedback">
                 Must make a selection. 

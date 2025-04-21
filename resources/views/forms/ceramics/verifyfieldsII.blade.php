@@ -190,7 +190,7 @@
         <label for="max_rim_width" class="form-label">Max Width  
             <button type="button" class="btn btn-secondary btn-xsm" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Decimal up to (2) places">
             <i class="fa-solid fa-question"></i></button></label>
-        <input type="number" value="{{$artifact[0]["max_rim_width"]}}"class="form-control border-primary" id="max_rim_width"  name="max_rim_width" min="0" required>
+        <input type="number" step=".01" value="{{$artifact[0]["max_rim_width"]}}"class="form-control border-primary" id="max_rim_width"  name="max_rim_width" min="0" required>
         <div class="invalid-feedback">
             Must enter max rim width. 
         </div>
@@ -362,7 +362,7 @@
     <!--SHERD THICKNESS-->
     <div class="col">
         <label for="sherd_thickness" class="form-label">Sherd Thickness</label>
-        <input type="number" value="{{$artifact[0]["sherd_thickness"]}}"class="form-control border-primary" id="sherd_thickness"  name="sherd_thickness" min="0" required>
+        <input type="number" value="{{$artifact[0]["sherd_thickness"]}}"class="form-control border-primary" id="sherd_thickness"  step="0.01" name="sherd_thickness" min="0" required>
         <div class="invalid-feedback">
             Must enter sherd thickness
         </div>
@@ -371,7 +371,7 @@
     <!--MAX SHERD MEASURE-->
     <div class="col">
         <label for="max_sherd_measurement" class="form-label">Max Sherd Measurement</label>
-        <input type="number" value="{{$artifact[0]["max_sherd_measurement"]}}"class="form-control border-primary" id="max_sherd_measurement"  name="max_sherd_measurement" min="0" required>
+        <input type="number"   step="0.01" value="{{$artifact[0]["max_sherd_measurement"]}}"class="form-control border-primary" id="max_sherd_measurement"  name="max_sherd_measurement" min="0" required>
         <div class="invalid-feedback">
             Must enter max sherd measurement. 
         </div>
@@ -380,7 +380,7 @@
     <!--SHERD WEIGHT-->
     <div class="col">
         <label for="sherd_weight" class="form-label">Sherd Weight</label>
-        <input type="number" value="{{$artifact[0]["sherd_weight"]}}" class="form-control border-primary" id="sherd_weight"  name="sherd_weight" min="0" required>
+        <input type="number"  step="0.01" value="{{$artifact[0]["sherd_weight"]}}" class="form-control border-primary" id="sherd_weight"  name="sherd_weight" min="0" required>
         <div class="invalid-feedback">
             Must enter sherd weight
         </div>
@@ -389,7 +389,7 @@
     <!--MENDED SHERD WEIGHT-->
     <div class="col">
         <label for="mended_sherd_weight" class="form-label">Mended Sherd Weight</label>
-        <input type="number" value="{{$artifact[0]["mended_sherd_weight"]}}"class="form-control border-primary" id="mended_sherd_weight"  name="mended_sherd_weight" min="0" required>
+        <input type="number"  step="0.01" value="{{$artifact[0]["mended_sherd_weight"]}}"class="form-control border-primary" id="mended_sherd_weight"  name="mended_sherd_weight" min="0" required>
         <div class="invalid-feedback">
             Must enter sherd thickness
         </div>
@@ -402,7 +402,7 @@
     <!--RIM LENGTH-->
     <div class="col">
         <label for="rim_length" class="form-label">Rim Length</label>
-        <input type="number" value="{{$artifact[0]["rim_length"]}}" class="form-control border-primary" id="rim_length"  name="rim_length" min="0" required>
+        <input type="number"  step="0.01" value="{{$artifact[0]["rim_length"]}}" class="form-control border-primary" id="rim_length"  name="rim_length" min="0" required>
         <div class="invalid-feedback">
             Must enter rim length
         </div>
@@ -411,7 +411,7 @@
     <!--RIM DIAMETER-->
     <div class="col">
         <label for="rim_diameter" class="form-label">Rim Diameter</label>
-        <input type="number" value="{{$artifact[0]["rim_diameter"]}}" class="form-control border-primary" id="rim_diameter"  name="rim_diameter" min="0" required>
+        <input type="number"  step="0.01" value="{{$artifact[0]["rim_diameter"]}}" class="form-control border-primary" id="rim_diameter"  name="rim_diameter" min="0" required>
         <div class="invalid-feedback">
             Must enter rim diameter. 
         </div>
@@ -420,7 +420,7 @@
     <!--MENDED RIM DIAMETER-->
     <div class="col">
         <label for="mended_rim_diameter" class="form-label">Mended Rim Diameter</label>
-        <input type="number" value="{{$artifact[0]["mended_rim_diameter"]}}"class="form-control border-primary" id="mended_rim_diameter"  name="mended_rim_diameter" min="0" required>
+        <input type="number"  step="0.01" value="{{$artifact[0]["mended_rim_diameter"]}}"class="form-control border-primary" id="mended_rim_diameter"  name="mended_rim_diameter" min="0" required>
         <div class="invalid-feedback">
             Must enter mended rim diameter
         </div>
@@ -429,7 +429,7 @@
     <!--BASE LENGTH-->
     <div class="col">
         <label for="base_length" class="form-label">Base Length</label>
-        <input type="number" value="{{$artifact[0]["base_length"]}}" class="form-control border-primary" id="base_length"  name="base_length" min="0" required>
+        <input type="number"  step="0.01" value="{{$artifact[0]["base_length"]}}" class="form-control border-primary" id="base_length"  name="base_length" min="0" required>
         <div class="invalid-feedback">
             Must enter base length
         </div>
@@ -438,7 +438,7 @@
     <!--BASE DIAMETER-->
     <div class="col">
         <label for="base_diameter" class="form-label">Base Diameter</label>
-        <input type="number" value="{{$artifact[0]["base_diameter"]}}" class="form-control border-primary" id="base_diameter"  name="base_diameter" min="0" required>
+        <input type="number"  step="0.01" value="{{$artifact[0]["base_diameter"]}}" class="form-control border-primary" id="base_diameter"  name="base_diameter" min="0" required>
         <div class="invalid-feedback">
             Must enter base diameter. 
         </div>
@@ -447,7 +447,7 @@
     <!--MENDED BASE DIAMETER-->
     <div class="col">
         <label for="mended_base_diameter" class="form-label">Mended Base Diameter</label>
-        <input type="number" value="{{$artifact[0]["mended_base_diameter"]}}"class="form-control border-primary" id="mended_base_diameter"  name="mended_base_diameter" min="0" required>
+        <input type="number"  step="0.01" value="{{$artifact[0]["mended_base_diameter"]}}"class="form-control border-primary" id="mended_base_diameter"  name="mended_base_diameter" min="0" required>
         <div class="invalid-feedback">
             Must enter mended base diameter. 
         </div>
