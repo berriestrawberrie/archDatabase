@@ -43,7 +43,7 @@ Currently just displaying the data in the ceramics table.
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <img src="{{asset('uploads/ceramics/'.$ceramic->photo)}}" >
+                        <img src="{{asset('uploads/ceramics/'.$ceramic->photo)}}" width="500">
                     </div>
                     <div class="modal-footer">
                     <!--FOOTER-->
