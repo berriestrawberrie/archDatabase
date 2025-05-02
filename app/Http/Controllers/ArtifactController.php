@@ -223,4 +223,11 @@ class ArtifactController extends Controller
         return redirect(route('verify.data'))
             ->with("success", "Ceramic validated and published");
     } //END OF VALIDATE FUNCTION
+
+    //SUBMIT THE BONE FORM
+    public function submitBone(Request $request)
+    {
+
+        dd($request);
+    }
 }

@@ -21,8 +21,8 @@
 
     <!--PROVENIENCE-->
     <div class="col-3">
-        <label for="proveniencce" class="form-label">Proveniencce</label>
-        <input type="text" class="form-control " id="proveniencce"  name="proveniencce"  required>
+        <label for="proveniencce" class="form-label">Provenience</label>
+        <input type="text" class="form-control " id="provenience"  name="provenience"  required>
         <div class="invalid-feedback">
             Mandatory field. 
         </div>

@@ -1,9 +1,9 @@
  <!--ROW START HERE -->
- <div class="row">
+ <div class="row d-flex flex-wrap">
 
     <!--CRANNIAL TABLE-->
-        <div class="col-4">
-            <table class="table" style="height:100%;">
+        <div class="col">
+            <table class="table" >
                 <thead>
                   <tr>
                     <th scope="col ">CRANIAL</th>
@@ -350,15 +350,15 @@
         </div><!--END OF CRANNIAL-->
 
     <!--TEETH & AXIAL-->
-        <div class="col-4">
+        <div class="col">
             <!--TEETH-->
-            <div>
+            <div >
                 <table class="table">
                     <thead>
                         <tr>
                           <th scope="col ">teeth</th>
                           <th scope="col" class="text-center">#</th>
-                          <th scope="col " class="text-center">cond</th>
+                          <th scope="col " class="text-end">cond</th>
                         </tr>
                       </thead>
                     <tbody>
@@ -417,14 +417,14 @@
                         <tr>
                           <th scope="col ">AXIAL</th>
                           <th scope="col " class="text-center">#</th>
-                          <th scope="col " class="text-center">cond</th>
+                          <th scope="col " class="text-end">cond</th>
                         </tr>
                       </thead>
                     <tbody>
                         <tr>
                             <td>1st Cervical</td>
                             <td></td>
-                            <td><select id="cervical_1" name="cervical_1">
+                            <td class="text-center"><select id="cervical_1" name="cervical_1">
                                 <option></option>
                                 <option>f 1-25%</option>
                                 <option>p 25-75%</option>
@@ -555,13 +555,13 @@
     <!--END OF TEETH & AXIAL-->
 
     <!--AXIAL CONTINUATION TABLE-->
-    <div class="col-4">
+    <div class="col">
         <table class="table">
             <thead>
                 <tr>
                     <th></th>
                   <th scope="col" class="text-center">#</th>
-                  <th scope="col " class="text-center">cond</th>
+                  <th scope="col " class="text-end">cond</th>
                 </tr>
               </thead>
             <tbody>
@@ -811,3 +811,5 @@
     
 
  </div><!--END OF ROW-->
+
+

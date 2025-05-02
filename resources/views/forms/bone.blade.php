@@ -10,7 +10,7 @@
 @endsection
 
 @section('content')
-<form class=" needs-validation" method="POST" action="" novalidate enctype="multipart/form-data">
+<form class=" needs-validation" method="POST" action="{{route('submit.bone')}}" novalidate enctype="multipart/form-data">
   @csrf
   <!--GENERAL INFORMATION & SITE -->
   <fieldset>
@@ -33,7 +33,7 @@
 
   <fieldset>
     <legend>Fields II Information</legend>
-
+    @include('forms.bones.fieldsII')
   </fieldset>
 
   <fieldset class="mt-2">

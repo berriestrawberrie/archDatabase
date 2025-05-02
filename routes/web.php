@@ -26,6 +26,7 @@ Route::middleware("auth")->group(function () {
     Route::get('/selectType', [ArtifactController::class, 'typeSelect'])->name('typeselect');
     Route::get('/getForm/{collection}/{art_type}', [ArtifactController::class, 'getForm']);
     Route::post('/submitCeramic', [ArtifactController::class, 'sumbitCeramic'])->name('submit.ceramic');
+    Route::post('/submitBone', [ArtifactController::class, 'submitBone'])->name('submit.bone');
 });
 
 
