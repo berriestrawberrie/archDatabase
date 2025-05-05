@@ -20,6 +20,8 @@
 <!--CERAMICS SUMMARY-->
 <div class="container ">
     <div class="row">
+
+        <!--CERAMICS SUMMARY-->
         <div class="col-4 border mx-auto">
             <table class="table caption-top m-0" >
                 <caption class="text-center">Ceramics Table Summary</caption>
@@ -46,7 +48,37 @@
                 </tbody>
               </table>
         </div>
-    </div>
+
+        <!--BONE SUMMARY-->
+        <div class="col-4 border mx-auto">
+          <table class="table caption-top m-0" >
+              <caption class="text-center">Ceramics Table Summary</caption>
+              <thead  class="table-dark">
+                <tr>
+                  <th scope="col" >Type</th>
+                  <th scope="col" >Count</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td  >Published</td>
+                  <td  class="text-center">{{$valid_ceramics}}</td>
+                </tr>
+                <tr>
+                  <td  >Unpublished Artifacts</td>
+                  <td  class="text-center">{{$unvalid_ceramics}}</td>
+                </tr>
+                <tr class="table-light">
+                  <td  >Total Artifacts</td>
+                  <td  class="text-center">{{$allceramics}}</td>
+                </tr>
+          
+              </tbody>
+            </table>
+      </div> 
+
+
+    </div><!--END OF ROW-->
 </div>
 <!--END OF CERAMICS SUMMARY-->
 

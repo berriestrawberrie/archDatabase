@@ -1,0 +1,78 @@
+  <!--GENERAL INFORMATION & SITE ROW 1-->
+  <div class="row">
+    <!--ENTEREDBY-->
+    <div class="col">
+        <label for="entered_by" class="form-label">Entered By</label>
+        <input type="text" class="form-control border border-success bg-success-subtle" id="entered_by"  name="entered_by" value="{{Auth::user()->name}}" required>
+        <div class="invalid-feedback">
+            Please choose a username.
+        </div>
+    </div><!--END COL-->
+
+    <!--DATE ENTERED-->
+    <div class="col-3">
+      <label for="created_at" class="form-label">Entered Date</label>
+      <input type="date" class="form-control border border-success bg-success-subtle" id="created_at"  name="created_at" value="{{date('Y-m-d')}}" required>
+      <div class="invalid-feedback">
+          Enter a valid date.
+      </div>
+    </div><!--END COL-->
+
+    <!--FORM-->
+    <div class="col-3">
+        <label for="completeness" class="form-label">Completeness</label>
+        <select class="form-control " id="completeness"  name="completeness" required>
+            <option disabled selected value> -- select an option -- </option>
+            <option >Complete</option>
+            <option >Incomplete</option>
+            <option >Not Recorded</option>
+        </select>
+        <div class="invalid-feedback">
+            Must select completeness.
+        </div>
+    </div><!--END COL-->
+
+    <!--ARTIFACT COUNT-->
+    <div class="col-2">
+        <label for="artifact_count" class="form-label">Artifact Count</label>
+        <input type="number" class="form-control " id="artifact_count"  name="artifact_count" min="1" max="99" required>
+        <div class="invalid-feedback">
+            Artifact count must be entered and less than 99.
+        </div>
+    </div><!--END COL-->
+
+</div>
+<!--END ROW-->
+
+<!--GENERAL INFORMATION & SITE ROW 2-->
+<div class="row">
+    <!--COLLECTION-->
+    <div class="col">
+        <label for="collection" class="form-label">Collection</label>
+        <input type="text" class="form-control border border-success bg-success-subtle" id="collection"  name="collection" value="{{$collections[0]["collection"]}}" required>
+        <div class="invalid-feedback">
+            Title: {{$collections[0]["collection"]}}
+        </div>
+    </div><!--END COL-->
+</div><!--END ROW-->
+
+
+<!--GENERAL INFORMATION & SITE ROW 3-->
+<div class="row">
+    <!--NOTES-->
+    <div class="col">
+        <label for="notes" class="form-label">Notes 
+            <button type="button" class="btn-xsm" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Field notes describe your artifact notes">
+                <i class="fa-solid fa-circle-question"></i>
+          </button>
+        </label>
+        <textarea class="form-control " id="notes"  name="notes" placeholder="(Optional)" rows="3"></textarea>
+    </div><!--END COL-->
+</div>
+<!--END ROW-->
+
+
+ 
+
+
+

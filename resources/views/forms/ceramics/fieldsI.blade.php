@@ -41,7 +41,7 @@
         <!--WARE-->
         <div class="col">
             <label for="ware" class="form-label">Ware</label>
-            <select class="form-select" id="ware" required>
+            <select class="form-select" id="ware" name="ware" required>
                 <option selected disabled value=""> -- select an option -- </option>
                 <option  value="afro-caribbean ware">afro-caribbean ware</option>
                 <option  value="agate refined">agate refined</option>
@@ -314,7 +314,11 @@
 
     <!--LOCATION-->
     <div class="col-2">
-        <label for="location" class="form-label">Location??</label>
+        
+        <label for="location" class="form-label">Location 
+            <button type="button" class="btn-xsm" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Helpful field explainer here?">
+                <i class="fa-solid fa-circle-question"></i></button>
+        </label>
         <select class="form-control " id="location"  name="location" required>
             <option disabled selected value> -- select an option -- </option>
             <option  value="base">base</option>
