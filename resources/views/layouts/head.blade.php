@@ -16,3 +16,5 @@
    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.14.1/jquery-ui.min.js"></script>
     <!--CSS IMPORT-->
     <link rel="stylesheet" href="{{asset('storage/css/styles.css')}}">
+    <!--BOOTSTRAP ICONS-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">

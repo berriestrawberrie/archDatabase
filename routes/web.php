@@ -18,6 +18,9 @@ Route::get('view/{id}', [ArtifactController::class, 'singleItem']);
 Route::get('/testhome', function () {
     return view('layouts.newapp');
 });
+Route::get('/revamp', function () {
+    return view('layouts.dashboard2');
+});
 Route::get('/query/artifact', [QueryController::class, 'queryArtifact'])->name('query.artifact');
 
 //REQUIRE LOGGED IN ROUTES

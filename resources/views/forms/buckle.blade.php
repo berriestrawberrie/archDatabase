@@ -2,17 +2,43 @@
 @section('title') Buckle Form @endsection
 
 
-@section('content') 
+@section('page-title')
 
-<h1>Buckle Form Here!</h1>
+<h1 class="text-center">Buckle Artifact Entry Form</h1>
 
-<button type="button" class="btn btn-secondary" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Top popover">
-    <i class="fa-solid fa-question"></i>
-  </button>
+@endsection
 
 
 
+@section('content')
+<form class=" needs-validation" method="POST" action="#" novalidate enctype="multipart/form-data">
+  @csrf
+  <!--GENERAL INFORMATION & SITE -->
+  <fieldset>
+    <legend>Site & General Information</legend>
+    @include('forms.buckle.site')
+  </fieldset>
 
-  <script src="{{asset('storage/js/nextform.js')}}"></script>
+  <fieldset>
+    <legend>Fields I Information</legend>
+     @include('forms.buckle.fieldsI')
+  </fieldset>
+
+
+  <fieldset class="mt-2">
+    <input type="submit" class="btn btn-primary">
+  </fieldset>
+
+
+</form>
+
+
+<script>
+    //INITIALIZE THE POPP OVERS
+  const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
+  const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl)) 
+</script>
+<script src="{{asset('storage/js/nextform.js')}}"></script>
+
 
 @endsection
