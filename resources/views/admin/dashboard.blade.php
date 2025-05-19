@@ -9,6 +9,7 @@
 
 
 @section('content')
+
 <h2 class="text-center"><i class="fa-solid fa-user-tie"></i> </h2>
 <h3 class="text-center">Welcome to the Admin Dashboard</h3>
 <p>This dashboard provides a centralized view of your system’s key metrics, user activity, 

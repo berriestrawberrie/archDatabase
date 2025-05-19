@@ -31,23 +31,18 @@
     </div>
   </form>
   <h2>2. Select Artifact Type </h2>
-  <p class="mb-5">Then you must select the type of artifact to add.  </p>
+  <p class="mb-2">Then you must select the type of artifact to add.  </p>
  
     @for($i=0;$i< count($collections); $i++)
-    <div style="display:none;"class="container-sm flex-wrap  justify-content-start position-relative" id="{{$collections[$i]["id"]}}">
-        <h3 class="position-absolute" style="top: -30px;">{{$collections[$i]["id"]}}: {{$collections[$i]["collection"]}}</h3>
-     @for($y=0; $y<count($art_types[$i]);$y++)
-     <a href="/getForm/{{$collections[$i]["id"]}}/{{$art_types[$i][$y]}}">
-        <div class="d-flex align-items-center border rounded-3 m-2 p-2" >
-            <img src="{{asset('storage/images/picture.png')}}" width="100">
-            <div >
-                <h5 class="card-title">{{$art_types[$i][$y]}}</h5>
-            <p class="card-text">  Description for: {{$art_types[$i][$y]}} </p>
-
-            </div>
-        </div>
-      </a>
-     @endfor
+    <div style="display:none;"class="container flex-wrap  justify-content-start position-relative" id="{{$collections[$i]["id"]}}">
+     
+      @for($y=0; $y<count($art_types[$i]);$y++)
+      <a href="/getForm/{{$collections[$i]["id"]}}/{{$art_types[$i][$y]}}">
+          <div class="d-flex flex-wrap flex-column align-items-center rounded-3 p-2 " >              
+            <button class="btn btn-outline-dark fs-4 text-capitalize">{{$art_types[$i][$y]==="tobacco_pipe"? "Tobacco Pipe" :$art_types[$i][$y]}}</button>
+          </div>
+        </a>
+      @endfor
     </div>
     
    @endfor
