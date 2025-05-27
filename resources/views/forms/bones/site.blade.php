@@ -6,7 +6,7 @@
         <label for="entered_by" class="form-label">Entered By</label>
         <input type="text" class="form-control border border-success bg-success-subtle" id="entered_by"  name="entered_by" value="{{Auth::user()->name}}" required>
         <div class="invalid-feedback">
-            Please choose a username.
+            Required field.
         </div>
     </div><!--END COL-->
 
@@ -15,7 +15,7 @@
       <label for="created_at" class="form-label">Entered Date</label>
       <input type="date" class="form-control border border-success bg-success-subtle" id="created_at"  name="created_at" value="{{date('Y-m-d')}}" required>
       <div class="invalid-feedback">
-          Enter a valid date.
+          Required field.
       </div>
     </div><!--END COL-->
 
@@ -24,7 +24,7 @@
         <label for="proveniencce" class="form-label">Provenience</label>
         <input type="text" class="form-control " id="provenience"  name="provenience"  required>
         <div class="invalid-feedback">
-            Mandatory field. 
+           Required field.
         </div>
       </div><!--END COL-->
 
@@ -33,7 +33,7 @@
         <label for="designated_id" class="form-label">Designation/ID</label>
         <input type="text" class="form-control " id="designated_id"  name="designated_id"  required>
         <div class="invalid-feedback">
-            Mandatory field. 
+            Required field.
         </div>
       </div><!--END COL-->
 

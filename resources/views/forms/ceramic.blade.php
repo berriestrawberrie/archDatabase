@@ -10,7 +10,10 @@
 @endsection
 
 @section('content')
-<form class=" needs-validation" method="POST" action="{{route('submit.ceramic')}}" novalidate enctype="multipart/form-data">
+ <div class="">
+
+ </div>
+<form class=" needs-validation" method="POST" action="{{route('save.ceramic')}}" novalidate enctype="multipart/form-data">
   @csrf
   <!--GENERAL INFORMATION & SITE -->
   <fieldset>
@@ -29,7 +32,7 @@
   </fieldset>
 
   <fieldset class="mt-2">
-    <input type="submit" class="btn btn-primary">
+    <button class="btn btn-primary">   Save</button>
   </fieldset>
 
 

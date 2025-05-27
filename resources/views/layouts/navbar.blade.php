@@ -49,6 +49,9 @@
         <li class="nav-item ">
           <a class="nav-link navfont" aria-current="page" href="{{route('typeselect')}}"><i class="fa-regular fa-square-plus"></i>Add Artifact</a>
         </li>
+        <li>
+          <a class="nav-link navfont" aria-current="page" href="/enteredby/{{Auth::user()->id}}"><i class="fa-solid fa-clipboard-list"></i>Saved Artifacts</a>
+        </li>
         @endif
         </ul>
         <form class="d-flex" role="search">

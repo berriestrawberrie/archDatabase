@@ -98,7 +98,7 @@
             <table class="table text-center" >
                 <thead>
                   <tr>
-                    <th scope="col">Database ID</th>
+                    <th scope="col">Artifact ID</th>
                     <th scope="col">Artifact Table</th>
                     <th scope="col">Status</th>
                     <th scope="col">Collection</th>
@@ -112,7 +112,7 @@
                   @foreach($ceramics as $ceramic)
                     @if($ceramic->checkout_by == Auth::user()->id && $ceramic->isValid == 0)
                         <tr>
-                            <td>{{$ceramic->id}}</td>
+                            <td>{{$ceramic->artifact_id}}</td>
                             <td>ceramic</td>
                             <td >
                                 @if($ceramic->isValid == 0)

@@ -11,6 +11,7 @@ class Ceramic extends Model
         'created_at',
         'updated_at',
         'collection',
+        'entered_by',
         'artifact_id',
         'artifact_count',
         'material',

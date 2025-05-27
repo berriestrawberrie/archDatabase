@@ -35,7 +35,8 @@ class AdminController extends Controller
         $addCollection = new Collection([
             'collection' => $request->title,
             'curator' => $request->curator,
-            'collection_desc' => $request->text
+            'collection_desc' => $request->text,
+            'isPublic' => $request->isPublic
         ]);
         //SAVE TO DATABASE
         $addCollection->save();
@@ -166,7 +167,7 @@ class AdminController extends Controller
         if ($artifact[0]["checkout_by"] == $user) {
             //RETURN THE CERAMIC REIVEW FORM
             if ($artifact_type == "ceramic") {
-                return view('forms.verifyceramic', compact('artifact'));
+                return view('forms.verify.verifyceramic', compact('artifact'));
             } //END OF CERAMIC IF
 
             //RETURN THE BONES REVIEW FORM..

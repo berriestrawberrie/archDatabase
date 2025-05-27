@@ -18,7 +18,7 @@
     <div class="container p-0  bg-white rounded ">
         @yield('page-title')
        
-        <div class="container p-3">
+        <div class="position-relative container p-3">
             @yield('content')
         </div>
 

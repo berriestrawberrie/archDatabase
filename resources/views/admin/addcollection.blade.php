@@ -8,14 +8,6 @@
 @endsection
 
 @section('content')
-<h2>Adding a New Collection:</h2>
-<p>Use this page to create and catalog a new archival collection. 
-    Provide key details such as the collection title, description, 
-    date range, associated people or organizations, and relevant subjects or formats. 
-    Attach any finding aids or digitized materials, and assign access levels to control visibility. 
-    This form helps ensure your archival records are well-organized, searchable, and preserved for long-term access.
-</p>
-
 
 <!--COLLECTIONS CRUD -->
 <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -33,19 +25,26 @@
     </li>
   </ul>
   <div class="tab-content" id="myTabContent">
-    <div class="tab-pane fade show active border bg-white" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
+    <div class="tab-pane fade show active border p-2" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
+      <h2>Adding a New Collection:</h2>
+      <p>Use this page to create and catalog a new archival collection. 
+          Provide key details such as the collection title, description, 
+          date range, associated people or organizations, and relevant subjects or formats. 
+          Attach any finding aids or digitized materials, and assign access levels to control visibility. 
+          This form helps ensure your archival records are well-organized, searchable, and preserved for long-term access.
+      </p>
         <form method="POST" action="{{route('collections.post')}}">
             @csrf
             <h3>Enter Collection Information:</h3>
                 <div class="form-check">
-                  <input class="form-check-input" type="radio" name="isPublic" id="isPublic-1" checked>
+                  <input class="form-check-input" type="radio" name="isPublic" value="1" id="isPublic-1" checked>
                   <label class="form-check-label" for="isPublic-1">
                     <b>Public Collection: </b>
                   </label>
                   <p>Public collection showcases a diverse array of artifacts that highlight cultural, historical, and artistic achievements from around the world. Open to all visitors, it invites exploration and discovery through carefully curated exhibits and interactive displays.</p>
                 </div>
                 <div class="form-check">
-                  <input class="form-check-input" type="radio" name="isPublic" id="isPublic-2">
+                  <input class="form-check-input" type="radio" name="isPublic" id="isPublic-2" value="0">
                   <label class="form-check-label" for="radioDefault2">
                     <b>Private Collection:</b>
                   </label>
@@ -75,7 +74,7 @@
     </div><!--END OF HOME TAB-->
 
 
-    <div class="tab-pane fade bg-white border" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
+    <div class="tab-pane fade  border" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
         <p>You can update the collection assigned curator, artifacts list, display image, or published description</p>
         <form method="POST" action="{{route('update.collections')}}">
             @csrf

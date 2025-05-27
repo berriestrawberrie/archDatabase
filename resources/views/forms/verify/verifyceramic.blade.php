@@ -10,7 +10,7 @@
 @section('content')
 <p>The form is pre-populated with the existing inputs for this artifact. Please verify each field,
   if all the fields are correct publish the artifact</p>
-<form class=" needs-validation" method="POST" action="{{url('validateData/'.$artifact[0]["id"])}}" novalidate enctype="multipart/form-data">
+<form class=" needs-validation" method="POST" action="{{url('validateData/'.$artifact[0]["artifact_id"])}}" novalidate enctype="multipart/form-data">
   @csrf
   @method('PUT')
   <!--GENERAL INFORMATION & SITE -->

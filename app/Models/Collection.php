@@ -13,6 +13,7 @@ class Collection extends Model
         'collection_desc',
         'curator',
         'artifact_list',
+        'isPublic'
     ];
 
     protected $table = 'collections';

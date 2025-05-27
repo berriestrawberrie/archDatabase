@@ -1,42 +1,44 @@
   <div class="row align-items-center">
   <div class="col-auto mt-4">
-    <label for="inputPassword6" class="col-form-label">31DV{{$collections[0]["collection_id"]}}CE</label>
-    <input class="d-none" type="text" value="31DV{{$collections[0]["collection_id"]}}CE" name="preID">
-  </div>
-    <!--ENTEREDBY-->
+    <label for="inputPassword6" class="col-form-label">{{substr($artifact[0]["artifact_id"], 0,9)}}</label>
+    <input class="d-none" type="text" value="{{substr($artifact[0]["artifact_id"], 0,9)}}" name="preID">
+  </div>  
+    <!--3DIGIT ARTIFACT CODE-->
     <div class="col-2">
         <label for="artifact_id" class="form-label">Artifact ID (3-Digit)</label>
-        <input type="text" class="form-control"name="artifact_id"  pattern="\d{3}" required>
+        <input type="text" class="form-control"name="artifact_id"  pattern="\d{3}" value={{substr($artifact[0]["artifact_id"], 9,3)}} required>
         <div class="invalid-feedback">
             3 digit number required.
         </div>
     </div><!--END COL-->
-        <!--ENTEREDBY-->
+    <!--ARTIFACT SUBSET-->
     <div class="col-1">
         <label for="subset" class="form-label">Subset</label>
-        <input type="text" class="form-control" id="subset"  name="subset"  >
+        <input type="text" class="form-control" id="subset"  name="subset" 
+        value=
+        @if(strlen($artifact[0]["artifact_id"])>12)
+            {{substr($artifact[0]["artifact_id"], 12,strlen($artifact[0]["artifact_id"]))}}
+        @else
+            ""
+        @endif >
     </div><!--END COL-->
-  
+</div><!--END OF ROW-->
 
-</div>
-  
-  
-  
   <!--GENERAL INFORMATION & SITE ROW 1-->
   <div class="row">
     <!--ENTEREDBY-->
     <div class="col">
         <label for="entered_by" class="form-label">Entered By</label>
-        <input type="text" class="form-control border border-success bg-success-subtle" id="entered_by"  name="entered_by" value="{{Auth::user()->name}}" required>
+        <input type="text" class="form-control border" id="entered_by"  name="entered_by" value="{{$artifact[0]["Added By"]}}" required>
         <div class="invalid-feedback">
-            Please choose a username.
+            enter your name
         </div>
     </div><!--END COL-->
 
     <!--DATE ENTERED-->
     <div class="col-3">
       <label for="created_at" class="form-label">Entered Date</label>
-      <input type="date" class="form-control border border-success bg-success-subtle" id="created_at"  name="created_at" value="{{date('Y-m-d')}}" required>
+      <input type="date" class="form-control border" id="created_at"  name="created_at" value="{{ date('Y-m-d', strtotime($artifact[0]["created_at"])) }}" required>
       <div class="invalid-feedback">
           Enter a valid date.
       </div>
@@ -45,8 +47,8 @@
     <!--FORM-->
     <div class="col-3">
         <label for="completeness" class="form-label">Completeness</label>
-        <select class="form-control " id="completeness"  name="completeness" required>
-            <option disabled selected value> -- select an option -- </option>
+        <select class="form-control border" id="completeness"  name="completeness" required>
+            <option   value="{{$artifact[0]["completeness"]}}">{{$artifact[0]["completeness"]}}</option>
             <option  value="base">base</option>
             <option  value="base/body">base/body</option>
             <option  value="base/body/handle">base/body/handle</option>
@@ -88,7 +90,7 @@
     <!--ARTIFACT COUNT-->
     <div class="col-2">
         <label for="artifact_count" class="form-label">Artifact Count</label>
-        <input type="number" class="form-control " id="artifact_count"  name="artifact_count" min="1" max="99" required>
+        <input type="number" class="form-control border" id="artifact_count"  value="{{$artifact[0]["artifact_count"]}}"name="artifact_count" min="1" max="99" required>
         <div class="invalid-feedback">
             Artifact count must be entered and less than 99.
         </div>
@@ -99,13 +101,12 @@
 
 <!--GENERAL INFORMATION & SITE ROW 2-->
 <div class="row">
-
     <!--COLLECTION-->
     <div class="col">
         <label for="collection" class="form-label">Collection</label>
-        <input type="text" class="form-control border border-success bg-success-subtle" id="collection"  name="collection" value="{{$collections[0]["collection"]}}" required>
+        <input type="text" class="form-control border" id="collection"  name="collection" value="{{$artifact[0]["collection"]}}" required>
         <div class="invalid-feedback">
-            Title: {{$collections[0]["collection"]}}
+            Title: {{$artifact[0]["collection"]}}
         </div>
     </div><!--END COL-->
 
@@ -118,13 +119,17 @@
     <!--NOTES-->
     <div class="col">
         <label for="notes" class="form-label">Notes 
-            <button type="button" class="btn-xsm" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Field notes describe your artifact notes">
-                <i class="fa-solid fa-circle-question"></i>
+            <button type="button" class="btn btn-secondary btn-xsm" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Field notes describe your artifact notes">
+            <i class="fa-solid fa-question"></i>
           </button>
         </label>
-        <textarea class="form-control " id="notes"  name="notes" placeholder="(Optional)" rows="3"></textarea>
+        <textarea class="form-control border" id="notes"  name="notes" value="{{$artifact[0]["notes"]}}" rows="3"></textarea>
     </div><!--END COL-->
 </div>
 <!--END ROW-->
+
+
+ 
+
 
 
