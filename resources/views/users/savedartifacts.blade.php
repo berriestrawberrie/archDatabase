@@ -3,7 +3,7 @@
 
 @section('page-title')
 
-<h1 class="text-center">Saved Artifacts</h1>
+Saved Artifacts
 
 @endsection
 
@@ -45,7 +45,7 @@
                             </td>
                             <td>{{$ceramic->collection}}</td>
                             <td>{{$ceramic->material}}</td>
-                            <td><a href="/previewData/{{$ceramic->artifact_id.'/'.Auth::user()->id}}"><button class="btn btn-warning">Complete</button></a></td>
+                            <td><a href="/previewData/{{$ceramic->token.'/'.Auth::user()->id}}"><button class="btn btn-warning">Complete</button></a></td>
 
                         </tr>
                  @endforeach

@@ -5,8 +5,7 @@
 
 @section('page-title')
 
-<h1 class="text-center">Osteology Artifact Entry Form</h1>
-
+Osteology Artifact Entry Form
 @endsection
 
 @section('content')

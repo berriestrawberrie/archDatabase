@@ -3,7 +3,7 @@
 
 @section('page-title')
 
-<h1 class="text-center">Data Verification Queue</h1>
+Data Verification Queue
 
 @endsection
 

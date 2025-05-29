@@ -5,8 +5,7 @@
 
 @section('page-title')
 
-<h1 class="text-center">Tobacco Pipe Artifact Entry Form</h1>
-
+Tobacco Pipe Artifact Entry Form
 @endsection
 
 @section('content')

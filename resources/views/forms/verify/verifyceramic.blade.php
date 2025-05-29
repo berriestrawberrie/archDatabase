@@ -4,7 +4,7 @@
 
 
 @section('page-title')
-<h1 class="text-center">Verify Ceramic#{{$artifact[0]["id"]}}</h1>
+Verify Ceramic#{{$artifact[0]["id"]}}
 @endsection
 
 @section('content')

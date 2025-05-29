@@ -11,6 +11,7 @@ class Collection extends Model
         'id',
         'collection',
         'collection_desc',
+        'collection_id',
         'curator',
         'artifact_list',
         'isPublic'

@@ -4,7 +4,7 @@
 
 @section('page-title')
 
-<h1 class="text-center">Glass Artifact Entry Form</h1>
+Glass Artifact Entry Form
 
 @endsection
 

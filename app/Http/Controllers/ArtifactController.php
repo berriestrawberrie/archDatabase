@@ -45,15 +45,21 @@ class ArtifactController extends Controller
     }
 
     //PREVIEW FORM BEFORE SUBMISSION
-    public function previewForm($artifact_id, $user)
+    public function previewForm($token, $user)
     {
         //VERIFY THAT ONLY THE USER THAT CREATED TEH RECORD CAN ACCESS 
         if (Auth::user()->id != $user) {
             return redirect(route('entered.by', ['user' => $user]))
                 ->with("error", "You have not entered this artifact you cannot complete the review");
         } else {
-            //GET THE NEWLY CREATED ARTIFACT BY THE UNIQUE ID
-            $artifact = Ceramic::where('artifact_id', $artifact_id)->get();
+            //GET THE NEWLY CREATED ARTIFACT BY THE TOKEN
+            $artifact = Ceramic::where('token', $token)->get();
+
+            //VERIFY THAT THE STATUS IS RECENTLY SUBMITTED IF NOT RETURN ERROR
+            if ($artifact[0]["isValid"] != 2) {
+                return redirect(route('entered.by', ['user' => $user]))
+                    ->with("error", "Artifact already submitted");
+            }
 
             //RETURN THE PREVIEW FORM FILLED OUT
             return view('forms.preview.previewceramic', compact('artifact'));

@@ -13,6 +13,7 @@ class Bead extends Model
         'completeness',
         'artifact_count',
         'collection',
+        'collection_id',
         'notes',
         'material',
         'manufacturing_technique',

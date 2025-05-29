@@ -4,7 +4,7 @@
 
 @section('page-title')
 
-<h1 class="text-center">Add an Artifact</h1>
+Add Artifact
 
 @endsection
 

@@ -5,7 +5,7 @@
 
 @section('page-title')
 
-<h1 class="text-center bg-success">Review Ceramic</h1>
+Review Ceramic
 
 @endsection
 
@@ -18,7 +18,7 @@
   </div>
 
 </div>
-<form class=" needs-validation" method="POST" action="{{url('submitData/'.$artifact[0]["artifact_id"])}}" novalidate enctype="multipart/form-data">
+<form class=" needs-validation" method="POST" action="{{url('submitData/'.$artifact[0]["token"])}}" novalidate enctype="multipart/form-data">
   @csrf
   <!--GENERAL INFORMATION & SITE -->
   <fieldset>

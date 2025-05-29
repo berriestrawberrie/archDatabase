@@ -2,7 +2,7 @@
 @section('title') Query Artifacts @endsection
 
 @section('page-title') 
-<h1 class="text-center">Query Artifacts </h1>
+Query Artifacts
 @endsection
 
 @section('content')

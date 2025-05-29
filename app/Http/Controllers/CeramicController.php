@@ -14,6 +14,8 @@ class CeramicController extends Controller
     //PROCESS THE CERAMIC FORM
     public function saveCeramic(Request $request)
     {
+        $token = uniqid();
+        $user = Auth::user()->id;
 
         //PROCESS THE FILE 
         if ($request->has('photo')) {
@@ -28,19 +30,14 @@ class CeramicController extends Controller
             $filename = 'null.png';
         }
 
-        //CONFIGURE THE ARTIFACT ID
-        if ($request->has('subset')) {
-            $artifact_id = $request->preID . $request->artifact_id . $request->subset;
-        } else {
-            $artifact_id = $request->preID . $request->artifact_id;
-        }
-
+        //SAVE THE ARTIFACT TO THE DATABASE WITHOUT ARTIFACT ID
         Ceramic::create([
             'created_at' => $request->created_at,
-            'entered_by' => Auth::user(),
+            'entered_by' => $user,
             'artifact_count' => $request->artifact_count,
-            'artifact_id' => $artifact_id,
+            'token' => $token,
             'collection' => $request->collection,
+            'collection_id' => $request->collection_id,
             'material' => $request->material,
             'manufacturing_technique' => $request->manufacturing_technique,
             'ware' => $request->ware,
@@ -58,8 +55,6 @@ class CeramicController extends Controller
             'mended' => $request->mended,
             'post_manufacturing_mod' => $request->post_manufacturing_mod,
             'Added By' => $request->entered_by,
-            'changed_by' => $request->changed_by,
-            'change_date' => $request->change_date,
             'notes' => $request->notes,
             'interior_exterior' => $request->interior_exterior,
             'location' => $request->location,
@@ -101,22 +96,17 @@ class CeramicController extends Controller
             'photo' => $filename,
         ]);
 
-        return redirect(route('form.preview', ['artifact_id' => $artifact_id]));
-    } //END OF CERAMIC
+        return redirect(route('form.preview', ['token' => $token, 'user' => $user]));
+    } //END OF SAVE CERAMIC
 
     //PROCESS THE CERAMIC PUBLISH FORM 
-    public function submitCeramic(Request $request, $id)
+    public function submitCeramic(Request $request, $token)
     {
+        $ceramic = Ceramic::where('token', $token)->get();
 
-        $ceramic = Ceramic::where('artifact_id', $id)->get();
-        //CONFIGURE THE ARTIFACT ID
-        if ($request->has('subset')) {
-            $artifact_id = $request->preID . $request->artifact_id . $request->subset;
-        } else {
-            $artifact_id = $request->preID . $request->artifact_id;
-        }
-
-
+        //GENERATE THE ARTIFACT ID
+        $digit_3 = str_pad($ceramic[0]["id"], 3, '0', STR_PAD_LEFT);
+        $artifact_id = '31DV' . $ceramic[0]["collection_id"] . 'CE' . $digit_3;
 
 
         //CHECK IF NEW IMAGE SUBMITTED
@@ -140,10 +130,11 @@ class CeramicController extends Controller
         }
 
         //REASSIGN THE CERAMIC PROPRETIES TO THE INPUTS
-        Ceramic::where('artifact_id', $id)
+        Ceramic::where('token', $token)
             ->update([
                 'created_at' => $request->created_at,
                 'artifact_count' => $request->artifact_count,
+                'artifact_id' => $artifact_id,
                 'isValid' => 0,
                 'collection' => $request->collection,
                 'material' => $request->material,
@@ -208,11 +199,9 @@ class CeramicController extends Controller
 
             ]);
 
-
-
         return redirect(route('home'))
             ->with("success", "Successfully added ceramic artifact");
-    } //END OF VALIDATE FUNCTION
+    } //END OF SUBMIT FUNCTION
 
 
     //PROCESS THE CERAMIC PUBLISH FORM 

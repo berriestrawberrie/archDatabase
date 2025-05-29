@@ -3,7 +3,7 @@
 
 @section('page-title')
 
-<h1 class="text-center">Admin Manage Collections</h1>
+Admin Manage Collections
 
 @endsection
 

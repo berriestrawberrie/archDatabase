@@ -5,7 +5,7 @@
 
 @section('page-title')
 
-<h1 class="text-center">Ceramic Artifact Entry Form</h1>
+Ceramic Artifact Entry Form
 
 @endsection
 

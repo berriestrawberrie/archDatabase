@@ -5,7 +5,7 @@
 
 @section('page-title')
 
-<h1 class="text-center">Bead Artifact Entry Form</h1>
+Bead Artifact Entry Form
 
 @endsection
 

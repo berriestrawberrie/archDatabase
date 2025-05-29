@@ -1,28 +1,4 @@
-  <div class="row align-items-center">
-  <div class="col-auto mt-4">
-    <label for="inputPassword6" class="col-form-label">{{substr($artifact[0]["artifact_id"], 0,9)}}</label>
-    <input class="d-none" type="text" value="{{substr($artifact[0]["artifact_id"], 0,9)}}" name="preID">
-  </div>  
-    <!--3DIGIT ARTIFACT CODE-->
-    <div class="col-2">
-        <label for="artifact_id" class="form-label">Artifact ID (3-Digit)</label>
-        <input type="text" class="form-control"name="artifact_id"  pattern="\d{3}" value={{substr($artifact[0]["artifact_id"], 9,3)}} required>
-        <div class="invalid-feedback">
-            3 digit number required.
-        </div>
-    </div><!--END COL-->
-    <!--ARTIFACT SUBSET-->
-    <div class="col-1">
-        <label for="subset" class="form-label">Subset</label>
-        <input type="text" class="form-control" id="subset"  name="subset" 
-        value=
-        @if(strlen($artifact[0]["artifact_id"])>12)
-            {{substr($artifact[0]["artifact_id"], 12,strlen($artifact[0]["artifact_id"]))}}
-        @else
-            ""
-        @endif >
-    </div><!--END COL-->
-</div><!--END OF ROW-->
+
 
   <!--GENERAL INFORMATION & SITE ROW 1-->
   <div class="row">
@@ -30,6 +6,7 @@
     <div class="col">
         <label for="entered_by" class="form-label">Entered By</label>
         <input type="text" class="form-control border" id="entered_by"  name="entered_by" value="{{$artifact[0]["Added By"]}}" required>
+        <input type="number" class="d-none" name="entered_id" value="{{$artifact[0]["entered_by"]}}">
         <div class="invalid-feedback">
             enter your name
         </div>

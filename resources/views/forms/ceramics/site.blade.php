@@ -1,25 +1,4 @@
-  <div class="row align-items-center">
-  <div class="col-auto mt-4">
-    <label for="inputPassword6" class="col-form-label">31DV{{$collections[0]["collection_id"]}}CE</label>
-    <input class="d-none" type="text" value="31DV{{$collections[0]["collection_id"]}}CE" name="preID">
-  </div>
-    <!--ENTEREDBY-->
-    <div class="col-2">
-        <label for="artifact_id" class="form-label">Artifact ID (3-Digit)</label>
-        <input type="text" class="form-control"name="artifact_id"  pattern="\d{3}" required>
-        <div class="invalid-feedback">
-            3 digit number required.
-        </div>
-    </div><!--END COL-->
-        <!--ENTEREDBY-->
-    <div class="col-1">
-        <label for="subset" class="form-label">Subset</label>
-        <input type="text" class="form-control" id="subset"  name="subset"  >
-    </div><!--END COL-->
-  
 
-</div>
-  
   
   
   <!--GENERAL INFORMATION & SITE ROW 1-->
@@ -107,6 +86,7 @@
         <div class="invalid-feedback">
             Title: {{$collections[0]["collection"]}}
         </div>
+        <input type="number" class="d-none" value="{{$collections[0]["collection_id"]}}" name="collection_id">
     </div><!--END COL-->
 
 

@@ -4,7 +4,7 @@
 
 @section('page-title')
 
-<h1 class="text-center">Buckle Artifact Entry Form</h1>
+Buckle Artifact Entry Form
 
 @endsection
 

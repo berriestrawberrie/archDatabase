@@ -9,6 +9,7 @@ use App\Http\Controllers\ImageController;
 use App\Http\Controllers\QueryController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\AdminMiddleware;
+use App\Models\Artifact;
 use Database\Seeders\AdminSeeder;
 use Illuminate\Support\Facades\Route;
 
@@ -28,9 +29,12 @@ Route::get('/query/artifact', [QueryController::class, 'queryArtifact'])->name('
 //REQUIRE LOGGED IN ROUTES
 Route::middleware("auth")->group(function () {
     Route::get('/user/dashboard', [UserController::class, 'userDashboard'])->name('users.dashboard');
+    Route::get('/enteredby/{user}', [ArtifactController::class, 'savedList'])->name('entered.by');
+
+    //START NEW ARTIFACT ROUTES
     Route::get('/selectType', [ArtifactController::class, 'typeSelect'])->name('typeselect');
     Route::get('/getForm/{collection}/{art_type}', [ArtifactController::class, 'getForm']);
-    Route::get('/enteredby/{user}', [ArtifactController::class, 'savedList'])->name('entered.by');
+
 
 
     //REQUIRE CERAMIC ROUTES
@@ -56,7 +60,7 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     Route::get('/reviewData/{user}/{artifact_type}/{id}', [AdminController::class, 'reviewData']);
     Route::post('/validateData/{id}', [CeramicController::class, 'validateCeramic']);
     Route::post('/submitData/{id}', [CeramicController::class, 'submitCeramic']);
-    Route::get('/previewData/{artifact_id}/{user}', [ArtifactController::class, 'previewForm'])->name('form.preview');
+    Route::get('/previewData/{token}/{user}', [ArtifactController::class, 'previewForm'])->name('form.preview');
 });
 
 

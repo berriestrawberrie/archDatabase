@@ -4,7 +4,7 @@
 
 @section('page-title')
 
-<h1 class="text-center">Button Artifact Entry Form</h1>
+Button Artifact Entry Form
 
 @endsection
 

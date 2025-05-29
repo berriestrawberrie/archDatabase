@@ -8,7 +8,7 @@
         
 </div>
 
-<nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
+<nav class="navbar w-100 navbar-expand-lg bg-dark" data-bs-theme="dark">
     <div class="container-fluid">
       <a class="navbar-brand" href="{{route('home')}}"><i class="fa-solid fa-house"></i></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -71,8 +71,4 @@
       </div>
     </div>
   </nav>
-  @if(Auth::check())
-  <h2 id="usersname">{{Auth::user()->name}}</h2>
-  @else
-  <div class="spacer" style="height: 40px;"></div>
-  @endif
+ 

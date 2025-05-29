@@ -9,21 +9,31 @@
     @yield('customhead')
         
 </head>
-
+<body class="d-flex align-items-center flex-column">
+    <!--NAVBAR-->
     @include('layouts/navbar')
+    <!--END OF NAVBAR-->
+    
+    <div class="bg-white w-75 w-m-100">
+        <!--ALERTS-->
+        <div class="container ">
+            @include('layouts.alerts')
+        </div>
+        <!--END OF ALERTS-->
+        <h1 class="ms-2"> @yield('page-title')
+                <hr>
+        </h1>
 
-    <div class="container">
-    @include('layouts.alerts')
-    </div>
-    <div class="container p-0  bg-white rounded ">
-        @yield('page-title')
-       
-        <div class="position-relative container p-3">
+        <!--CONTENT-->
+
+        <div class="position-relative container-fluid p-3">
             @yield('content')
         </div>
+        <!--END OF CONTENT-->
 
     </div>
 
+    </div>
   
     
 </body>

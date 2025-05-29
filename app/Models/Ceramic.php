@@ -9,8 +9,10 @@ class Ceramic extends Model
     //MASS ASSIGNABLE COLUMNS
     protected $fillable = [
         'created_at',
+        'token',
         'updated_at',
         'collection',
+        'collection_id',
         'entered_by',
         'artifact_id',
         'artifact_count',

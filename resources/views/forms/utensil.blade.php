@@ -4,7 +4,7 @@
 
 @section('page-title')
 
-<h1 class="text-center">Utensil Artifact Entry Form</h1>
+Utensil Artifact Entry Form
 
 @endsection
 

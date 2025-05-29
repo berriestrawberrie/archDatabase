@@ -2,7 +2,7 @@
 @section('title')Home @endsection
 
 @section('page-title')
-<h1 class="text-center">Welcome</h1>
+Welcome
 @endsection
 
 @section('content')

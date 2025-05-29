@@ -3,8 +3,7 @@
 
 @section('page-title')
 
-<h1 class="text-center">Administration Account Access</h1>
-
+Administration Account Access
 @endsection
 
 
