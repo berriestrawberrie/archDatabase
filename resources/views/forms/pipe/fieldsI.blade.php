@@ -117,7 +117,7 @@
     <!--Bowl Base Type-->
     <div class="col">
         <label for="bowl_base_type" class="form-label">Bowl Base Type</label>
-        <select class="form-control " id="bowl_base_type"  name="bowl_base_type" required>
+        <select class="form-select " id="bowl_base_type"  name="bowl_base_type" required>
             <option disabled selected value> -- select an option -- </option>
             <option>Flat</option>
             <option>Heel</option>

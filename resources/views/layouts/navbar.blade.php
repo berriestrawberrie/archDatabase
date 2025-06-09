@@ -1,8 +1,8 @@
 <!--STYLED IN BANNER SCSS-->
 <div class="banner d-flex justify-content-between align-items-center">
-        <img src="{{asset('storage/images/dc-logo.png')}}">
+        <a href="{{route('home')}}"><img src="{{asset('storage/images/dc-logo.png')}}"></a>
         <div class="logotitle">
-          <h3><span>D</span>igital <span>A</span>rchive of <span>D</span>avidson <span>A</span>rchaeology</h3>
+          <h2><img class="logo" src="{{asset('storage/images/nea-red.png')}}" style="width: 40px; margin-right: 5px; margin-top: -5px;" ><span>D</span>igital <span>A</span>rchive of <span>D</span>avidson <span>A</span>rchaeology</h2>
 
         </div>
         
@@ -22,9 +22,9 @@
               Query the Database
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item navfont" href="{{route('query.artifact')}}">Artifact Queries</a></li>
-              <li><a class="dropdown-item navfont" href="#">Image Queries</a></li>
-              <li><a class="dropdown-item navfont" href="#">Site Queries</a></li>
+              <li><a class="dropdown-item navfont" href="/query/bycollection">Collection Queries</a></li>
+              <li><a class="dropdown-item navfont" href="/query/byartifacttype">Artifact Queries</a></li>
+
             </ul>
           </li>
           <li class="nav-item ">

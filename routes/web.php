@@ -24,7 +24,12 @@ Route::get('/testhome', function () {
 Route::get('/revamp', function () {
     return view('layouts.dashboard2');
 });
-Route::get('/query/artifact', [QueryController::class, 'queryArtifact'])->name('query.artifact');
+//PUBLIC QUERY ROUTES
+Route::get('/query/bycollection', [QueryController::class, 'getQueryCollection']);
+Route::get('/searchCollection', [QueryController::class, 'queryCollection'])->name('query.collection');
+Route::get('/query/byartifacttype', [QueryController::class, 'getQueryArtifact']);
+Route::get('users/export/', [QueryController::class, 'export']);
+Route::get('users/exportQuery/{collection_id}/{start}/{end}', [QueryController::class, 'exportQuery']);
 
 //REQUIRE LOGGED IN ROUTES
 Route::middleware("auth")->group(function () {

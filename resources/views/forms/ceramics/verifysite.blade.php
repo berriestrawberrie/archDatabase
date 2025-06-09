@@ -3,7 +3,7 @@
     <!--ENTEREDBY-->
     <div class="col">
         <label for="entered_by" class="form-label">Entered By</label>
-        <input type="text" class="form-control border-primary" id="entered_by"  name="entered_by" value="{{$artifact[0]["Added By"]}}" required>
+        <input type="text" class="form-control border-danger bg-danger-subtle" id="entered_by"  name="entered_by" value="{{$artifact[0]["Added By"]}}" disabled>
         <div class="invalid-feedback">
             enter your name
         </div>
@@ -12,7 +12,7 @@
     <!--DATE ENTERED-->
     <div class="col-3">
       <label for="created_at" class="form-label">Entered Date</label>
-      <input type="date" class="form-control border-primary" id="created_at"  name="created_at" value="{{ date('Y-m-d', strtotime($artifact[0]["created_at"])) }}" required>
+      <input type="date" class="form-control border-danger bg-danger-subtle" id="created_at"  name="created_at" value="{{ date('Y-m-d', strtotime($artifact[0]["created_at"])) }}" disabled>
       <div class="invalid-feedback">
           Enter a valid date.
       </div>
@@ -75,15 +75,6 @@
 
 <!--GENERAL INFORMATION & SITE ROW 2-->
 <div class="row">
-    <!--COLLECTION-->
-    <div class="col">
-        <label for="collection" class="form-label">Collection</label>
-        <input type="text" class="form-control border-primary" id="collection"  name="collection" value="{{$artifact[0]["collection"]}}" required>
-        <div class="invalid-feedback">
-            Title: {{$artifact[0]["collection"]}}
-        </div>
-    </div><!--END COL-->
-
        <!--Verified BY-->
        <div class="col">
         <label for="checkout_by" class="form-label">Validated By</label>
@@ -102,8 +93,46 @@
         </div>
       </div><!--END COL-->
 
+                  <!--START DATE-->
+            <div class="col-3">
+                <label for="start_date" class="form-label" >Start Date</label>
+                <select class="form-select" name="start_date" id="start_date" onchange="checkRange()">
+                    <option value="{{$artifact[0]["start_date"]}}" selected>{{$artifact[0]["start_date"]}}</option>
+                    <option value="1500">1500</option>
+                    <option>1600</option>
+                    <option>1700</option>
+                    <option>1800</option>
+                    <option>1900</option>
+                </select>
+            </div><!--end OF START DATE-->
+            <!--END DATE-->
+            <div class="col-2">
+                <label for="end_date" class="form-label" >End Date</label>
+                <select class="form-select" name="end_date" id="end_date" onchange="checkRange()">
+                    <option value="{{$artifact[0]["end_date"]}}" selected>{{$artifact[0]["end_date"]}}</option>
+                    <option>1500</option>
+                    <option>1600</option>
+                    <option>1700</option>
+                    <option>1800</option>
+                    <option>1900</option>
+                </select>
+                    <div class="invalid-feedback " id="end_error">
+                    End Date cannot be earlier than start date.
+                    </div>
+            </div><!--end OF END DATE-->
+
 </div><!--END ROW-->
 
+<div class="row">
+    <!--COLLECTION-->
+    <div class="col">
+        <label for="collection" class="form-label">Collection</label>
+        <input type="text" class="form-control border-primary" id="collection"  name="collection" value="{{$artifact[0]["collection"]}}" required>
+        <div class="invalid-feedback">
+            Title: {{$artifact[0]["collection"]}}
+        </div>
+    </div><!--END COL-->
+</div>
 
 <!--GENERAL INFORMATION & SITE ROW 3-->
 <div class="row">

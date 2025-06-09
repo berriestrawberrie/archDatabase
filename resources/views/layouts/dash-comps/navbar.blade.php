@@ -10,7 +10,6 @@
               <li><a href="{{route('collections')}}"><i class="bi bi-archive fs-2"></i> <span class="menu-span">Add Collection</span></a></li>
               <li><a href="{{route('verify.data')}}"><i class="bi bi-clipboard-check fs-2"></i> <span class="menu-span">Verify Data</span></a></li>
               <li><a href="{{route('typeselect')}}"><i class="bi bi-plus-square fs-2"></i><span class="menu-span"> Add Artifact </span></a></li>
-              <li><a href="{{route('query.artifact')}}"><i class="bi bi-binoculars fs-2"></i><span class="menu-span"> Queries </span></a></li>
           </ul>
           <hr>
        </aside>
@@ -24,7 +23,6 @@
               <li><a href="{{route('collections')}}"><i class="bi bi-archive fs-2"></i> <span class="menu-span">Add Collection</span></a></li>
               <li><a href="{{route('verify.data')}}"><i class="bi bi-clipboard-check fs-2"></i> <span class="menu-span">Verify Data</span></a></li>
               <li><a href="{{route('typeselect')}}"><i class="bi bi-plus-square fs-2"></i><span class="menu-span"> Add Artifact </span></a></li>
-              <li><a href="{{route('query.artifact')}}"><i class="bi bi-binoculars fs-2"></i><span class="menu-span"> Queries </span></a></li>
           </ul>
           <hr>
         </div>

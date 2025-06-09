@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Ceramic;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\File;
 
 class CeramicController extends Controller
 {
@@ -38,6 +37,8 @@ class CeramicController extends Controller
             'token' => $token,
             'collection' => $request->collection,
             'collection_id' => $request->collection_id,
+            'start_date' => intval($request->start_date),
+            'end_date' => intval($request->end_date),
             'material' => $request->material,
             'manufacturing_technique' => $request->manufacturing_technique,
             'ware' => $request->ware,
@@ -108,26 +109,32 @@ class CeramicController extends Controller
         $digit_3 = str_pad($ceramic[0]["id"], 3, '0', STR_PAD_LEFT);
         $artifact_id = '31DV' . $ceramic[0]["collection_id"] . 'CE' . $digit_3;
 
-
-        //CHECK IF NEW IMAGE SUBMITTED
-        if ($request->has('photo')) {
+        //PROCESS PHOTO SUBMISSION
+        if ($request->has_photo === 1) {
+            //KEEP THE SAME PHOTO
+            $filename = $ceramic[0]["photo"];
+        } elseif ($request->has_photo === 2) {
             //DELETE THE OLD PHOTO
-            File::delete($ceramic[0]["photo"]);
+            $image = public_path('uploads/ceramics/' . $ceramic[0]["photo"]);
+            if (file_exists($image)) {
+                unlink($image);
+            }
             //UPLOAD THE NEW PHOTO
             $file = $request->file('photo');
             $extension =  $file->getClientOriginalExtension();
             $path = 'uploads/ceramics/';
             $filename = time() . '.' . $extension;
             $file->move($path, $filename);
-            $ceramic[0]["photo"] = $filename;
         } else {
-            //USE THE SAME PHOTO OR KEEP NULL
-            if ($request->has_photo == 0) {
-                $filename = 'null.png';
-            } else {
-                $filename = $request->photo;
+            //DELETE THE OLD PHOTO
+            $image = public_path('uploads/ceramics/' . $ceramic[0]["photo"]);
+            if (file_exists($image)) {
+                unlink($image);
             }
-        }
+            //USER REMOVED PHOTO
+            $filename = 'null.png';
+        } //END OF IF
+
 
         //REASSIGN THE CERAMIC PROPRETIES TO THE INPUTS
         Ceramic::where('token', $token)
@@ -205,45 +212,67 @@ class CeramicController extends Controller
 
 
     //PROCESS THE CERAMIC PUBLISH FORM 
-    public function validateCeramic(Request $request, $id)
+    public function validateCeramic(Request $request, $artifact_id)
     {
-        $ceramic = Ceramic::where('artifact_id', $id)->get();
-        //CONFIGURE THE ARTIFACT ID
-        if ($request->has('subset')) {
-            $artifact_id = $request->preID . $request->artifact_id . $request->subset;
-        } else {
-            $artifact_id = $request->preID . $request->artifact_id;
+
+        $ceramic = Ceramic::where('artifact_id', $artifact_id)->get();
+
+        //VERIFY IT'S BEING SUBMITTED BY USER THAT CHECKEDOUT & STATUS IS READY FOR VALIDATION
+        if (Auth::user()->id != $ceramic[0]["checkout_by"] || $ceramic[0]["isValid"] != 0) {
+
+            return redirect(route('home'))
+                ->with("verify.data", "Artifact checked out by another user you cannot validate it.");
         }
 
+        //PROCESS PHOTO SUBMISSION
+        switch ($request->has_photo) {
+            //USER KEEPS PHOTO
+            case "1":
+                //KEEP THE SAME PHOTO
+                $filename = $ceramic[0]["photo"];
 
+                break;
+            //USER REPLACES PHOTO
+            case "2":
+                //CHECK THAT THE PHOTO ISN'T PLACEHOLDER
+                if ($ceramic[0]["photo"] != "null.png") {
+                    //DELETE THE OLD PHOTO
+                    $image = public_path('uploads/ceramics/' . $ceramic[0]["photo"]);
+                    if (file_exists($image)) {
+                        unlink($image);
+                    }
+                }
+                //UPLOAD THE NEW PHOTO
+                $file = $request->file('photo');
+                $extension =  $file->getClientOriginalExtension();
+                $path = 'uploads/ceramics/';
+                $filename = time() . '.' . $extension;
+                $file->move($path, $filename);
 
-
-        //CHECK IF NEW IMAGE SUBMITTED
-        if ($request->has('photo')) {
-            //DELETE THE OLD PHOTO
-            File::delete($ceramic[0]["photo"]);
-            //UPLOAD THE NEW PHOTO
-            $file = $request->file('photo');
-            $extension =  $file->getClientOriginalExtension();
-            $path = 'uploads/ceramics/';
-            $filename = time() . '.' . $extension;
-            $file->move($path, $filename);
-            $ceramic[0]["photo"] = $filename;
-        } else {
-            //USE THE SAME PHOTO OR KEEP NULL
-            if ($request->has_photo == 0) {
+                break;
+            //USER REMOVES PHOTO
+            case "0":
+                //CHECK THAT THE PHOTO ISN'T PLACEHOLDER
+                if ($ceramic[0]["photo"] != "null.png") {
+                    //DELETE THE OLD PHOTO
+                    $image = public_path('uploads/ceramics/' . $ceramic[0]["photo"]);
+                    if (file_exists($image)) {
+                        unlink($image);
+                    }
+                }
                 $filename = 'null.png';
-            } else {
-                $filename = $request->photo;
-            }
-        }
+
+                break;
+            default:
+                return back()->with('error', 'Issue processing photo submission');
+        } //END OF SWITCH
+
 
         //REASSIGN THE CERAMIC PROPRETIES TO THE INPUTS
-        Ceramic::where('artifact_id', $id)
+        Ceramic::where('artifact_id', $artifact_id)
             ->update([
                 'created_at' => $request->created_at,
                 'artifact_count' => $request->artifact_count,
-                //SET TO CONDITIONALLY
                 'isValid' => 1,
                 'collection' => $request->collection,
                 'material' => $request->material,

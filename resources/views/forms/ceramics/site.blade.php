@@ -88,6 +88,34 @@
         </div>
         <input type="number" class="d-none" value="{{$collections[0]["collection_id"]}}" name="collection_id">
     </div><!--END COL-->
+           <!--START DATE-->
+            <div class="col-3">
+                <label for="start_date" class="form-label" >Start Date</label>
+                <select class="form-select" name="start_date" id="start_date" onchange="checkRange()" required>
+                    <option value="0">--</option>
+                    <option >1500</option>
+                    <option>1600</option>
+                    <option>1700</option>
+                    <option>1800</option>
+                    <option>1900</option>
+                </select>
+            </div><!--end OF START DATE-->
+            <!--END DATE-->
+            <div class="col-2">
+                <label for="end_date" class="form-label" >End Date</label>
+                <select class="form-select" name="end_date" id="end_date" onchange="checkRange()" required>
+                    <option value="0">--</option>
+                    <option>1500</option>
+                    <option>1600</option>
+                    <option>1700</option>
+                    <option>1800</option>
+                    <option>1900</option>
+                </select>
+                    <div class="invalid-feedback " id="end_error">
+                    End Date cannot be earlier than start date.
+                    </div>
+            </div><!--end OF START DATE-->
+
 
 
 </div><!--END ROW-->

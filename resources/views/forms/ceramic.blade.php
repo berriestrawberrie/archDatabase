@@ -10,9 +10,7 @@ Ceramic Artifact Entry Form
 @endsection
 
 @section('content')
- <div class="">
 
- </div>
 <form class=" needs-validation" method="POST" action="{{route('save.ceramic')}}" novalidate enctype="multipart/form-data">
   @csrf
   <!--GENERAL INFORMATION & SITE -->
@@ -32,7 +30,7 @@ Ceramic Artifact Entry Form
   </fieldset>
 
   <fieldset class="mt-2">
-    <button class="btn btn-primary">   Save</button>
+    <button class="btn btn-primary" id="btnSubmit">   Save</button>
   </fieldset>
 
 
@@ -45,6 +43,6 @@ Ceramic Artifact Entry Form
   const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl)) 
 </script>
 <script src="{{asset('storage/js/nextform.js')}}"></script>
-
+<script src="{{asset('storage/js/query_collection.js')}}"></script>
 
 @endsection

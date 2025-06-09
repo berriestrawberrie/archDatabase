@@ -461,7 +461,7 @@
     <!--PASTE COLOR-->
     <div class="col-2">
         <label for="paste_color" class="form-label">Paste Color</label>
-        <input type="text" class="form-control " id="paste_color"  name="paste_color">
+        <input type="text" class="form-control " id="paste_color"  name="paste_color" required>
     </div><!--END COL-->
     
 

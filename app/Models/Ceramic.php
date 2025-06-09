@@ -12,6 +12,8 @@ class Ceramic extends Model
         'token',
         'updated_at',
         'collection',
+        'start_date',
+        'end_date',
         'collection_id',
         'entered_by',
         'artifact_id',

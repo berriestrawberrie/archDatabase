@@ -12,7 +12,7 @@ Verify Ceramic#{{$artifact[0]["id"]}}
   if all the fields are correct publish the artifact</p>
 <form class=" needs-validation" method="POST" action="{{url('validateData/'.$artifact[0]["artifact_id"])}}" novalidate enctype="multipart/form-data">
   @csrf
-  @method('PUT')
+  @method('POST')
   <!--GENERAL INFORMATION & SITE -->
 
   <fieldset>
@@ -33,7 +33,7 @@ Verify Ceramic#{{$artifact[0]["id"]}}
  
 
   <fieldset class="mt-2">
-    <button class="btn btn-success" type="submit">Publish</button>
+    <button class="btn btn-success" type="submit" id="btnSubmit">Publish</button>
   </fieldset>
 
 
@@ -46,6 +46,6 @@ Verify Ceramic#{{$artifact[0]["id"]}}
   const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl)) 
 </script>
 <script src="{{asset('storage/js/verifynextform.js')}}"></script>
-
+<script src="{{asset('storage/js/query_collection.js')}}"></script>
 
 @endsection
