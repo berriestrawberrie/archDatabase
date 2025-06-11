@@ -10,6 +10,12 @@ class Bead extends Model
     protected $fillable = [
         'entered_by',
         'created_at',
+        'Added By',
+        'artifact_id',
+        'start_date',
+        'conservation',
+        'end_date',
+        'token',
         'completeness',
         'artifact_count',
         'collection',

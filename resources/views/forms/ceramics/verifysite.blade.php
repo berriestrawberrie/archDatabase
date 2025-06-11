@@ -96,7 +96,7 @@
                   <!--START DATE-->
             <div class="col-3">
                 <label for="start_date" class="form-label" >Start Date</label>
-                <select class="form-select" name="start_date" id="start_date" onchange="checkRange()">
+                <select class="form-select  border-primary" name="start_date" id="start_date" onchange="checkRange()">
                     <option value="{{$artifact[0]["start_date"]}}" selected>{{$artifact[0]["start_date"]}}</option>
                     <option value="1500">1500</option>
                     <option>1600</option>
@@ -108,7 +108,7 @@
             <!--END DATE-->
             <div class="col-2">
                 <label for="end_date" class="form-label" >End Date</label>
-                <select class="form-select" name="end_date" id="end_date" onchange="checkRange()">
+                <select class="form-select  border-primary" name="end_date" id="end_date" onchange="checkRange()">
                     <option value="{{$artifact[0]["end_date"]}}" selected>{{$artifact[0]["end_date"]}}</option>
                     <option>1500</option>
                     <option>1600</option>

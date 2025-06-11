@@ -6,7 +6,7 @@
         <!--PATTERN NAME-->
         <div >
             <label for="pattern_name" class="form-label">Pattern Name</label>
-            <select class="form-control " id="pattern_name"  name="pattern_name" required>
+            <select class="form-select" id="pattern_name"  name="pattern_name" required>
                 <option disabled selected value> -- select an option -- </option>
                 <option  value="goat">goat</option>
                 <option  value="altar of love (valentine)">altar of love (valentine)</option>
@@ -43,7 +43,7 @@
 
             </select>
             <div class="invalid-feedback">
-                Must select ceramic form. 
+                Required Field.
             </div>
         </div><!--END COL-->
 
@@ -72,7 +72,7 @@
     <!--BASE MARK-->
     <div class="col">
         <label for="base_mark" class="form-label">Base Mark</label>
-        <select class="form-control " id="base_mark"  name="base_mark" required>
+        <select class="form-select" id="base_mark"  name="base_mark" required>
             <option disabled selected value> -- select an option -- </option>
             <option  value="impressed">impressed</option>
             <option  value="incised">incised</option>
@@ -83,7 +83,7 @@
 
         </select>
         <div class="invalid-feedback">
-            Must select a base mark.
+            Required Field.
         </div>
     </div><!--END COL-->
 
@@ -101,7 +101,7 @@
         <label for="base_mark_color" class="form-label">Base Mark Color</label>
         <input type="text" class="form-control " id="base_mark_color"  name="base_mark_color" required>
         <div class="invalid-feedback">
-            Must enter a base mark color. 
+            Required Field.
         </div>
     </div><!--END COL-->
 
@@ -113,7 +113,7 @@
     <!--COLONOWARE-->
     <div class="col">
         <label for="colonoware" class="form-label">Colonoware</label>
-        <select class="form-control " id="colonoware"  name="colonoware" required>
+        <select class="form-select" id="colonoware"  name="colonoware" required>
             <option disabled selected value> -- select an option -- </option>
             <option  value="base">base</option>
             <option  value="body">body</option>
@@ -131,14 +131,14 @@
 
         </select>
         <div class="invalid-feedback">
-            Must select a colonoware. 
+            Required Field.
         </div>
     </div><!--END COL-->
 
     <!--COLONO RIM FORM-->
     <div class="col">
         <label for="colono_rim_form" class="form-label">Colono Rim Form</label>
-        <select class="form-control " id="colono_rim_form"  name="colono_rim_form" required>
+        <select class="form-select" id="colono_rim_form"  name="colono_rim_form" required>
             <option disabled selected value> -- select an option -- </option>
             <option  value="everted">everted</option>
             <option  value="inverted">inverted</option>
@@ -148,14 +148,14 @@
 
         </select>
         <div class="invalid-feedback">
-            Must select colono rim form
+            Required Field.
         </div>
     </div><!--END COL-->
 
     <!--COLONO RIM ANGLE-->
     <div class="col-2">
         <label for="colono_rim_angle" class="form-label">Rim Angle</label>
-        <select class="form-control " id="colono_rim_angle"  name="colono_rim_angle" required>
+        <select class="form-select" id="colono_rim_angle"  name="colono_rim_angle" required>
             <option disabled selected value> -- select an option -- </option>
             <option  value="0">0</option>
             <option  value="15">15</option>
@@ -181,7 +181,7 @@
             <option  value="unmeasurable">unmeasurable</option>
         </select>
         <div class="invalid-feedback">
-            Must select rim angle. 
+           Required Field.
         </div>
     </div><!--END COL-->
     
@@ -192,7 +192,7 @@
                 <i class="fa-solid fa-circle-question"></i></button></label>
         <input type="number" class="form-control " id="max_rim_width"  name="max_rim_width"  step="0.01" min="0" required>
         <div class="invalid-feedback">
-            Must enter max rim width. 
+            Required Field.
         </div>
     </div><!--END COL-->
 
@@ -204,7 +204,7 @@
     <!--COLONO DECORATION MODE-->
     <div class="col">
         <label for="colono_decoration_mode" class="form-label">Colono Decoration Mode</label>
-        <select class="form-control " id="colono_decoration_mode"  name="colono_decoration_mode" required>
+        <select class="form-select" id="colono_decoration_mode"  name="colono_decoration_mode" required>
             <option disabled selected value> -- select an option -- </option>
             <option  value="brushed">brushed</option>
             <option  value="burnished">burnished</option>
@@ -236,14 +236,14 @@
             
         </select>
         <div class="invalid-feedback">
-            Must select a colono decoration mode. 
+            Required Field. 
         </div>
     </div><!--END COL-->
 
     <!--COLONO BASE FORM-->
     <div class="col">
         <label for="colono_base_form" class="form-label">Colono Base Form</label>
-        <select class="form-control " id="colono_base_form"  name="colono_base_form" required>
+        <select class="form-select" id="colono_base_form"  name="colono_base_form" required>
             <option disabled selected value> -- select an option -- </option>
             <option  value="flat">flat</option>
             <option  value="footring">footring</option>
@@ -253,14 +253,14 @@
 
         </select>
         <div class="invalid-feedback">
-            Must select a colono base form.
+            Required Field.
         </div>
     </div><!--END COL-->
 
     <!--COLONO FOOTRING FORM-->
     <div class="col">
         <label for="colono_footring_form" class="form-label">Colono Footring Form</label>
-        <select class="form-control " id="colono_footring_form"  name="colono_footring_form" required>
+        <select class="form-select" id="colono_footring_form"  name="colono_footring_form" required>
             <option disabled selected value> -- select an option -- </option>
             <option  value="footring">footring</option>
             <option  value="no footring">no footring</option>
@@ -269,7 +269,7 @@
 
         </select>
         <div class="invalid-feedback">
-            Must select ceramic form. 
+            Required Field.
         </div>
     </div><!--END COL-->
 
@@ -282,7 +282,7 @@
         <!--NON PLAST PASTE INCLUSION-->
         <div>
             <label for="non_plastic_paste_inclusions" class="form-label">Non-Plastic Paste Incl.</label>
-            <select class="form-control " id="non_plastic_paste_inclusions"  name="non_plastic_paste_inclusions" required>
+            <select class="form-select" id="non_plastic_paste_inclusions"  name="non_plastic_paste_inclusions" required>
                 <option disabled selected value> -- select an option -- </option>
                 <option  value="back crypto-crystalline">back crypto-crystalline</option>
                 <option  value="grog">grog</option>
@@ -292,14 +292,14 @@
                 
             </select>
             <div class="invalid-feedback">
-                Must select non plastic paste inclusions
+                Required Field.
             </div>
         </div><!--END COL-->
 
         <!--TOTAL PASTE INCLUSION-->
         <div>
             <label for="total_paste_inclusion_density" class="form-label">Total Paste Inclu. Density</label>
-            <select class="form-control " id="total_paste_inclusion_density"  name="total_paste_inclusion_density" required>
+            <select class="form-select" id="total_paste_inclusion_density"  name="total_paste_inclusion_density" required>
                 <option disabled selected value> -- select an option -- </option>
                 <option  value="greater than 7.5 less than 15">greater than 7.5 less than 15</option>
                 <option  value="greater than or equal to 15">greater than or equal to 15</option>
@@ -309,7 +309,7 @@
                 
             </select>
             <div class="invalid-feedback">
-                Must select total paste inclusion density.
+                Required Field.
             </div>
         </div><!--END COL-->
 
@@ -320,7 +320,7 @@
         <!--WEAR LOCATION-->
         <div>
                 <label for="wear_location" class="form-label">Wear Location</label>
-                <select class="form-control " id="wear_location"  name="wear_location" required>
+                <select class="form-select" id="wear_location"  name="wear_location" required>
                     <option disabled selected value> -- select an option -- </option>
                     <option  value="exterior">exterior</option>
                     <option  value="interior">interior</option>
@@ -329,14 +329,14 @@
                     
                 </select>
                 <div class="invalid-feedback">
-                    Must select a wear location
+                    Required Field.
                 </div>
         </div><!--END COL-->
 
         <!--WEAR PATTERN -->
         <div >
             <label for="wear_pattern" class="form-label">Wear Pattern</label>
-            <select class="form-control " id="wear_pattern"  name="wear_pattern" required>
+            <select class="form-select" id="wear_pattern"  name="wear_pattern" required>
                 <option disabled selected value> -- select an option -- </option>
                 <option  value="base abrasion">base abrasion</option>
                 <option  value="fire-clouding">fire-clouding</option>
@@ -349,7 +349,7 @@
                 
             </select>
             <div class="invalid-feedback">
-                Must select a wear pattern. 
+                Required Field.
             </div>
         </div><!--END COL-->
     </div>
@@ -359,99 +359,101 @@
 
 <!--FIELDS II ROW 6-->
 <div class="row">
-    <!--SHERD THICKNESS-->
-    <div class="col">
-        <label for="sherd_thickness" class="form-label">Sherd Thickness</label>
-        <input type="number" class="form-control " id="sherd_thickness"  name="sherd_thickness"  step="0.01" min="0" required>
-        <div class="invalid-feedback">
-            Must enter sherd thickness
-        </div>
-    </div><!--END COL-->
+    <div class="d-flex flex-column col-3">
+        <!--SHERD THICKNESS-->
+        <div class="col">
+            <label for="sherd_thickness" class="form-label">Sherd Thickness</label>
+            <input type="number" class="form-control " id="sherd_thickness"  name="sherd_thickness"  step="0.01" min="0" required>
+            <div class="invalid-feedback">
+                Required Field.
+            </div>
+        </div><!--END COL-->
 
-    <!--MAX SHERD MEASURE-->
-    <div class="col">
-        <label for="max_sherd_measurement" class="form-label">Max Sherd Measurement</label>
-        <input type="number" class="form-control " id="max_sherd_measurement"  name="max_sherd_measurement"  step="0.01" min="0" required>
-        <div class="invalid-feedback">
-            Must enter max sherd measurement. 
-        </div>
-    </div><!--END COL-->
+        <!--MAX SHERD MEASURE-->
+        <div class="col">
+            <label for="max_sherd_measurement" class="form-label">Max Sherd Measurement</label>
+            <input type="number" class="form-control " id="max_sherd_measurement"  name="max_sherd_measurement"  step="0.01" min="0" required>
+            <div class="invalid-feedback">
+                Required Field.
+            </div>
+        </div><!--END COL-->
 
-    <!--SHERD WEIGHT-->
-    <div class="col">
-        <label for="sherd_weight" class="form-label">Sherd Wght.</label>
-        <input type="number" class="form-control " id="sherd_weight"  name="sherd_weight" min="0"  step="0.01" required>
-        <div class="invalid-feedback">
-            Must enter sherd weight
-        </div>
-    </div><!--END COL-->
+        <!--SHERD WEIGHT-->
+        <div class="col">
+            <label for="sherd_weight" class="form-label">Sherd Wght.</label>
+            <input type="number" class="form-control " id="sherd_weight"  name="sherd_weight" min="0"  step="0.01" required>
+            <div class="invalid-feedback">
+            Required Field.
+            </div>
+        </div><!--END COL-->
 
-    <!--MENDED SHERD WEIGHT-->
-    <div class="col">
-        <label for="mended_sherd_weight" class="form-label">Mended Sherd Wght.</label>
-        <input type="number" class="form-control " id="mended_sherd_weight"  name="mended_sherd_weight"  step="0.01" min="0" required>
-        <div class="invalid-feedback">
-            Must enter sherd thickness
-        </div>
-    </div><!--END COL-->
+        <!--MENDED SHERD WEIGHT-->
+        <div class="col">
+            <label for="mended_sherd_weight" class="form-label">Mended Sherd Wght.</label>
+            <input type="number" class="form-control " id="mended_sherd_weight"  name="mended_sherd_weight"  step="0.01" min="0" required>
+            <div class="invalid-feedback">
+                Required Field.
+            </div>
+        </div><!--END COL-->
+    </div>
 
-</div><!--END OF ROW-->
+    <div class="d-flex flex-column col-3">
+        <!--RIM LENGTH-->
+        <div class="col">
+            <label for="rim_length" class="form-label">Rim Length</label>
+            <input type="number" class="form-control " id="rim_length"  name="rim_length" min="0"  step="0.01" required>
+            <div class="invalid-feedback">
+            Required Field.
+            </div>
+        </div><!--END COL-->
 
-<!--FIELDS II ROW 7-->
-<div class="row">
-    <!--RIM LENGTH-->
-    <div class="col">
-        <label for="rim_length" class="form-label">Rim Length</label>
-        <input type="number" class="form-control " id="rim_length"  name="rim_length" min="0"  step="0.01" required>
-        <div class="invalid-feedback">
-            Must enter rim length
-        </div>
-    </div><!--END COL-->
+        <!--RIM DIAMETER-->
+        <div class="col">
+            <label for="rim_diameter" class="form-label">Rim Diameter</label>
+            <input type="number" class="form-control " id="rim_diameter"  name="rim_diameter" min="0"  step="0.01" required>
+            <div class="invalid-feedback">
+                Required Field.
+            </div>
+        </div><!--END COL-->
 
-    <!--RIM DIAMETER-->
-    <div class="col">
-        <label for="rim_diameter" class="form-label">Rim Diameter</label>
-        <input type="number" class="form-control " id="rim_diameter"  name="rim_diameter" min="0"  step="0.01" required>
-        <div class="invalid-feedback">
-            Must enter rim diameter. 
-        </div>
-    </div><!--END COL-->
+        <!--MENDED RIM DIAMETER-->
+        <div class="col">
+            <label for="mended_rim_diameter" class="form-label">Mended Rim Diameter</label>
+            <input type="number" class="form-control " id="mended_rim_diameter"  name="mended_rim_diameter"  step="0.01" min="0" required>
+            <div class="invalid-feedback">
+                Required Field.
+            </div>
+        </div><!--END COL-->
+    </div>
 
-    <!--MENDED RIM DIAMETER-->
-    <div class="col">
-        <label for="mended_rim_diameter" class="form-label">Mended Rim Diameter</label>
-        <input type="number" class="form-control " id="mended_rim_diameter"  name="mended_rim_diameter"  step="0.01" min="0" required>
-        <div class="invalid-feedback">
-            Must enter mended rim diameter
-        </div>
-    </div><!--END COL-->
+    <div class="d-flex flex-column col-3">
+        <!--BASE LENGTH-->
+        <div class="col">
+            <label for="base_length" class="form-label">Base Length</label>
+            <input type="number" class="form-control " id="base_length"  name="base_length" min="0"  step="0.01" required>
+            <div class="invalid-feedback">
+                Required Field.
+            </div>
+        </div><!--END COL-->
 
-    <!--BASE LENGTH-->
-    <div class="col">
-        <label for="base_length" class="form-label">Base Length</label>
-        <input type="number" class="form-control " id="base_length"  name="base_length" min="0"  step="0.01" required>
-        <div class="invalid-feedback">
-            Must enter base length
-        </div>
-    </div><!--END COL-->
+        <!--BASE DIAMETER-->
+        <div class="col">
+            <label for="base_diameter" class="form-label">Base Diameter</label>
+            <input type="number" class="form-control " id="base_diameter"  name="base_diameter" min="0"  step="0.01" required>
+            <div class="invalid-feedback">
+                Required Field.
+            </div>
+        </div><!--END COL-->
 
-    <!--BASE DIAMETER-->
-    <div class="col">
-        <label for="base_diameter" class="form-label">Base Diameter</label>
-        <input type="number" class="form-control " id="base_diameter"  name="base_diameter" min="0"  step="0.01" required>
-        <div class="invalid-feedback">
-            Must enter base diameter. 
-        </div>
-    </div><!--END COL-->
-
-    <!--MENDED BASE DIAMETER-->
-    <div class="col">
-        <label for="mended_base_diameter" class="form-label">Mended Base Diameter</label>
-        <input type="number" class="form-control " id="mended_base_diameter"  name="mended_base_diameter"   step="0.01" min="0" required>
-        <div class="invalid-feedback">
-            Must enter mended base diameter. 
-        </div>
-    </div><!--END COL-->
+        <!--MENDED BASE DIAMETER-->
+        <div class="col">
+            <label for="mended_base_diameter" class="form-label">Mended Base Diameter</label>
+            <input type="number" class="form-control " id="mended_base_diameter"  name="mended_base_diameter"   step="0.01" min="0" required>
+            <div class="invalid-feedback">
+                Required Field. 
+            </div>
+        </div><!--END COL-->
+    </div>
 
 
 </div><!--END OF ROW-->

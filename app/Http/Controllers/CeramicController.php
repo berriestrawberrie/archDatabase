@@ -55,7 +55,7 @@ class CeramicController extends Controller
             'evidence_of_burning' => $request->evidence_of_burning,
             'mended' => $request->mended,
             'post_manufacturing_mod' => $request->post_manufacturing_mod,
-            'Added By' => $request->entered_by,
+            'Added By' => $request->added_by,
             'notes' => $request->notes,
             'interior_exterior' => $request->interior_exterior,
             'location' => $request->location,
@@ -97,7 +97,7 @@ class CeramicController extends Controller
             'photo' => $filename,
         ]);
 
-        return redirect(route('form.preview', ['token' => $token, 'user' => $user]));
+        return redirect(route('form.preview', ['token' => $token, 'user' => $user, 'artifact_type' => "ceramic"]));
     } //END OF SAVE CERAMIC
 
     //PROCESS THE CERAMIC PUBLISH FORM 

@@ -5,7 +5,7 @@
         <!--MANUFACTURING-->
         <div class="col">
             <label for="manufacturing_technique" class="form-label">Manufacturing Tech.</label>
-            <select class="form-control " id="manufacturing_technique"  name="manufacturing_technique" required>
+            <select class="form-select" id="manufacturing_technique"  name="manufacturing_technique" required>
                 <option disabled selected value> -- select an option -- </option>
                 <option  value="handbuild coil">handbuild coil</option>
                 <option  value="handbuild unidentifiable">handbuild unidentifiable</option>
@@ -17,14 +17,14 @@
                 <option  value="wheel thrown">wheel thrown</option>
             </select>
             <div class="invalid-feedback">
-                Must select a manufacturing technique
+                Required Field.
             </div>
         </div><!--END COL-->
 
         <!--MATERIAL-->
         <div class="col">
             <label for="material" class="form-label">Material</label>
-            <select class="form-control " id="material"  name="material" required>
+            <select class="form-select" id="material"  name="material" required>
                 <option disabled selected value> -- select an option -- </option>
                 <option  value="coarse earthenware">Coarse Earthenware</option>
                 <option  value="porcelain">Porcelain</option>
@@ -34,7 +34,7 @@
 
             </select>
             <div class="invalid-feedback">
-            Must select ceramic material. 
+            Required Field.
             </div>
         </div><!--END COL-->
 
@@ -109,14 +109,14 @@
 
             </select>
             <div class="invalid-feedback">
-            Must select a ware material.
+            Required Field.
             </div>
         </div><!--END COL-->
 
         <!--FORM-->
         <div class="col">
             <label for="form" class="form-label">Ceramic Form</label>
-            <select class="form-control " id="form"  name="form" required>
+            <select class="form-select" id="form"  name="form" required>
                 <option disabled selected value> -- select an option -- </option>
                 <option  value="basket">basket</option>
                 <option  value="berry dish">berry dish</option>
@@ -181,7 +181,7 @@
 
             </select>
             <div class="invalid-feedback">
-                Must select ceramic form. 
+                Required Field.
             </div>
         </div><!--END COL-->
     
@@ -198,7 +198,7 @@
                 <input onchange="showImgUpload(this)" class="form-check-input" type="radio" name="has_photo" id="has_photo2" value="0">No</label>
 
             <div class="invalid-feedback">
-                Must make a selection. 
+               Required Field.
             </div>
         </div><!--END COL-->
 
@@ -210,7 +210,7 @@
                 <label for="photo" class="form-label">Upload Photo</label>
                 <input onchange="showPreview(event);"type="file" class="form-control " id="file-ip-1"  name="photo" accept="image/png, image/jpeg, image/jpg" />
                 <div class="invalid-feedback">
-                    Must include image (png, jpeg).
+                    Required Field.
                 </div>
                 <button class="d-none position-absolute top-0 end-0 btn-x" type="button" id="cancel_photo"><i class="fa-solid fa-circle-xmark"></i></button>
             </div><!--END COL-->
@@ -228,7 +228,7 @@
     <!--OXIDIEZED VS REDUCED-->
     <div class="col">
         <label for="oxidized_vs_reduced_fabric" class="form-label">Oxidized vs. Reduced Fabric</label>
-        <select class="form-control " id="oxidized_vs_reduced_fabric"  name="oxidized_vs_reduced_fabric" required>
+        <select class="form-select" id="oxidized_vs_reduced_fabric"  name="oxidized_vs_reduced_fabric" required>
             <option disabled selected value> -- select an option -- </option>
             <option  value="not recorded">not recorded</option>
             <option  value="not reduced">not reduced</option>
@@ -236,14 +236,14 @@
             <option  value="unidentifiable">unidentifiable</option>
         </select>
         <div class="invalid-feedback">
-            Must select ceramic form. 
+           Required Field.
         </div>
     </div><!--END COL-->
 
     <!--EVIDENCE OF BURNING-->
     <div class="col">
         <label for="evidence_of_burning" class="form-label">Evidence of Burning</label>
-        <select class="form-control " id="evidence_of_burning"  name="evidence_of_burning" required>
+        <select class="form-select" id="evidence_of_burning"  name="evidence_of_burning" required>
             <option disabled selected value> -- select an option -- </option>
             <option  value="both interior and exterior">both interior and exterior</option>
             <option  value="exterior burned">exterior burned</option>
@@ -254,7 +254,7 @@
 
         </select>
         <div class="invalid-feedback">
-            Must select make a selection for burning.
+           Required Field.
         </div>
     </div><!--END COL-->
 
@@ -262,7 +262,7 @@
     <!--VESSEL CATEGORY-->
     <div class="col-2">
         <label for="vessel_category" class="form-label">Vessel Category</label>
-        <select class="form-control " id="vessel_category"  name="vessel_category" required>
+        <select class="form-select" id="vessel_category"  name="vessel_category" required>
             <option disabled selected value> -- select an option -- </option>
             <option  value="vessel_category">vessel_category</option>
             <option  value="hollow">hollow</option>
@@ -271,7 +271,7 @@
 
         </select>
         <div class="invalid-feedback">
-            Must select a vessel category.
+            Required Field.
         </div>
     </div><!--END COL-->
 
@@ -283,7 +283,7 @@
     <!--POST MANUFACTURING MOD-->
     <div class="col">
         <label for="post_manufacturing_mod" class="form-label">Post Manufact. Mod</label>
-        <select class="form-control " id="post_manufacturing_mod"  name="post_manufacturing_mod" required>
+        <select class="form-select" id="post_manufacturing_mod"  name="post_manufacturing_mod" required>
             <option disabled selected value> -- select an option -- </option>
             <option  value="yes">yes</option>
             <option  value="no">no</option>
@@ -291,7 +291,7 @@
 
         </select>
         <div class="invalid-feedback">
-            Must select a post manufacturing modification. 
+            Required Field.
         </div>
     </div><!--END COL-->
 
@@ -301,14 +301,14 @@
             <button type="button" class="btn-xsm" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Helpful field explainer here?">
                 <i class="fa-solid fa-circle-question"></i></button>
         </label>
-        <select class="form-control " id="interior_exterior"  name="interior_exterior" required>
+        <select class="form-select" id="interior_exterior"  name="interior_exterior" required>
             <option disabled selected value> -- select an option -- </option>
             <option  value="exterior">exterior</option>
             <option  value="interior">interior</option>
             <option  value="perforate">perforate</option>
         </select>
         <div class="invalid-feedback">
-            Must select an interior exterior
+           Required Field.
         </div>
     </div><!--END COL-->
 
@@ -319,7 +319,7 @@
             <button type="button" class="btn-xsm" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Helpful field explainer here?">
                 <i class="fa-solid fa-circle-question"></i></button>
         </label>
-        <select class="form-control " id="location"  name="location" required>
+        <select class="form-select" id="location"  name="location" required>
             <option disabled selected value> -- select an option -- </option>
             <option  value="base">base</option>
             <option  value="body">body</option>
@@ -337,7 +337,7 @@
 
         </select>
         <div class="invalid-feedback">
-            Must select location for?
+           Required Field.
         </div>
     </div><!--END COL-->
 
@@ -349,7 +349,7 @@
      <!--CERAMIC COMPLETENESS-->
      <div class="col">
         <label for="ceramic_completeness" class="form-label">Ceramic Completeness</label>
-        <select class="form-control " id="ceramic_completeness"  name="ceramic_completeness" required>
+        <select class="form-select" id="ceramic_completeness"  name="ceramic_completeness" required>
             <option disabled selected value> -- select an option -- </option>
             <option  value="base">base</option>
             <option  value="body">body</option>
@@ -367,14 +367,14 @@
 
         </select>
         <div class="invalid-feedback">
-            Must select ceramic form. 
+          Required Field.
         </div>
     </div><!--END COL-->
 
     <!--MENDED-->
     <div class="col-2">
         <label for="mended" class="form-label">Mended?</label>
-        <select class="form-control " id="mended"  name="mended" required onchange="getMended()">
+        <select class="form-select" id="mended"  name="mended" required onchange="getMended()">
             <option disabled selected value> -- select an option -- </option>
             <option  value="yes">yes</option>
             <option  value="no">no</option>
@@ -382,14 +382,14 @@
 
         </select>
         <div class="invalid-feedback">
-            Must select mended option.
+            Required Field.
         </div>
     </div><!--END COL-->
 
     <!--MENDED FORM-->
     <div class="col">
         <label for="mended_form" class="form-label">Mended Form</label>
-        <select class="form-control " id="mended_form"  name="mended_form" required>
+        <select class="form-select" id="mended_form"  name="mended_form" required>
             <option disabled selected value id="mended_default"> -- select an option -- </option>
             <option  value="basket">basket</option>
             <option  value="berry dish">berry dish</option>
@@ -454,7 +454,7 @@
 
         </select>
         <div class="invalid-feedback">
-            Must select mended form. 
+            Required Field.
         </div>
     </div><!--END COL-->
 
@@ -473,7 +473,7 @@
     <!--EXTERIOR SURFACE-->
     <div class="col">
         <label for="exterior_surface" class="form-label">Exterior Surface</label>
-        <select class="form-control " id="exterior_surface"  name="exterior_surface" required>
+        <select class="form-select" id="exterior_surface"  name="exterior_surface" required>
             <option disabled selected value> -- select an option -- </option>
             <option  value="albany slip">albany slip</option>
             <option  value="alkaline glaze">alkaline glaze</option>
@@ -492,7 +492,7 @@
             <option  value="zinc emulsion glaze">zinc emulsion glaze</option>
         </select>
         <div class="invalid-feedback">
-            Must select exterior surface. 
+            Required Field. 
         </div>
     </div><!--END COL-->
 
@@ -501,14 +501,14 @@
         <label for="exterior_color" class="form-label">Exterior Color</label>
         <input type="text" class="form-control " id="exterior_color"  name="exterior_color" required>
         <div class="invalid-feedback">
-            Must enter an exterior color.
+            Required Field.
         </div>
     </div><!--END COL-->
 
     <!--INTERIOR SURFACE-->
     <div class="col">
         <label for="interior_surface" class="form-label">Interior Surface</label>
-        <select class="form-control " id="interior_surface"  name="interior_surface" required>
+        <select class="form-select" id="interior_surface"  name="interior_surface" required>
             <option disabled selected value> -- select an option -- </option>
             <option  value="albany slip">albany slip</option>
             <option  value="alkaline glaze">alkaline glaze</option>
@@ -529,7 +529,7 @@
 
         </select>
         <div class="invalid-feedback">
-            Must select interior surface. 
+            Required Field.
         </div>
     </div><!--END COL-->
 
@@ -538,7 +538,7 @@
         <label for="interior_color" class="form-label">Interior Color</label>
         <input type="text" class="form-control " id="interior_color"  name="interior_color" required>
         <div class="invalid-feedback">
-            Must enter an interior color.
+            Required Field.
         </div>
     </div><!--END COL-->
 
@@ -550,7 +550,7 @@
     <!--GENRE -->
     <div class="col">
         <label for="genre" class="form-label">Genre</label>
-        <select class="form-control " id="genre"  name="genre" required>
+        <select class="form-select" id="genre"  name="genre" required>
             <option disabled selected value> -- select an option -- </option>
             <option  value="an hua">an hua</option>
             <option  value="applied powder crystals purple">applied powder crystals purple</option>
@@ -603,14 +603,14 @@
 
         </select>
         <div class="invalid-feedback">
-            Must select a genre.
+           Required Field.
         </div>
     </div><!--END COL-->
 
     <!--MOTIF-->
     <div class="col-2">
         <label for="motif" class="form-label">Motif</label>
-        <select class="form-control " id="motif"  name="motif" required>
+        <select class="form-select" id="motif"  name="motif" required>
             <option disabled selected value> -- select an option -- </option>
             <option  value="adjacent combination b">adjacent combination b</option>
             <option  value="adjacent/stacked combo a">adjacent/stacked combo a</option>
@@ -636,14 +636,14 @@
 
         </select>
         <div class="invalid-feedback">
-            Must select a motif
+           Required Field.
         </div>
     </div><!--END COL-->
     
     <!--DECORATIVE TECHNIQUE-->
     <div class="col">
         <label for="decorative_technique" class="form-label">Decorative Technique</label>
-        <select class="form-control " id="decorative_technique"  name="decorative_technique" required>
+        <select class="form-select" id="decorative_technique"  name="decorative_technique" required>
             <option disabled selected value> -- select an option -- </option>
             <option  value="applied clay">applied clay</option>
             <option  value="applied powder/crystals">applied powder/crystals</option>
@@ -661,7 +661,7 @@
 
         </select>
         <div class="invalid-feedback">
-            Must select a decorative technique.
+           Required Field.
         </div>
     </div><!--END COL-->
 
@@ -670,7 +670,7 @@
         <label for="decoration_color" class="form-label">Decorative Color</label>
         <input type="text" class="form-control " id="decoration_color"  name="decoration_color" required>
         <div class="invalid-feedback">
-            Must select enter decoration color.
+            Required Field.
         </div>
     </div><!--END COL-->
 
@@ -682,7 +682,7 @@
     <!--STYLISTIC ELEMENT-->
     <div class="col">
         <label for="stylistic_element_1" class="form-label">Stylistic Element I</label>
-        <select class="form-control " id="stylistic_element_1"  name="stylistic_element_1" required>
+        <select class="form-select" id="stylistic_element_1"  name="stylistic_element_1" required>
             <option disabled selected value> -- select an option -- </option>
             <option  value="acanthus leaves">acanthus leaves</option>
             <option  value="angular edge">angular edge</option>
@@ -774,7 +774,7 @@
 
         </select>
         <div class="invalid-feedback">
-            Must select at least (1) stylish element. 
+            Required Field.
         </div>
     </div><!--END COL-->
 
@@ -784,7 +784,7 @@
         <label for="stylistic_element_number" class="form-label">Stylistic Element No.</label>
         <input type="number" class="form-control " id="stylistic_element_number"  name="stylistic_element_number" min="1" max="60">
         <div class="invalid-feedback">
-            Stylistic number must be at least (1) and less than (60).  
+           Required Field.
         </div>
     </div><!--END COL-->
 

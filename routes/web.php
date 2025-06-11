@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ArtifactController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BeadController;
 use App\Http\Controllers\BoneController;
 use App\Http\Controllers\CeramicController;
 use App\Http\Controllers\ImageController;
@@ -36,17 +37,21 @@ Route::middleware("auth")->group(function () {
     Route::get('/user/dashboard', [UserController::class, 'userDashboard'])->name('users.dashboard');
     Route::get('/enteredby/{user}', [ArtifactController::class, 'savedList'])->name('entered.by');
 
+
     //START NEW ARTIFACT ROUTES
     Route::get('/selectType', [ArtifactController::class, 'typeSelect'])->name('typeselect');
     Route::get('/getForm/{collection}/{art_type}', [ArtifactController::class, 'getForm']);
 
 
 
-    //REQUIRE CERAMIC ROUTES
+    //LOGGEDIN CERAMIC ROUTES
     Route::post('/saveCeramic', [CeramicController::class, 'saveCeramic'])->name('save.ceramic');
+    Route::post('/submitCeramic/{token}', [CeramicController::class, 'submitCeramic']);
     Route::post('/submitBone', [BoneController::class, 'submitBone'])->name('submit.bone');
 
-    //REQUIRE BONE ROUTES
+    //LOGGEDIN BEAD ROUTES
+    Route::post('/saveBead', [BeadController::class, 'saveBead'])->name('save.bead');
+    Route::post('/submitBead/{token}', [BeadController::class, 'submitBead']);
 });
 
 
@@ -64,8 +69,7 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     Route::post('/releaseData', [AdminController::class, 'releaseData'])->name('release.data');
     Route::get('/reviewData/{user}/{artifact_type}/{id}', [AdminController::class, 'reviewData']);
     Route::post('/validateData/{id}', [CeramicController::class, 'validateCeramic']);
-    Route::post('/submitData/{id}', [CeramicController::class, 'submitCeramic']);
-    Route::get('/previewData/{token}/{user}', [ArtifactController::class, 'previewForm'])->name('form.preview');
+    Route::get('/previewData/{artifact_type}/{token}/{user}', [ArtifactController::class, 'previewForm'])->name('form.preview');
 });
 
 

@@ -45,7 +45,24 @@ Saved Artifacts
                             </td>
                             <td>{{$ceramic->collection}}</td>
                             <td>{{$ceramic->material}}</td>
-                            <td><a href="/previewData/{{$ceramic->token.'/'.Auth::user()->id}}"><button class="btn btn-warning">Complete</button></a></td>
+                            <td><a href="/previewData/ceramic/{{$ceramic->token.'/'.Auth::user()->id}}"><button class="btn btn-warning">Complete</button></a></td>
+
+                        </tr>
+                 @endforeach
+                 @foreach($beads as $bead)
+                        <tr>
+                            <td>{{$bead->artifact_id}}</td>
+                            <td>bead</td>
+                            <td >
+                                @if($bead->isValid == 2)
+                                Incomplete
+                                @else
+                                Error
+                                @endif
+                            </td>
+                            <td>{{$bead->collection}}</td>
+                            <td>{{$bead->material}}</td>
+                            <td><a href="/previewData/bead/{{$bead->token.'/'.Auth::user()->id}}"><button class="btn btn-warning">Complete</button></a></td>
 
                         </tr>
                  @endforeach

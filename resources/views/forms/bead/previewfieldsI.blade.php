@@ -6,7 +6,7 @@
         <div class="col">
             <label for="manufacturing_technique" class="form-label">Manufacturing Technique</label>
             <select class="form-select" id="manufacturing_technique"  name="manufacturing_technique" required>
-                <option disabled selected value> -- select an option -- </option>
+                <option value="{{$artifact[0]["manufacturing_technique"]}}">{{$artifact[0]["manufacturing_technique"]}}</option>
                 <option>Blown</option>
                 <option>Cast</option>
                 <option>Cut/Carved</option>
@@ -26,7 +26,7 @@
         <div class="col">
             <label for="material" class="form-label">Material</label>
             <select class="form-select" id="material"  name="material" required>
-                <option disabled selected value> -- select an option -- </option>
+                <option value="{{$artifact[0]["material"]}}">{{$artifact[0]["material"]}}</option>
                 <option>Amber</option>
                 <option>Bone</option>
                 <option>Carnelian</option>
@@ -53,7 +53,7 @@
         <div class="col">
             <label for="bead_struct" class="form-label">Bead Structure</label>
             <select class="form-select" id="bead_struct" name="bead_struct" required>
-                <option selected disabled value=""> -- select an option -- </option>
+                <option value="{{$artifact[0]["bead_struct"]}}"> {{$artifact[0]["bead_struct"]}}</option>
                 <option>Compound</option>
                 <option>Not Recorded</option>
                 <option>Simple</option>
@@ -69,7 +69,7 @@
         <div class="col">
             <label for="bead_form" class="form-label">Bead Form</label>
             <select class="form-select" id="bead_form"  name="bead_form" required>
-                <option disabled selected value> -- select an option -- </option>
+                <option value="{{$artifact[0]["bead_form"]}}">{{$artifact[0]["bead_form"]}}</option>
                 <option>Straight Curvilinear</option>
                 <option>Straight Polyhedral</option>
                 <option>Twisted Curvilinear</option>
@@ -86,32 +86,36 @@
 
     <div class="col border me-2 rounded d-flex justify-content-evenly align-items-center">
 
-        <!--HAS IMAGE -->
+         <!--HAS IMAGE -->
         <div class="col-2 form-check d-flex flex-column ">
-            <p style="margin-left: -30px;">Has Photo?</p>
+            <p style="margin-left: -30px;">Photo</p>
+            
             <label class="form-check-label" for="has_photo1">
-                <input onchange="showImgUpload(this)" class="form-check-input" type="radio" name="has_photo" id="has_photo1" value="1">Yes</label>
+                <input onchange="showImgUpload(this)" class="form-check-input" type="radio" name="has_photo" id="has_photo1" value="1"checked >Keep</label>
             <label class="form-check-label mt-3" for="has_photo2">
-                <input onchange="showImgUpload(this)" class="form-check-input" type="radio" name="has_photo" id="has_photo2" value="0">No</label>
+                <input onchange="showImgUpload(this)" class="form-check-input" type="radio" name="has_photo" id="has_photo2" value="0">Remove</label>
+            <label class="form-check-label mt-3" for="has_photo3">
+                <input onchange="showImgUpload(this)" class="form-check-input" type="radio" name="has_photo" id="has_photo3" value="2">Replace</label>
 
             <div class="invalid-feedback">
-            Required field.
+                Must make a selection.
             </div>
         </div><!--END COL-->
 
         <div class="col-8">
-            <img id="file-ip-1-preview" style="width: 200px; display: none;">
-            <img id="file-noimage" src="{{asset('storage/images/picture.png')}}" style="width: 200px; display:none; opacity: .5;">
+            <img  id="file-ip-1-preview" src="{{asset('uploads/beads/'.$artifact[0]["photo"])}}"style="width: 200px; ">
+            <img id="file-noimage" src="{{asset('uploads/beads/null.png')}}" style="width: 200px; display:none; opacity: .5;">
             <!--IMAGE UPLOAD -->
-            <div class="position-relative"id="image-uploader">
+            <div class="position-relative"id="image-uploader" style="opacity: 0;">
                 <label for="photo" class="form-label">Upload Photo</label>
-                <input onchange="showPreview(event);"type="file" class="form-control " id="file-ip-1"  name="photo" accept="image/png, image/jpeg, image/jpg" />
+                <input onchange="showPreview(event);" type="file" class="form-control " id="file-ip-1" name="photo" accept="image/png, image/jpeg, image/jpg"/>
                 <div class="invalid-feedback">
                     Must include image (png, jpeg).
                 </div>
                 <button class="d-none position-absolute top-0 end-0 btn-x" type="button" id="cancel_photo"><i class="fa-solid fa-circle-xmark"></i></button>
             </div><!--END COL-->
         </div>
+
 
 
     </div>
@@ -126,7 +130,7 @@
     <div class="col">
         <label for="bead_shape" class="form-label">Bead Shape</label>
         <select class="form-select" id="bead_shape"  name="bead_shape" required>
-            <option disabled selected value> -- select an option -- </option>
+            <option value="{{$artifact[0]["bead_shape"]}}"> {{$artifact[0]["bead_shape"]}}</option>
             <option>Barrel</option>
             <option>Biconical</option>
             <option>Collared Spheroid</option>
@@ -151,7 +155,7 @@
     <div class="col">
         <label for="complex_shape" class="form-label">Complex Shape</label>
         <select class="form-select" id="complex_shape"  name="complex_shape" required>
-            <option disabled selected value> -- select an option -- </option>
+            <option value="{{$artifact[0]["complex_shape"]}}">{{$artifact[0]["complex_shape"]}}</option>
             <option>Alternating Twist</option>
             <option>Cornerless Heptagonal</option>
             <option>Cornerless Hexagonal</option>
@@ -184,7 +188,7 @@
             <button type="button" class="btn-xsm" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Helpful field explainer here?">
                 <i class="fa-solid fa-circle-question"></i></button>
         </label>
-        <input type="text" class="form-control " id="bead_color"  name="bead_color" required>
+        <input type="text" class="form-control " id="bead_color"  name="bead_color"  value="{{$artifact[0]["bead_color"]}}"required>
         <div class="invalid-feedback">
             Required field.
         </div>
@@ -200,7 +204,7 @@
     <div class="col">
         <label for="heat_treated" class="form-label">Heat Treated</label>
         <select class="form-select" id="heat_treated"  name="heat_treated" required>
-            <option disabled selected value> -- select an option -- </option>
+            <option value="{{$artifact[0]["heat_treated"]}}">{{$artifact[0]["heat_treated"]}}</option>
             <option>Yes</option>
             <option>No</option>
             <option>N/A (Not Applicable)</option>
@@ -217,7 +221,7 @@
     <div class="col">
         <label for="end_treatment" class="form-label">End Treatment</label>
         <select class="form-select" id="end_treatment"  name="end_treatment" required>
-            <option disabled selected value> -- select an option -- </option>
+            <option value="{{$artifact[0]["end_treatment"]}}">{{$artifact[0]["end_treatment"]}}</option>
             <option>Cut/Sawn/Ground Flat</option>
             <option>Not Recorded</option>
             <option>Rounded</option>
@@ -234,7 +238,7 @@
     <!--Number FAcets-->
     <div class="col-2">
         <label for="number_facets" class="form-label">Number of Facets</label>
-        <input type="number" class="form-control " id="number_facets"  name="number_facets" min="0"required>
+        <input type="number" class="form-control " id="number_facets" value="{{$artifact[0]["number_facets"]}}"  name="number_facets" min="0" required>
         <div class="invalid-feedback">
              Required field.
         </div>
@@ -249,7 +253,7 @@
      <div class="col">
         <label for="diaphaneity" class="form-label">Diaphaneity</label>
         <select class="form-select" id="diaphaneity"  name="diaphaneity" required>
-            <option disabled selected value> -- select an option -- </option>
+            <option value="{{$artifact[0]["diaphaneity"]}}">{{$artifact[0]["diaphaneity"]}}</option>
             <option>Not Applicable</option>
             <option>Opaque</option>
             <option>Translucent</option>
@@ -266,7 +270,7 @@
     <div class="col-2">
         <label for="mended" class="form-label">Mended?</label>
         <select class="form-select" id="mended"  name="mended" required onchange="getMended()">
-            <option disabled selected value> -- select an option -- </option>
+            <option value="{{$artifact[0]["mended"]}}">{{$artifact[0]["mended"]}}</option>
             <option  value="yes">yes</option>
             <option  value="no">no</option>
             <option  value="not recorded">not recorded</option>
@@ -281,7 +285,7 @@
     <div class="col">
         <label for="post_man_mod" class="form-label">Post-Manufacturing Modification</label>
         <select class="form-select" id="post_man_mod"  name="post_man_mod" required>
-            <option disabled selected value> -- select an option -- </option>
+            <option value="{{$artifact[0]["post_man_mod"]}}">{{$artifact[0]["post_man_mod"]}}</option>
             <option  value="yes">yes</option>
             <option  value="no">no</option>
             <option  value="not recorded">not recorded</option>
@@ -294,7 +298,16 @@
     <!--CONSERVATION-->
     <div class="col-2">
         <label for="conservation" class="form-label">Conservation</label>
-        <input type="text" class="form-control " id="conservation"  name="conservation">
+        <select class="form-select" id="conservation"  name="conservation" required>
+            <option value="{{$artifact[0]["conservation"]}}">{{$artifact[0]["conservation"]}}</option>
+            <option  value="yes">yes</option>
+            <option  value="no">no</option>
+            <option  value="not recorded">not recorded</option>
+
+        </select>
+        <div class="invalid-feedback">
+            Required field.
+        </div>
     </div><!--END COL-->
     
 
@@ -307,7 +320,7 @@
     <div class="col">
         <label for="patination" class="form-label">Patination</label>
         <select class="form-select" id="patination"  name="patination" required>
-            <option disabled selected value> -- select an option -- </option>
+            <option value="{{$artifact[0]["patination"]}}">{{$artifact[0]["patination"]}}</option>
             <option>Yes</option>
             <option>No</option>
             <option>N/A (Not Applicable)</option>
@@ -322,7 +335,7 @@
     <div class="col-2">
         <label for="burned" class="form-label">Burned?</label>
         <select class="form-select" id="burned"  name="burned" required>
-            <option disabled selected value> -- select an option -- </option>
+            <option value="{{$artifact[0]["burned"]}}">{{$artifact[0]["burned"]}}</option>
             <option>Yes</option>
             <option>No</option>
             <option>N/A (Not Applicable)</option>
@@ -337,7 +350,7 @@
     <div class="col">
         <label for="weather_erode" class="form-label">Weathered/Eroded?</label>
         <select class="form-select" id="weather_erode"  name="weather_erode" required>
-        <option disabled selected value> -- select an option -- </option>
+        <option value="{{$artifact[0]["weather_erode"]}}">{{$artifact[0]["weather_erode"]}}</option>
         <option>Yes</option>
         <option>No</option>
         <option>N/A (Not Applicable)</option>
@@ -351,7 +364,7 @@
     <!--APPLIED COLOR-->
     <div class="col-2">
         <label for="applied_color" class="form-label">Applied Color</label>
-        <input type="text" class="form-control " id="applied_color"  name="applied_color" required>
+        <input type="text" class="form-control " id="applied_color"  name="applied_color" value="{{$artifact[0]["applied_color"]}}" required>
         <div class="invalid-feedback">
              Required field.
         </div>
@@ -366,7 +379,7 @@
     <div class="col">
         <label for="bead_decoration" class="form-label">Bead Decoration</label>
         <select class="form-select" id="bead_decoration"  name="bead_decoration" required>
-            <option disabled selected value> -- select an option -- </option>
+            <option value="{{$artifact[0]["bead_decoration"]}}">{{$artifact[0]["bead_decoration"]}}</option>
             <option>Combed Designs</option>
             <option>Crumbs</option>
             <option>Eyes</option>
@@ -393,7 +406,7 @@
     <!--CASING COLOR -->
     <div class="col-2">
         <label for="casing_color" class="form-label">Casing Color</label>
-        <input type="text" class="form-control " id="casing_color"  name="casing_color" required>
+        <input type="text" class="form-control " id="casing_color"  name="casing_color" value="{{$artifact[0]["casing_color"]}}" required>
         <div class="invalid-feedback">
             Required field.
         </div>
@@ -403,7 +416,7 @@
         <div class="col-2">
             <label for="casing_layer" class="form-label">Casing Layer</label>
             <select class="form-select" id="casing_layer"  name="casing_layer" required>
-                <option disabled selected value> -- select an option -- </option>
+                <option value="{{$artifact[0]["casing_layer"]}}">{{$artifact[0]["casing_layer"]}}</option>
                 <option>1 (interior)</option>
                 <option>2</option>
                 <option>3</option>
@@ -434,7 +447,7 @@
                 <i class="fa-solid fa-circle-question"></i>
           </button>
         </label>
-        <textarea class="form-control " id="decoration_desc"  name="decoration_desc" placeholder="(Optional)" rows="3"></textarea>
+        <textarea class="form-control " id="decoration_desc"  name="decoration_desc" value="{{$artifact[0]["decoration_desc"]}}" rows="3"></textarea>
         <div class="invalid-feedback">
            Required field. 
         </div>

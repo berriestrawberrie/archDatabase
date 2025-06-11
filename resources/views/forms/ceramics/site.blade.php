@@ -5,8 +5,8 @@
   <div class="row">
     <!--ENTEREDBY-->
     <div class="col">
-        <label for="entered_by" class="form-label">Entered By</label>
-        <input type="text" class="form-control border border-success bg-success-subtle" id="entered_by"  name="entered_by" value="{{Auth::user()->name}}" required>
+        <label for="entered_by" class="form-label">Added By</label>
+        <input type="text" class="form-control border border-success bg-success-subtle" id="added_by"  name="added_by" value="{{Auth::user()->name}}" required>
         <div class="invalid-feedback">
             Please choose a username.
         </div>
@@ -114,7 +114,7 @@
                     <div class="invalid-feedback " id="end_error">
                     End Date cannot be earlier than start date.
                     </div>
-            </div><!--end OF START DATE-->
+            </div><!--end OF    end DATE-->
 
 
 

@@ -66,6 +66,7 @@ class QueryController extends Controller
 
         $datas = DB::table('ceramics_tables')
             ->where('collection_id', $request->input('collection_id'))
+            ->whereBetween('start_date', [$request->input('start_date'), $request->input('end_date')])
             //->union('$beads_datas')
             ->paginate(2, [
                 'material',

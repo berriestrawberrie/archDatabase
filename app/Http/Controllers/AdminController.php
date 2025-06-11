@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Bead;
 use App\Models\Ceramic;
 use App\Models\Collection;
 use Illuminate\Http\Request;
@@ -101,12 +102,17 @@ class AdminController extends Controller
 
     public function verifyData()
     {
-        $ceramics = Ceramic::all();
+        //REQUIRED PULL TO POPULATE CHECKOUT TABLE
+        $ceramics = Ceramic::where('isValid', 0)->get();
+        $beads = Bead::where('isValid', 0)->get();
         $unassigned_ceramics = Ceramic::where('isValid', 0)
             ->where('checkout_by', null)
             ->get();
+        $unassigned_beads = Bead::where('isValid', 0)
+            ->where('checkout_by', null)
+            ->get();
 
-        return view('admin.verifydata', compact('ceramics', 'unassigned_ceramics'));
+        return view('admin.verifydata', compact('ceramics', 'beads', 'unassigned_ceramics', 'unassigned_beads'));
     }
 
     public function checkoutData(Request $request)
@@ -114,20 +120,33 @@ class AdminController extends Controller
         //GET THE USER INPUT
         $user = Auth::user()->id;
         $ceramics = intval($request->ceramics);
+        $beads =  intval($request->beads);
 
-        $bones = intval($request->bones);
+        //$bones = intval($request->bones);
 
         //PULL THE RECORDS REQUESTED
         $assign_ceramics = Ceramic::where('isValid', 0)
             ->where('checkout_by', null)
             ->take($ceramics)->get();
-        //ASSIGN THEM TO THE USER
+        $assign_beads = Bead::where('isValid', 0)
+            ->where('checkout_by', null)
+            ->take($beads)->get();
+
+
+        //ASSIGN TO THE USER
         foreach ($assign_ceramics as $item) {
 
             Ceramic::where('id', $item->id)->update([
                 'checkout_by' => $user
             ]);
         } //END OF FOREACH
+        foreach ($assign_beads as $item) {
+
+            Bead::where('id', $item->id)->update([
+                'checkout_by' => $user
+            ]);
+        } //END OF FOREACH
+
 
         return redirect()->route('verify.data')
             ->with("success", "Successfully checked out records");
@@ -137,9 +156,11 @@ class AdminController extends Controller
     {
 
         $user = Auth::user()->id;
-        $ceramic = $request->release_ceramic;
+        $ceramic = $request->input('release_ceramic');
+        $bead = $request->input('release_bead');
 
-        if ($request->release_ceramic) {
+        //CERAMICS
+        if ($ceramic) {
             Ceramic::where('id', $ceramic)
                 ->where('checkout_by', $user)
                 ->update([
@@ -150,39 +171,67 @@ class AdminController extends Controller
                 ->with("success", "Successfully released Ceramic #:" . $ceramic);
         } //END CERAMIC IF
 
+
+        //BEADS
+        if ($bead) {
+            Bead::where('id', $bead)
+                ->where('checkout_by', $user)
+                ->update([
+                    'checkout_by' =>
+                    null
+                ]);
+            return redirect()->route('verify.data')
+                ->with("success", "Successfully released bead #:" . $bead);
+        } //END BEAD IF
+
         return redirect()->route('verify.data')
-            ->with("error", "Failed to release Ceramic #:" . $ceramic);
+            ->with("error", "Failed to release. Artifact type not found.");
     }
 
     public function reviewData($user, $artifact_type, $id)
     {
         //DEFINE THE ARTIFACT TYPE FIRST
-        if ($artifact_type == "ceramic") {
-            $artifact = Ceramic::where('id', $id)->get();
-        }
+        switch ($artifact_type) {
+            case "ceramic":
+                $artifact = Ceramic::where('id', $id)->get();
+                //VERIFY THAT THE USER REVIEWING IS THE USER THAT CHECKED IT OUT
+                if ($artifact[0]["checkout_by"] == $user) {
+                    //RETURN THE CERAMIC REIVEW FORM
+                    return view('forms.verify.verifyceramic', compact('artifact'));
+                } else {
 
+                    //CHANGE ERROR MESSAGE IF RECORD IS NOT YET CHECKED OUT
+                    if ($artifact[0]["checkout_by"]) {
+                        return redirect()->route('verify.data')
+                            ->with("error", "Record is already being reviewed by User #: " . $artifact[0]["checkout_by"]);
+                    } else {
+                        return redirect()->route('verify.data')
+                            ->with("error", "Record needs to be checked out before you can review it");
+                    }
+                } //VERIFY THAT THE USER REVIEWING IS THE USER THAT CHECKED IT OUT
+                break;
 
+            case "bead":
+                $artifact = Bead::where('id', $id)->get();
+                //VERIFY THAT THE USER REVIEWING IS THE USER THAT CHECKED IT OUT
+                if ($artifact[0]["checkout_by"] == $user) {
+                    //RETURN THE BEAD REIVEW FORM
+                    return view('forms.verify.verifybead', compact('artifact'));
+                } else {
 
-        //VERIFY THAT THE USER REVIEWING IS THE USER THAT CHECKED IT OUT
-        if ($artifact[0]["checkout_by"] == $user) {
-            //RETURN THE CERAMIC REIVEW FORM
-            if ($artifact_type == "ceramic") {
-                return view('forms.verify.verifyceramic', compact('artifact'));
-            } //END OF CERAMIC IF
-
-            //RETURN THE BONES REVIEW FORM..
-
-
-        } else {
-
-            //CHANGE ERROR MESSAGE IF RECORD IS NOT YET CHECKED OUT
-            if ($artifact[0]["checkout_by"]) {
-                return redirect()->route('verify.data')
-                    ->with("error", "Record is already being reviewed by User #: " . $artifact[0]["checkout_by"]);
-            } else {
-                return redirect()->route('verify.data')
-                    ->with("error", "Record needs to be checked out before you can review it");
-            }
+                    //CHANGE ERROR MESSAGE IF RECORD IS NOT YET CHECKED OUT
+                    if ($artifact[0]["checkout_by"]) {
+                        return redirect()->route('verify.data')
+                            ->with("error", "Record is already being reviewed by User #: " . $artifact[0]["checkout_by"]);
+                    } else {
+                        return redirect()->route('verify.data')
+                            ->with("error", "Record needs to be checked out before you can review it");
+                    }
+                } //VERIFY THAT THE USER REVIEWING IS THE USER THAT CHECKED IT OUT
+                break;
+            default:
+                return back()->with('error', "Artifact type not found in AdminController");
         }
     } //END OF REVIEW DATA
+
 }
