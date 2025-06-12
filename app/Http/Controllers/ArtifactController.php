@@ -49,6 +49,7 @@ class ArtifactController extends Controller
     //PREVIEW FORM BEFORE SUBMISSION
     public function previewForm($artifact_type, $token, $user)
     {
+
         //VERIFY THAT ONLY THE USER THAT CREATED TEH RECORD CAN ACCESS 
         if (Auth::user()->id != $user) {
             return redirect(route('entered.by', ['user' => $user]))
@@ -98,7 +99,9 @@ class ArtifactController extends Controller
             ->where('isValid', 2)->get();
         $beads = Bead::where('entered_by', $user)
             ->where('isValid', 2)->get();
+        $buckles = Buckle::where('entered_by', $user)
+            ->where('isValid', 2)->get();
 
-        return view('users.savedartifacts', compact('ceramics', 'beads'));
+        return view('users.savedartifacts', compact('ceramics', 'beads', 'buckles'));
     }
 }

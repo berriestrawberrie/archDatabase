@@ -274,7 +274,6 @@ class CeramicController extends Controller
                 'created_at' => $request->created_at,
                 'artifact_count' => $request->artifact_count,
                 'isValid' => 1,
-                'collection' => $request->collection,
                 'material' => $request->material,
                 'manufacturing_technique' => $request->manufacturing_technique,
                 'ware' => $request->ware,

@@ -1,40 +1,36 @@
 @extends('layouts.app')
-
-@section('title') Ceramic Form @endsection
+@section('title') Buckle Form @endsection
 
 
 @section('page-title')
-Verify Ceramic#{{$artifact[0]["id"]}}
+
+Buckle Artifact Entry Form :  
+
 @endsection
 
-@section('content')
-@include('forms.verify.popup')
-<p>The form is pre-populated with the existing inputs for this artifact. Please verify each field,
-  if all the fields are correct publish the artifact</p>
-<form class=" needs-validation" method="POST" action="{{url('validateCeramic/'.$artifact[0]["artifact_id"])}}" novalidate enctype="multipart/form-data">
-  @csrf
-  @method('POST')
-  <!--GENERAL INFORMATION & SITE -->
 
+
+@section('content')
+<div class="d-flex justify-content-end">
+<span style="font-size: 40px; color: green; width: 50px; height:50px; padding: 5px;"><i class="fa-solid fa-user-tie"></i></span>
+</div>
+@include('forms.verify.popup')
+<form class=" needs-validation" method="POST" action="{{url('validateBuckle/'.$artifact[0]["artifact_id"])}}" novalidate enctype="multipart/form-data">
+  @csrf
+  <!--GENERAL INFORMATION & SITE -->
   <fieldset>
     <legend>Site & General Information Artifact #: {{$artifact[0]["artifact_id"]}}</legend>
-    @include('forms.ceramics.previewsite')
+    @include('forms.buckle.previewsite')
   </fieldset>
 
   <fieldset>
     <legend>Fields I Information</legend>
-    @include('forms.ceramics.previewfieldsI')
+     @include('forms.buckle.previewfieldsI')
   </fieldset>
 
-  <fieldset>
-    <legend>Fields II Information</legend>
-    @include('forms.ceramics.previewfieldsII')
-  </fieldset>
- 
- 
 
   <fieldset class="mt-2">
-    <button class="btn btn-success" type="submit" id="btnSubmit">Publish</button>
+    <input type="submit" class="btn btn-success" value="Publish">
   </fieldset>
 
 

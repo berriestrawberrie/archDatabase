@@ -33,7 +33,7 @@ class Bead extends Model
         'complex_shape',
         'end_treatment',
         'bead_color',
-        'heat_treatment',
+        'heat_treated',
         'number_facets',
         'diaphaneity',
         'mended',

@@ -294,7 +294,7 @@
     <!--CONSERVATION-->
     <div class="col-2">
         <label for="conservation" class="form-label">Conservation</label>
-        <input type="text" class="form-control " id="conservation"  name="conservation">
+        <input type="text" class="form-control " id="conservation"  name="conservation" required>
     </div><!--END COL-->
     
 

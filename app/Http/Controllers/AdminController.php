@@ -257,6 +257,24 @@ class AdminController extends Controller
                     }
                 } //VERIFY THAT THE USER REVIEWING IS THE USER THAT CHECKED IT OUT
                 break;
+            case "buckle":
+                $artifact = Buckle::where('id', $id)->get();
+                //VERIFY THAT THE USER REVIEWING IS THE USER THAT CHECKED IT OUT
+                if ($artifact[0]["checkout_by"] == $user) {
+                    //RETURN THE BEAD REIVEW FORM
+                    return view('forms.verify.verifybuckle', compact('artifact'));
+                } else {
+
+                    //CHANGE ERROR MESSAGE IF RECORD IS NOT YET CHECKED OUT
+                    if ($artifact[0]["checkout_by"]) {
+                        return redirect()->route('verify.data')
+                            ->with("error", "Record is already being reviewed by User #: " . $artifact[0]["checkout_by"]);
+                    } else {
+                        return redirect()->route('verify.data')
+                            ->with("error", "Record needs to be checked out before you can review it");
+                    }
+                } //VERIFY THAT THE USER REVIEWING IS THE USER THAT CHECKED IT OUT
+                break;
             default:
                 return back()->with('error', "Artifact type not found in AdminController");
         }

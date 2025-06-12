@@ -5,18 +5,18 @@
 
 @section('page-title')
 
-Bead Artifact Entry Form
+Bead Artifact Entry Form : {{$artifact[0]["artifact_id"]}}
 
 @endsection
 
 @section('content')
 @include('forms.verify.popup')
-<form class=" needs-validation" method="POST" action="#" novalidate enctype="multipart/form-data">
+<form class=" needs-validation" method="POST" action="{{url('validateBead/'.$artifact[0]["artifact_id"])}}" novalidate enctype="multipart/form-data">
   @csrf
   @method('POST')
   <!--GENERAL INFORMATION & SITE -->
   <fieldset>
-    <legend>Site & General Information</legend>
+    <legend>Site & General Information Artifact #: {{$artifact[0]["artifact_id"]}}</legend>
       @include('forms.bead.verifysite')
   </fieldset>
 
@@ -31,7 +31,7 @@ Bead Artifact Entry Form
   </fieldset>
 
   <fieldset class="mt-2">
-    <input type="submit" class="btn btn-primary">
+    <input type="submit" class="btn btn-success" value="Publish">
   </fieldset>
 
 

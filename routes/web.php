@@ -46,7 +46,7 @@ Route::middleware("auth")->group(function () {
     //LOGGEDIN CERAMIC ROUTES
     Route::post('/saveCeramic', [CeramicController::class, 'saveCeramic'])->name('save.ceramic');
     Route::post('/submitCeramic/{token}', [CeramicController::class, 'submitCeramic']);
-    Route::post('/submitBone', [BoneController::class, 'submitBone'])->name('submit.bone');
+
 
     //LOGGEDIN BEAD ROUTES
     Route::post('/saveBead', [BeadController::class, 'saveBead'])->name('save.bead');
@@ -71,8 +71,14 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     Route::post('/verifyData', [AdminController::class, 'checkoutData'])->name('checkout.data');
     Route::post('/releaseData', [AdminController::class, 'releaseData'])->name('release.data');
     Route::get('/reviewData/{user}/{artifact_type}/{id}', [AdminController::class, 'reviewData']);
-    Route::post('/validateData/{id}', [CeramicController::class, 'validateCeramic']);
     Route::get('/previewData/{artifact_type}/{token}/{user}', [ArtifactController::class, 'previewForm'])->name('form.preview');
+
+    //ADMIN CERAMIC ROUTES
+    Route::post('/validateCeramic/{id}', [CeramicController::class, 'validateCeramic']);
+    //ADMIN BEAD ROUTES
+    Route::post('/validateBead/{id}', [BeadController::class, 'validateBead']);
+    //ADMIN BUCKLE ROUTES
+    Route::post('/validateBuckle/{id}', [BuckleController::class, 'validateBuckle']);
 });
 
 
