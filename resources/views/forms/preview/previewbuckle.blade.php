@@ -1,34 +1,30 @@
 @extends('layouts.app')
-
-@section('title') Bead Form @endsection
+@section('title') Buckle Form @endsection
 
 
 @section('page-title')
 
-Bead Artifact Entry Form
+Buckle Artifact Entry Form
 
 @endsection
 
+
+
 @section('content')
-@include('forms.verify.popup')
-<form class=" needs-validation" method="POST" action="#" novalidate enctype="multipart/form-data">
+@include('forms.preview.popup')
+<form class=" needs-validation" method="POST" action="{{url('submitBuckle/'.$artifact[0]["token"])}}" novalidate enctype="multipart/form-data">
   @csrf
-  @method('POST')
   <!--GENERAL INFORMATION & SITE -->
   <fieldset>
     <legend>Site & General Information</legend>
-      @include('forms.bead.verifysite')
+    @include('forms.buckle.previewsite')
   </fieldset>
 
   <fieldset>
     <legend>Fields I Information</legend>
-          @include('forms.bead.verifyfieldsI')
+     @include('forms.buckle.previewfieldsI')
   </fieldset>
 
-  <fieldset>
-    <legend>Fields II Information</legend>
-          @include('forms.bead.verifyfieldsII')
-  </fieldset>
 
   <fieldset class="mt-2">
     <input type="submit" class="btn btn-primary">

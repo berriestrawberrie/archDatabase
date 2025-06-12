@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Bead;
 use App\Models\BonesI;
 use App\Models\BonesII;
+use App\Models\Buckle;
 use App\Models\Ceramic;
 use App\Models\Collection;
 use Illuminate\Http\Request;
@@ -51,7 +52,7 @@ class ArtifactController extends Controller
         //VERIFY THAT ONLY THE USER THAT CREATED TEH RECORD CAN ACCESS 
         if (Auth::user()->id != $user) {
             return redirect(route('entered.by', ['user' => $user]))
-                ->with("error", "You have not entered this artifact you cannot complete the review");
+                ->with("error", "You have not entered this artifact you cannot submit for validation.");
         } else {
             //GET THE NEWLY CREATED ARTIFACT BY THE TOKEN and artifact form
             switch ($artifact_type) {
@@ -75,6 +76,15 @@ class ArtifactController extends Controller
                     //RETURN THE PREVIEW FORM FILLED OUT
                     return view('forms.preview.previewbead', compact('artifact'));
                     break;
+                case "buckle":
+                    $artifact = Buckle::where('token', $token)->get();
+                    //VERIFY THAT THE STATUS IS RECENTLY SUBMITTED IF NOT RETURN ERROR
+                    if ($artifact[0]["isValid"] != 2) {
+                        return redirect(route('entered.by', ['user' => $user]))
+                            ->with("error", "Artifact already submitted");
+                    }
+                    //RETURN THE PREVIEW FORM FILLED OUT
+                    return view('forms.preview.previewbuckle', compact('artifact'));
                 default:
                     return back()->with("error", "Invalid form type");
             }

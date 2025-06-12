@@ -5,6 +5,7 @@ use App\Http\Controllers\ArtifactController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BeadController;
 use App\Http\Controllers\BoneController;
+use App\Http\Controllers\BuckleController;
 use App\Http\Controllers\CeramicController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\QueryController;
@@ -42,8 +43,6 @@ Route::middleware("auth")->group(function () {
     Route::get('/selectType', [ArtifactController::class, 'typeSelect'])->name('typeselect');
     Route::get('/getForm/{collection}/{art_type}', [ArtifactController::class, 'getForm']);
 
-
-
     //LOGGEDIN CERAMIC ROUTES
     Route::post('/saveCeramic', [CeramicController::class, 'saveCeramic'])->name('save.ceramic');
     Route::post('/submitCeramic/{token}', [CeramicController::class, 'submitCeramic']);
@@ -52,6 +51,10 @@ Route::middleware("auth")->group(function () {
     //LOGGEDIN BEAD ROUTES
     Route::post('/saveBead', [BeadController::class, 'saveBead'])->name('save.bead');
     Route::post('/submitBead/{token}', [BeadController::class, 'submitBead']);
+
+    //LOGGEDIN BUCKLE ROUTES
+    Route::post('/saveBuckle', [BuckleController::class, 'saveBuckle'])->name('save.buckle');
+    Route::post('/submitBuckle/{token}', [BuckleController::class, 'submitBuckle']);
 });
 
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Bead;
+use App\Models\Buckle;
 use App\Models\Ceramic;
 use App\Models\Collection;
 use Illuminate\Http\Request;
@@ -105,14 +106,18 @@ class AdminController extends Controller
         //REQUIRED PULL TO POPULATE CHECKOUT TABLE
         $ceramics = Ceramic::where('isValid', 0)->get();
         $beads = Bead::where('isValid', 0)->get();
+        $buckles = Buckle::where('isValid', 0)->get();
         $unassigned_ceramics = Ceramic::where('isValid', 0)
             ->where('checkout_by', null)
             ->get();
         $unassigned_beads = Bead::where('isValid', 0)
             ->where('checkout_by', null)
             ->get();
+        $unassigned_buckles = Buckle::where('isValid', 0)
+            ->where('checkout_by', null)
+            ->get();
 
-        return view('admin.verifydata', compact('ceramics', 'beads', 'unassigned_ceramics', 'unassigned_beads'));
+        return view('admin.verifydata', compact('ceramics', 'beads', 'buckles', 'unassigned_ceramics', 'unassigned_buckles', 'unassigned_beads'));
     }
 
     public function checkoutData(Request $request)
@@ -121,6 +126,7 @@ class AdminController extends Controller
         $user = Auth::user()->id;
         $ceramics = intval($request->ceramics);
         $beads =  intval($request->beads);
+        $buckles =  intval($request->buckles);
 
         //$bones = intval($request->bones);
 
@@ -131,6 +137,9 @@ class AdminController extends Controller
         $assign_beads = Bead::where('isValid', 0)
             ->where('checkout_by', null)
             ->take($beads)->get();
+        $assign_buckles = Buckle::where('isValid', 0)
+            ->where('checkout_by', null)
+            ->take($buckles)->get();
 
 
         //ASSIGN TO THE USER
@@ -146,6 +155,12 @@ class AdminController extends Controller
                 'checkout_by' => $user
             ]);
         } //END OF FOREACH
+        foreach ($assign_buckles as $item) {
+
+            Buckle::where('id', $item->id)->update([
+                'checkout_by' => $user
+            ]);
+        } //END OF FOREACH
 
 
         return redirect()->route('verify.data')
@@ -158,6 +173,7 @@ class AdminController extends Controller
         $user = Auth::user()->id;
         $ceramic = $request->input('release_ceramic');
         $bead = $request->input('release_bead');
+        $buckle = $request->input('release_buckle');
 
         //CERAMICS
         if ($ceramic) {
@@ -183,6 +199,18 @@ class AdminController extends Controller
             return redirect()->route('verify.data')
                 ->with("success", "Successfully released bead #:" . $bead);
         } //END BEAD IF
+
+        //BUCKLES
+        if ($buckle) {
+            Buckle::where('id', $buckle)
+                ->where('checkout_by', $user)
+                ->update([
+                    'checkout_by' =>
+                    null
+                ]);
+            return redirect()->route('verify.data')
+                ->with("success", "Successfully released buckle #:" . $buckle);
+        } //END BUCKLE IF
 
         return redirect()->route('verify.data')
             ->with("error", "Failed to release. Artifact type not found.");

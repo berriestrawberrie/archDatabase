@@ -3,7 +3,7 @@
     <!--ENTEREDBY-->
     <div class="col">
         <label for="added_by" class="form-label">Added By</label>
-        <input type="text" class="form-control border border-success bg-success-subtle" id="added_by"  name="added_by" value="{{Auth::user()->name}}" required>
+        <input type="text" class="form-control border border-danger bg-danger-subtle" id="added_by"  name="added_by" value="{{$artifact[0]["Added By"]}}" disabled required>
         <div class="invalid-feedback">
             Required field.
         </div>
@@ -12,7 +12,7 @@
     <!--DATE ENTERED-->
     <div class="col-3">
       <label for="created_at" class="form-label">Entered Date</label>
-      <input type="date" class="form-control border border-success bg-success-subtle" id="created_at"  name="created_at" value="{{date('Y-m-d')}}" required>
+      <input type="date" class="form-control border border-danger bg-danger-subtle" id="created_at"  name="created_at" value="{{ date('Y-m-d', strtotime($artifact[0]["created_at"])) }}" disabled required>
       <div class="invalid-feedback">
            Required field.
       </div>
@@ -22,7 +22,7 @@
     <div class="col-3">
         <label for="completeness" class="form-label">Completeness</label>
         <select class="form-select" id="completeness"  name="completeness" required>
-            <option disabled selected value> -- select an option -- </option>
+            <option value="{{$artifact[0]["completeness"]}}">{{$artifact[0]["completeness"]}} </option>
             <option >Complete</option>
             <option >Incomplete</option>
             <option >Not Recorded</option>
@@ -35,7 +35,7 @@
     <!--ARTIFACT COUNT-->
     <div class="col-2">
         <label for="artifact_count" class="form-label">Artifact Count</label>
-        <input type="number" class="form-control " id="artifact_count"  name="artifact_count" min="1" max="99" required>
+        <input type="number" class="form-control " id="artifact_count"  name="artifact_count" min="1" max="99" value="{{$artifact[0]["artifact_count"]}}" required>
         <div class="invalid-feedback">
              Required field. and less than 99.
         </div>
@@ -49,17 +49,16 @@
     <!--COLLECTION-->
     <div class="col">
         <label for="collection" class="form-label">Collection</label>
-        <input type="text" class="form-control border border-success bg-success-subtle" id="collection"  name="collection" value="{{$collections[0]["collection"]}}" required>
+        <input type="text" class="form-control border border-danger bg-danger-subtle" id="collection"  name="collection" value="{{$artifact[0]["collection"]}}" disabled required>
         <div class="invalid-feedback">
-            Title: {{$collections[0]["collection"]}}
+            Title:  {{$artifact[0]["collection"]}}
         </div>
-         <input type="number" class="d-none" value="{{$collections[0]["collection_id"]}}" name="collection_id">
     </div><!--END COL-->
     <!--START DATE-->
             <div class="col-3">
                 <label for="start_date" class="form-label" >Start Date</label>
                 <select class="form-select" name="start_date" id="start_date" onchange="checkRange()" required>
-                    <option value="0">--</option>
+                    <option value="{{$artifact[0]["start_date"]}}">{{$artifact[0]["start_date"]}}</option>
                     <option >1500</option>
                     <option>1600</option>
                     <option>1700</option>
@@ -71,7 +70,7 @@
             <div class="col-2">
                 <label for="end_date" class="form-label" >End Date</label>
                 <select class="form-select" name="end_date" id="end_date" onchange="checkRange()" required>
-                    <option value="0">--</option>
+                    <option value="{{$artifact[0]["end_date"]}}">{{$artifact[0]["end_date"]}}</option>
                     <option>1500</option>
                     <option>1600</option>
                     <option>1700</option>
@@ -94,7 +93,7 @@
                 <i class="fa-solid fa-circle-question"></i>
           </button>
         </label>
-        <textarea class="form-control " id="notes"  name="notes" placeholder="(Optional)" rows="3"></textarea>
+        <textarea class="form-control " id="notes"  name="notes" value="{{$artifact[0]["notes"]}}" rows="3"></textarea>
     </div><!--END COL-->
 </div>
 <!--END ROW-->

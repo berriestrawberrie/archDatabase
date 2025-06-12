@@ -45,6 +45,6 @@ Review Ceramic
   const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl)) 
 </script>
 <script src="{{asset('storage/js/verifynextform.js')}}"></script>
-
+<script src="{{asset('storage/js/query_collection.js')}}"></script>
 
 @endsection

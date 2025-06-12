@@ -163,6 +163,6 @@ class BeadController extends Controller
             ]);
 
         return redirect(route('home'))
-            ->with("success", "Successfully added bead artifact");
+            ->with("success", "Successfully submitted bead artifact for validation");
     } //END OF SUBMIT BEAD
 }

@@ -30,7 +30,7 @@ Data Verification Queue
                     <td class="text-danger">{{count($unassigned_ceramics)}}</td>
                     <td class="text-danger">..</td>
                     <td class="text-danger">{{count($unassigned_beads)}}</td>
-                    <td class="text-danger">..</td>                    
+                    <td class="text-danger">{{count($unassigned_buckles)}}</td>         
                     <td class="text-danger">..</td>    
                   </tr>
             

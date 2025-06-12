@@ -45,3 +45,27 @@
         </tr>
     @endif
 @endforeach
+
+@foreach($buckles as $buckle)
+    @if($buckle->checkout_by == Auth::user()->id && $buckle->isValid == 0)
+        <tr>
+            <td>{{$buckle->artifact_id}}</td>
+            <td>buckle</td>
+            <td >
+                @if($buckle->isValid == 0)
+                Unverified
+                @else
+                Verified
+                @endif
+            </td>
+            <td>{{$buckle->collection}}</td>
+            <td>{{$buckle->material}}</td>
+            <td><a href="/reviewData/{{Auth::user()->id}}/buckle/{{$buckle->id}}"><button class="btn btn-success">Review</button></a></td>
+            <td>
+                <form method="POST" action="{{route('release.data')}}">@csrf<input type="number" class="d-none" value="{{$buckle->id}}" name="release_buckle">
+                </select><button class="btn btn-danger" type="submit">Release</button></form>
+            </td>
+    
+        </tr>
+    @endif
+@endforeach

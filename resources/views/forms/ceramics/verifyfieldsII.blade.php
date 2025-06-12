@@ -6,7 +6,7 @@
         <!--PATTERN NAME-->
         <div >
             <label for="pattern_name" class="form-label">Pattern Name</label>
-            <select class="form-control border-primary" id="pattern_name"  name="pattern_name" required>
+            <select class="form-control   " id="pattern_name"  name="pattern_name" required>
                 <option   value="{{$artifact[0]["pattern_name"]}}">{{$artifact[0]["pattern_name"]}}</option>
                 <option  value="goat">goat</option>
                 <option  value="altar of love (valentine)">altar of love (valentine)</option>
@@ -51,7 +51,7 @@
          <!--PATTERN REFERENCE-->
         <div >
             <label for="pattern_reference" class="form-label">Pattern Reference</label>
-            <input type="text" value="{{$artifact[0]["pattern_reference"]}}"class="form-control border-primary" id="pattern_reference"  name="pattern_reference">
+            <input type="text" value="{{$artifact[0]["pattern_reference"]}}"class="form-control   " id="pattern_reference"  name="pattern_reference">
                 <div class="valid-feedback">
                     Optional field
                 </div>
@@ -62,7 +62,7 @@
     <!--PATTERN NOTES-->
     <div class="col">
         <label for="pattern_notes" class="form-label">Pattern Notes</label>
-        <textarea class="form-control border-primary" id="pattern_notes"  name="pattern_notes" rows="4" value="{{$artifact[0]["pattern_notes"]}}"></textarea>
+        <textarea class="form-control   " id="pattern_notes"  name="pattern_notes" rows="4" value="{{$artifact[0]["pattern_notes"]}}"></textarea>
     </div><!--END COL-->
 
 </div><!--END OF ROW-->
@@ -72,7 +72,7 @@
     <!--BASE MARK-->
     <div class="col">
         <label for="base_mark" class="form-label">Base Mark</label>
-        <select class="form-control border-primary" id="base_mark"  name="base_mark" required>
+        <select class="form-control   " id="base_mark"  name="base_mark" required>
             <option     value="{{$artifact[0]["base_mark"]}} ">{{$artifact[0]["base_mark"]}} </option>
             <option  value="impressed">impressed</option>
             <option  value="incised">incised</option>
@@ -90,7 +90,7 @@
     <!--BASE MARK REF-->
     <div class="col">
         <label for="base_mark_ref" class="form-label">Base Mark Ref.</label>
-        <input type="text" class="form-control border-primary" id="base_mark_ref"  name="base_mark_ref" value="{{$artifact[0]["base_mark_ref"]}}">
+        <input type="text" class="form-control   " id="base_mark_ref"  name="base_mark_ref" value="{{$artifact[0]["base_mark_ref"]}}">
         <div class="valid-feedback">
             optional field
         </div>
@@ -99,7 +99,7 @@
     <!--BASE MARK COLOR-->
     <div class="col">
         <label for="base_mark_color" class="form-label">Base Mark Color</label>
-        <input type="text" value="{{$artifact[0]["base_mark_color"]}}" class="form-control border-primary" id="base_mark_color"  name="base_mark_color" required>
+        <input type="text" value="{{$artifact[0]["base_mark_color"]}}" class="form-control   " id="base_mark_color"  name="base_mark_color" required>
         <div class="invalid-feedback">
             Must enter a base mark color. 
         </div>
@@ -113,7 +113,7 @@
     <!--COLONOWARE-->
     <div class="col">
         <label for="colonoware" class="form-label">Colonoware</label>
-        <select class="form-control border-primary" id="colonoware"  name="colonoware" required>
+        <select class="form-control   " id="colonoware"  name="colonoware" required>
             <option     value ="{{$artifact[0]["colonoware"]}}">{{$artifact[0]["colonoware"]}}</option>
             <option  value="base">base</option>
             <option  value="body">body</option>
@@ -138,7 +138,7 @@
     <!--COLONO RIM FORM-->
     <div class="col">
         <label for="colono_rim_form" class="form-label">Colono Rim Form</label>
-        <select class="form-control border-primary" id="colono_rim_form"  name="colono_rim_form" required>
+        <select class="form-control   " id="colono_rim_form"  name="colono_rim_form" required>
             <option     value="{{$artifact[0]["colono_rim_form"]}}">  {{$artifact[0]["colono_rim_form"]}} </option>
             <option  value="everted">everted</option>
             <option  value="inverted">inverted</option>
@@ -155,7 +155,7 @@
     <!--COLONO RIM ANGLE-->
     <div class="col-2">
         <label for="colono_rim_angle" class="form-label">Rim Angle</label>
-        <select class="form-control border-primary" id="colono_rim_angle"  name="colono_rim_angle" required>
+        <select class="form-control   " id="colono_rim_angle"  name="colono_rim_angle" required>
             <option     value="{{$artifact[0]["colono_rim_angle"]}}">  {{$artifact[0]["colono_rim_angle"]}} </option>
             <option  value="0">0</option>
             <option  value="15">15</option>
@@ -190,7 +190,7 @@
         <label for="max_rim_width" class="form-label">Max Width  
             <button type="button" class="btn btn-secondary btn-xsm" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Decimal up to (2) places">
             <i class="fa-solid fa-question"></i></button></label>
-        <input type="number" step=".01" value="{{$artifact[0]["max_rim_width"]}}"class="form-control border-primary" id="max_rim_width"  name="max_rim_width" min="0" required>
+        <input type="number" step=".01" value="{{$artifact[0]["max_rim_width"]}}"class="form-control   " id="max_rim_width"  name="max_rim_width" min="0" required>
         <div class="invalid-feedback">
             Must enter max rim width. 
         </div>
@@ -204,7 +204,7 @@
     <!--COLONO DECORATION MODE-->
     <div class="col">
         <label for="colono_decoration_mode" class="form-label">Colono Decoration Mode</label>
-        <select class="form-control border-primary" id="colono_decoration_mode"  name="colono_decoration_mode" required>
+        <select class="form-control   " id="colono_decoration_mode"  name="colono_decoration_mode" required>
             <option     value="{{$artifact[0]["colono_decoration_mode"]}}">  {{$artifact[0]["colono_decoration_mode"]}} </option>
             <option  value="brushed">brushed</option>
             <option  value="burnished">burnished</option>
@@ -243,7 +243,7 @@
     <!--COLONO BASE FORM-->
     <div class="col">
         <label for="colono_base_form" class="form-label">Colono Base Form</label>
-        <select class="form-control border-primary" id="colono_base_form"  name="colono_base_form" required>
+        <select class="form-control   " id="colono_base_form"  name="colono_base_form" required>
             <option     value="{{$artifact[0]["colono_base_form"]}}">  {{$artifact[0]["colono_base_form"]}} </option>
             <option  value="flat">flat</option>
             <option  value="footring">footring</option>
@@ -260,7 +260,7 @@
     <!--COLONO FOOTRING FORM-->
     <div class="col">
         <label for="colono_footring_form" class="form-label">Colono Footring Form</label>
-        <select class="form-control border-primary" id="colono_footring_form"  name="colono_footring_form" required>
+        <select class="form-control   " id="colono_footring_form"  name="colono_footring_form" required>
             <option     value="{{$artifact[0]["colono_footring_form"]}}">  {{$artifact[0]["colono_footring_form"]}} </option>
             <option  value="footring">footring</option>
             <option  value="no footring">no footring</option>
@@ -282,7 +282,7 @@
         <!--NON PLAST PASTE INCLUSION-->
         <div>
             <label for="non_plastic_paste_inclusions" class="form-label">Non-Plastic Paste Incl.</label>
-            <select class="form-control border-primary" id="non_plastic_paste_inclusions"  name="non_plastic_paste_inclusions" required>
+            <select class="form-control   " id="non_plastic_paste_inclusions"  name="non_plastic_paste_inclusions" required>
                 <option     value="{{$artifact[0]["non_plastic_paste_inclusions"]}} ">  {{$artifact[0]["non_plastic_paste_inclusions"]}} </option>
                 <option  value="back crypto-crystalline">back crypto-crystalline</option>
                 <option  value="grog">grog</option>
@@ -299,7 +299,7 @@
         <!--TOTAL PASTE INCLUSION-->
         <div>
             <label for="total_paste_inclusion_density" class="form-label">Total Paste Inclu. Density</label>
-            <select class="form-control border-primary" id="total_paste_inclusion_density"  name="total_paste_inclusion_density" required>
+            <select class="form-control   " id="total_paste_inclusion_density"  name="total_paste_inclusion_density" required>
                 <option     value="{{$artifact[0]["total_paste_inclusion_density"]}}">  {{$artifact[0]["total_paste_inclusion_density"]}} </option>
                 <option  value="greater than 7.5 less than 15">greater than 7.5 less than 15</option>
                 <option  value="greater than or equal to 15">greater than or equal to 15</option>
@@ -320,7 +320,7 @@
         <!--WEAR LOCATION-->
         <div>
                 <label for="wear_location" class="form-label">Wear Location</label>
-                <select class="form-control border-primary" id="wear_location"  name="wear_location" required>
+                <select class="form-control   " id="wear_location"  name="wear_location" required>
                     <option     value="{{$artifact[0]["wear_location"]}}">  {{$artifact[0]["wear_location"]}} </option>
                     <option  value="exterior">exterior</option>
                     <option  value="interior">interior</option>
@@ -336,7 +336,7 @@
         <!--WEAR PATTERN -->
         <div >
             <label for="wear_pattern" class="form-label">Wear Pattern</label>
-            <select class="form-control border-primary" id="wear_pattern"  name="wear_pattern" required>
+            <select class="form-control   " id="wear_pattern"  name="wear_pattern" required>
                 <option     value="{{$artifact[0]["wear_pattern"]}}">  {{$artifact[0]["wear_pattern"]}} </option>
                 <option  value="base abrasion">base abrasion</option>
                 <option  value="fire-clouding">fire-clouding</option>
@@ -363,7 +363,7 @@
         <!--SHERD THICKNESS-->
         <div class="col">
             <label for="sherd_thickness" class="form-label">Sherd Thickness</label>
-            <input type="number" value="{{$artifact[0]["sherd_thickness"]}}"class="form-control border-primary" id="sherd_thickness"  step="0.01" name="sherd_thickness" min="0" required>
+            <input type="number" value="{{$artifact[0]["sherd_thickness"]}}"class="form-control   " id="sherd_thickness"  step="0.01" name="sherd_thickness" min="0" required>
             <div class="invalid-feedback">
                 Must enter sherd thickness
             </div>
@@ -372,7 +372,7 @@
         <!--MAX SHERD MEASURE-->
         <div class="col">
             <label for="max_sherd_measurement" class="form-label">Max Sherd Measurement</label>
-            <input type="number"   step="0.01" value="{{$artifact[0]["max_sherd_measurement"]}}"class="form-control border-primary" id="max_sherd_measurement"  name="max_sherd_measurement" min="0" required>
+            <input type="number"   step="0.01" value="{{$artifact[0]["max_sherd_measurement"]}}"class="form-control   " id="max_sherd_measurement"  name="max_sherd_measurement" min="0" required>
             <div class="invalid-feedback">
                 Must enter max sherd measurement. 
             </div>
@@ -381,7 +381,7 @@
         <!--SHERD WEIGHT-->
         <div class="col">
             <label for="sherd_weight" class="form-label">Sherd Weight</label>
-            <input type="number"  step="0.01" value="{{$artifact[0]["sherd_weight"]}}" class="form-control border-primary" id="sherd_weight"  name="sherd_weight" min="0" required>
+            <input type="number"  step="0.01" value="{{$artifact[0]["sherd_weight"]}}" class="form-control   " id="sherd_weight"  name="sherd_weight" min="0" required>
             <div class="invalid-feedback">
                 Must enter sherd weight
             </div>
@@ -390,7 +390,7 @@
         <!--MENDED SHERD WEIGHT-->
         <div class="col">
             <label for="mended_sherd_weight" class="form-label">Mended Sherd Weight</label>
-            <input type="number"  step="0.01" value="{{$artifact[0]["mended_sherd_weight"]}}"class="form-control border-primary" id="mended_sherd_weight"  name="mended_sherd_weight" min="0" required>
+            <input type="number"  step="0.01" value="{{$artifact[0]["mended_sherd_weight"]}}"class="form-control   " id="mended_sherd_weight"  name="mended_sherd_weight" min="0" required>
             <div class="invalid-feedback">
                 Must enter sherd thickness
             </div>
@@ -402,7 +402,7 @@
         <!--RIM LENGTH-->
         <div class="col">
             <label for="rim_length" class="form-label">Rim Length</label>
-            <input type="number"  step="0.01" value="{{$artifact[0]["rim_length"]}}" class="form-control border-primary" id="rim_length"  name="rim_length" min="0" required>
+            <input type="number"  step="0.01" value="{{$artifact[0]["rim_length"]}}" class="form-control   " id="rim_length"  name="rim_length" min="0" required>
             <div class="invalid-feedback">
                 Must enter rim length
             </div>
@@ -411,7 +411,7 @@
         <!--RIM DIAMETER-->
         <div class="col">
             <label for="rim_diameter" class="form-label">Rim Diameter</label>
-            <input type="number"  step="0.01" value="{{$artifact[0]["rim_diameter"]}}" class="form-control border-primary" id="rim_diameter"  name="rim_diameter" min="0" required>
+            <input type="number"  step="0.01" value="{{$artifact[0]["rim_diameter"]}}" class="form-control   " id="rim_diameter"  name="rim_diameter" min="0" required>
             <div class="invalid-feedback">
                 Must enter rim diameter. 
             </div>
@@ -420,7 +420,7 @@
         <!--MENDED RIM DIAMETER-->
         <div class="col">
             <label for="mended_rim_diameter" class="form-label">Mended Rim Diameter</label>
-            <input type="number"  step="0.01" value="{{$artifact[0]["mended_rim_diameter"]}}"class="form-control border-primary" id="mended_rim_diameter"  name="mended_rim_diameter" min="0" required>
+            <input type="number"  step="0.01" value="{{$artifact[0]["mended_rim_diameter"]}}"class="form-control   " id="mended_rim_diameter"  name="mended_rim_diameter" min="0" required>
             <div class="invalid-feedback">
                 Must enter mended rim diameter
             </div>
@@ -431,7 +431,7 @@
         <!--BASE LENGTH-->
         <div class="col">
             <label for="base_length" class="form-label">Base Length</label>
-            <input type="number"  step="0.01" value="{{$artifact[0]["base_length"]}}" class="form-control border-primary" id="base_length"  name="base_length" min="0" required>
+            <input type="number"  step="0.01" value="{{$artifact[0]["base_length"]}}" class="form-control   " id="base_length"  name="base_length" min="0" required>
             <div class="invalid-feedback">
                 Must enter base length
             </div>
@@ -440,7 +440,7 @@
         <!--BASE DIAMETER-->
         <div class="col">
             <label for="base_diameter" class="form-label">Base Diameter</label>
-            <input type="number"  step="0.01" value="{{$artifact[0]["base_diameter"]}}" class="form-control border-primary" id="base_diameter"  name="base_diameter" min="0" required>
+            <input type="number"  step="0.01" value="{{$artifact[0]["base_diameter"]}}" class="form-control   " id="base_diameter"  name="base_diameter" min="0" required>
             <div class="invalid-feedback">
                 Must enter base diameter. 
             </div>
@@ -449,7 +449,7 @@
         <!--MENDED BASE DIAMETER-->
         <div class="col">
             <label for="mended_base_diameter" class="form-label">Mended Base Diameter</label>
-            <input type="number"  step="0.01" value="{{$artifact[0]["mended_base_diameter"]}}"class="form-control border-primary" id="mended_base_diameter"  name="mended_base_diameter" min="0" required>
+            <input type="number"  step="0.01" value="{{$artifact[0]["mended_base_diameter"]}}"class="form-control   " id="mended_base_diameter"  name="mended_base_diameter" min="0" required>
             <div class="invalid-feedback">
                 Must enter mended base diameter. 
             </div>

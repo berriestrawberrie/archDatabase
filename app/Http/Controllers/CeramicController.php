@@ -207,7 +207,7 @@ class CeramicController extends Controller
             ]);
 
         return redirect(route('home'))
-            ->with("success", "Successfully added ceramic artifact");
+            ->with("success", "Successfully submitted ceramic artifact for validation");
     } //END OF SUBMIT FUNCTION
 
 

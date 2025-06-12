@@ -11,7 +11,7 @@ Buckle Artifact Entry Form
 
 
 @section('content')
-<form class=" needs-validation" method="POST" action="#" novalidate enctype="multipart/form-data">
+<form class=" needs-validation" method="POST" action="{{route('save.buckle')}}" novalidate enctype="multipart/form-data">
   @csrf
   <!--GENERAL INFORMATION & SITE -->
   <fieldset>
@@ -39,6 +39,6 @@ Buckle Artifact Entry Form
   const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl)) 
 </script>
 <script src="{{asset('storage/js/nextform.js')}}"></script>
-
+<script src="{{asset('storage/js/query_collection.js')}}"></script>
 
 @endsection

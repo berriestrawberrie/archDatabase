@@ -8,6 +8,7 @@ Verify Ceramic#{{$artifact[0]["id"]}}
 @endsection
 
 @section('content')
+@include('forms.verify.popup')
 <p>The form is pre-populated with the existing inputs for this artifact. Please verify each field,
   if all the fields are correct publish the artifact</p>
 <form class=" needs-validation" method="POST" action="{{url('validateData/'.$artifact[0]["artifact_id"])}}" novalidate enctype="multipart/form-data">

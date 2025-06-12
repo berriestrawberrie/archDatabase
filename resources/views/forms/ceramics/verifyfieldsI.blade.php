@@ -5,7 +5,7 @@
         <!--MANUFACTURING-->
         <div class="col">
             <label for="manufacturing_technique" class="form-label">Manufacturing Tech.</label>
-            <select class="form-control border-primary" id="manufacturing_technique" name="manufacturing_technique" required>
+            <select class="form-control  " id="manufacturing_technique" name="manufacturing_technique" required>
                 <option   value="{{$artifact[0]["manufacturing_technique"]}}">{{$artifact[0]["manufacturing_technique"]}}</option>
                 <option value="handbuild coil">handbuild coil</option>
                 <option value="handbuild unidentifiable">handbuild unidentifiable</option>
@@ -24,7 +24,7 @@
         <!--MATERIAL-->
         <div class="col">
             <label for="material" class="form-label">Material</label>
-            <select class="form-control border-primary" id="material" name="material" required>
+            <select class="form-control  " id="material" name="material" required>
                 <option   value="{{$artifact[0]["material"]}}"> {{$artifact[0]["material"]}}</option>
                 <option value="coarse earthenware">Coarse Earthenware</option>
                 <option value="porcelain">Porcelain</option>
@@ -41,7 +41,7 @@
         <!--WARE-->
         <div class="col">
             <label for="ware" class="form-label">Ware</label>
-            <select class="form-select border-primary" id="ware" name="ware" required>
+            <select class="form-select  " id="ware" name="ware" required>
                 <option   value="{{$artifact[0]["ware"]}}"> {{$artifact[0]["ware"]}} </option>
                 <option value="afro-caribbean ware">afro-caribbean ware</option>
                 <option value="agate refined">agate refined</option>
@@ -116,7 +116,7 @@
         <!--FORM-->
         <div class="col">
             <label for="form" class="form-label">Ceramic Form</label>
-            <select class="form-control border-primary" id="form" name="form" required>
+            <select class="form-control  " id="form" name="form" required>
                 <option   value="{{$artifact[0]["form"]}}">{{$artifact[0]["form"]}}</option>
                 <option value="basket">basket</option>
                 <option value="berry dish">berry dish</option>
@@ -231,7 +231,7 @@
     <!--OXIDIEZED VS REDUCED-->
     <div class="col">
         <label for="oxidized_vs_reduced_fabric" class="form-label">Oxidized vs. Reduced Fabric</label>
-        <select class="form-control border-primary" id="oxidized_vs_reduced_fabric" name="oxidized_vs_reduced_fabric" required>
+        <select class="form-control  " id="oxidized_vs_reduced_fabric" name="oxidized_vs_reduced_fabric" required>
             <option   value="{{$artifact[0]["oxidized_vs_reduced_fabric"]}}"> {{$artifact[0]["oxidized_vs_reduced_fabric"]}} </option>
             <option value="not recorded">not recorded</option>
             <option value="not reduced">not reduced</option>
@@ -246,7 +246,7 @@
     <!--EVIDENCE OF BURNING-->
     <div class="col">
         <label for="evidence_of_burning" class="form-label">Evidence of Burning</label>
-        <select class="form-control border-primary" id="evidence_of_burning" name="evidence_of_burning" required>
+        <select class="form-control  " id="evidence_of_burning" name="evidence_of_burning" required>
             <option   value="{{$artifact[0]["evidence_of_burning"]}}"> {{$artifact[0]["evidence_of_burning"]}} </option>
             <option value="both interior and exterior">both interior and exterior</option>
             <option value="exterior burned">exterior burned</option>
@@ -265,7 +265,7 @@
     <!--VESSEL CATEGORY-->
     <div class="col-2">
         <label for="vessel_category" class="form-label">Vessel Category</label>
-        <select class="form-control border-primary" id="vessel_category" name="vessel_category" required>
+        <select class="form-control  " id="vessel_category" name="vessel_category" required>
             <option   value="{{$artifact[0]["vessel_category"]}}"> {{$artifact[0]["vessel_category"]}} </option>
             <option value="vessel_category">vessel_category</option>
             <option value="hollow">hollow</option>
@@ -286,7 +286,7 @@
     <!--POST MANUFACTURING MOD-->
     <div class="col">
         <label for="post_manufacturing_mod" class="form-label">Post Manufact. Mod</label>
-        <select class="form-control border-primary" id="post_manufacturing_mod" name="post_manufacturing_mod" required>
+        <select class="form-control  " id="post_manufacturing_mod" name="post_manufacturing_mod" required>
             <option   value="{{$artifact[0]["post_manufacturing_mod"]}}"> {{$artifact[0]["post_manufacturing_mod"]}}</option>
             <option value="yes">yes</option>
             <option value="no">no</option>
@@ -304,7 +304,7 @@
             <button type="button" class="btn btn-secondary btn-xsm" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Helpful field explainer here?">
                 <i class="fa-solid fa-question"></i></button>
         </label>
-        <select class="form-control border-primary" id="interior_exterior" name="interior_exterior" required>
+        <select class="form-control  " id="interior_exterior" name="interior_exterior" required>
             <option   value={{$artifact[0]["interior_exterior"]}}> {{$artifact[0]["interior_exterior"]}} </option>
             <option value="exterior">exterior</option>
             <option value="interior">interior</option>
@@ -318,7 +318,7 @@
     <!--LOCATION-->
     <div class="col-2">
         <label for="location" class="form-label">Location??</label>
-        <select class="form-control border-primary" id="location" name="location" required>
+        <select class="form-control  " id="location" name="location" required>
             <option   value="{{$artifact[0]["location"]}}">{{$artifact[0]["location"]}}</option>
             <option value="base">base</option>
             <option value="body">body</option>
@@ -348,7 +348,7 @@
     <!--CERAMIC COMPLETENESS-->
     <div class="col">
         <label for="ceramic_completeness" class="form-label">Ceramic Completeness</label>
-        <select class="form-control border-primary" id="ceramic_completeness" name="ceramic_completeness" required>
+        <select class="form-control  " id="ceramic_completeness" name="ceramic_completeness" required>
             <option   value="{{$artifact[0]["ceramic_completeness"]}}">{{$artifact[0]["ceramic_completeness"]}}</option>
             <option value="base">base</option>
             <option value="body">body</option>
@@ -373,7 +373,7 @@
     <!--MENDED-->
     <div class="col-2">
         <label for="mended" class="form-label">Mended?</label>
-        <select class="form-control border-primary" id="mended" name="mended" required onchange="getMended()">
+        <select class="form-control  " id="mended" name="mended" required onchange="getMended()">
             <option   value="{{$artifact[0]["mended"]}}"> {{$artifact[0]["mended"]}} </option>
             <option value="yes">yes</option>
             <option value="no">no</option>
@@ -388,7 +388,7 @@
     <!--MENDED FORM-->
     <div class="col">
         <label for="mended_form" class="form-label">Mended Form</label>
-        <select class="form-control border-primary" id="mended_form" name="mended_form" required>
+        <select class="form-control  " id="mended_form" name="mended_form" required>
             <option   value="{{$artifact[0]["mended_form"]}}"> {{$artifact[0]["mended_form"]}} </option>
             <option value="basket">basket</option>
             <option value="berry dish">berry dish</option>
@@ -460,7 +460,7 @@
     <!--PASTE COLOR-->
     <div class="col-2">
         <label for="paste_color" class="form-label">Paste Color</label>
-        <input type="text" class="form-control border-primary" id="paste_color" name="paste_color" value="{{$artifact[0]["paste_color"]}}">
+        <input type="text" class="form-control  " id="paste_color" name="paste_color" value="{{$artifact[0]["paste_color"]}}">
     </div><!--END COL-->
 
 
@@ -472,7 +472,7 @@
     <!--EXTERIOR SURFACE-->
     <div class="col">
         <label for="exterior_surface" class="form-label">Exterior Surface</label>
-        <select class="form-control border-primary" id="exterior_surface" name="exterior_surface" required>
+        <select class="form-control  " id="exterior_surface" name="exterior_surface" required>
             <option   value="{{$artifact[0]["exterior_surface"]}}"> {{$artifact[0]["exterior_surface"]}} </option>
             <option value="albany slip">albany slip</option>
             <option value="alkaline glaze">alkaline glaze</option>
@@ -498,7 +498,7 @@
     <!--EXTERIOR COLOR-->
     <div class="col-2">
         <label for="exterior_color" class="form-label">Exterior Color</label>
-        <input type="text" class="form-control border-primary" id="exterior_color" name="exterior_color" value="{{$artifact[0]["exterior_color"]}}" required>
+        <input type="text" class="form-control  " id="exterior_color" name="exterior_color" value="{{$artifact[0]["exterior_color"]}}" required>
         <div class="invalid-feedback">
             Must enter an exterior color.
         </div>
@@ -507,7 +507,7 @@
     <!--INTERIOR SURFACE-->
     <div class="col">
         <label for="interior_surface" class="form-label">Interior Surface</label>
-        <select class="form-control border-primary" id="interior_surface" name="interior_surface" required>
+        <select class="form-control  " id="interior_surface" name="interior_surface" required>
             <option   value="{{$artifact[0]["interior_surface"]}}">{{$artifact[0]["interior_surface"]}}</option>
             <option value="albany slip">albany slip</option>
             <option value="alkaline glaze">alkaline glaze</option>
@@ -535,7 +535,7 @@
     <!--EXTERIOR COLOR-->
     <div class="col-2">
         <label for="interior_color" class="form-label">Interior Color</label>
-        <input type="text" class="form-control border-primary" id="interior_color" name="interior_color" value="{{$artifact[0]["interior_color"]}}" required>
+        <input type="text" class="form-control  " id="interior_color" name="interior_color" value="{{$artifact[0]["interior_color"]}}" required>
         <div class="invalid-feedback">
             Must enter an interior color.
         </div>
@@ -549,7 +549,7 @@
     <!--GENRE -->
     <div class="col">
         <label for="genre" class="form-label">Genre</label>
-        <select class="form-control border-primary" id="genre" name="genre" required>
+        <select class="form-control  " id="genre" name="genre" required>
             <option   value="{{$artifact[0]["genre"]}}">{{$artifact[0]["genre"]}}</option>
             <option value="an hua">an hua</option>
             <option value="applied powder crystals purple">applied powder crystals purple</option>
@@ -609,7 +609,7 @@
     <!--MOTIF-->
     <div class="col-2">
         <label for="motif" class="form-label">Motif</label>
-        <select class="form-control border-primary" id="motif" name="motif" required>
+        <select class="form-control  " id="motif" name="motif" required>
             <option value="{{$artifact[0]["motif"]}} "> {{$artifact[0]["motif"]}} </option>
             <option value="adjacent combination b">adjacent combination b</option>
             <option value="adjacent/stacked combo a">adjacent/stacked combo a</option>
@@ -642,7 +642,7 @@
     <!--DECORATIVE TECHNIQUE-->
     <div class="col">
         <label for="decorative_technique" class="form-label">Decorative Technique</label>
-        <select class="form-control border-primary" id="decorative_technique" name="decorative_technique" required>
+        <select class="form-control  " id="decorative_technique" name="decorative_technique" required>
             <option  value="{{$artifact[0]["decorative_technique"]}}">{{$artifact[0]["decorative_technique"]}}</option>
             <option value="applied clay">applied clay</option>
             <option value="applied powder/crystals">applied powder/crystals</option>
@@ -667,7 +667,7 @@
     <!--DECORATIVE COLOR -->
     <div class="col-2">
         <label for="decoration_color" class="form-label">Decorative Color</label>
-        <input type="text" value="decoration_color"class="form-control border-primary" id="decoration_color" name="decoration_color" required>
+        <input type="text" value="decoration_color"class="form-control  " id="decoration_color" name="decoration_color" required>
         <div class="invalid-feedback">
             Must select enter decoration color.
         </div>
@@ -681,7 +681,7 @@
     <!--STYLISTIC ELEMENT-->
     <div class="col">
         <label for="stylistic_element" class="form-label">Stylistic Element I</label>
-        <select class="form-control border-primary" id="stylistic_element" name="stylistic_element" required>
+        <select class="form-control  " id="stylistic_element" name="stylistic_element" required>
             <option disabled   value="{{$artifact[0]["stylistic_element_1"]}}">{{$artifact[0]["stylistic_element_1"]}}</option>
             <option value="acanthus leaves">acanthus leaves</option>
             <option value="angular edge">angular edge</option>
@@ -781,7 +781,7 @@
     <!--STYLISTIC ELEMENT NUMBER-->
     <div class="col-2">
         <label for="stylistic_element_number" class="form-label">Stylistic Element No.</label>
-        <input type="number" value="{{$artifact[0]["stylistic_element_number"]}}" class="form-control border-primary" id="stylistic_element_number" name="stylistic_element_number" min="1" max="60">
+        <input type="number" value="{{$artifact[0]["stylistic_element_number"]}}" class="form-control  " id="stylistic_element_number" name="stylistic_element_number" min="1" max="60">
         <div class="invalid-feedback">
             Stylistic number must be at least (1) and less than (60).
         </div>

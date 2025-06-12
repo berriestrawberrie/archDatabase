@@ -21,7 +21,7 @@
     <!--FORM-->
     <div class="col-3">
         <label for="completeness" class="form-label">Completeness</label>
-        <select class="form-control border-primary" id="completeness"  name="completeness" required>
+        <select class="form-control   " id="completeness"  name="completeness" required>
             <option   value="{{$artifact[0]["completeness"]}}">{{$artifact[0]["completeness"]}}</option>
             <option  value="base">base</option>
             <option  value="base/body">base/body</option>
@@ -64,7 +64,7 @@
     <!--ARTIFACT COUNT-->
     <div class="col-2">
         <label for="artifact_count" class="form-label">Artifact Count</label>
-        <input type="number" class="form-control border-primary" id="artifact_count"  value="{{$artifact[0]["artifact_count"]}}"name="artifact_count" min="1" max="99" required>
+        <input type="number" class="form-control   " id="artifact_count"  value="{{$artifact[0]["artifact_count"]}}"name="artifact_count" min="1" max="99" required>
         <div class="invalid-feedback">
             Artifact count must be entered and less than 99.
         </div>
@@ -96,7 +96,7 @@
                   <!--START DATE-->
             <div class="col-3">
                 <label for="start_date" class="form-label" >Start Date</label>
-                <select class="form-select  border-primary" name="start_date" id="start_date" onchange="checkRange()">
+                <select class="form-select    " name="start_date" id="start_date" onchange="checkRange()">
                     <option value="{{$artifact[0]["start_date"]}}" selected>{{$artifact[0]["start_date"]}}</option>
                     <option value="1500">1500</option>
                     <option>1600</option>
@@ -108,7 +108,7 @@
             <!--END DATE-->
             <div class="col-2">
                 <label for="end_date" class="form-label" >End Date</label>
-                <select class="form-select  border-primary" name="end_date" id="end_date" onchange="checkRange()">
+                <select class="form-select    " name="end_date" id="end_date" onchange="checkRange()">
                     <option value="{{$artifact[0]["end_date"]}}" selected>{{$artifact[0]["end_date"]}}</option>
                     <option>1500</option>
                     <option>1600</option>
@@ -127,7 +127,7 @@
     <!--COLLECTION-->
     <div class="col">
         <label for="collection" class="form-label">Collection</label>
-        <input type="text" class="form-control border-primary" id="collection"  name="collection" value="{{$artifact[0]["collection"]}}" required>
+        <input type="text" class="form-control   " id="collection"  name="collection" value="{{$artifact[0]["collection"]}}" required>
         <div class="invalid-feedback">
             Title: {{$artifact[0]["collection"]}}
         </div>
@@ -143,7 +143,7 @@
             <i class="fa-solid fa-question"></i>
           </button>
         </label>
-        <textarea class="form-control border-primary" id="notes"  name="notes" value="{{$artifact[0]["notes"]}}" rows="3"></textarea>
+        <textarea class="form-control   " id="notes"  name="notes" value="{{$artifact[0]["notes"]}}" rows="3"></textarea>
     </div><!--END COL-->
 </div>
 <!--END ROW-->
