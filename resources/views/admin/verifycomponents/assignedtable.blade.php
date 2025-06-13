@@ -69,3 +69,27 @@
         </tr>
     @endif
 @endforeach
+
+@foreach($buttons as $button)
+    @if($button->checkout_by == Auth::user()->id && $button->isValid == 0)
+        <tr>
+            <td>{{$button->artifact_id}}</td>
+            <td>button</td>
+            <td >
+                @if($button->isValid == 0)
+                Unverified
+                @else
+                Verified
+                @endif
+            </td>
+            <td>{{$button->collection}}</td>
+            <td>{{$button->material}}</td>
+            <td><a href="/reviewData/{{Auth::user()->id}}/button/{{$button->id}}"><button class="btn btn-success">Review</button></a></td>
+            <td>
+                <form method="POST" action="{{route('release.data')}}">@csrf<input type="number" class="d-none" value="{{$button->id}}" name="release_button">
+                </select><button class="btn btn-danger" type="submit">Release</button></form>
+            </td>
+    
+        </tr>
+    @endif
+@endforeach

@@ -31,7 +31,7 @@ Bead Artifact Entry Form
   </fieldset>
 
   <fieldset class="mt-2">
-    <input type="submit" class="btn btn-primary">
+    <input type="submit" class="btn btn-success" value="Submit Data for Validation">
   </fieldset>
 
 

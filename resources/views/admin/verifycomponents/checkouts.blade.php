@@ -54,3 +54,22 @@
         </div>
     </div><!--END OF buckles CHECKOUT-->
 @endif
+
+@if(count($unassigned_buttons)>0)
+    <!--buttons CHECKOUT-->
+    <div class="col-md-2">
+        <label for="buttons" class="form-label">Max ({{count($unassigned_buttons)}})</label>
+        <div class="input-group has-validation">
+            <span class="input-group-text" id="inputGroupPrepend">buttons</span>
+            <select type="text" class="form-control" id="buttons" name="buttons"  onchange="requireRecord()" aria-describedby="inputGroupPrepend">
+                <option value="0" selected>-</option>
+                @for($i=1; $i <= count($unassigned_buttons); $i++)
+                    <option value="{{$i}}">{{$i}}</option>
+                @endfor
+            </select>
+            <div class="valid-feedback">
+            filled
+            </div>
+        </div>
+    </div><!--END OF buttons CHECKOUT-->
+@endif

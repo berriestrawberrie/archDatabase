@@ -21,7 +21,8 @@ Data Verification Queue
                     <th >Cermaics</th>
                     <th >Bones</th>
                     <th >Beads</th>
-                    <th >Buckle</th>
+                    <th >Buckles</th>
+                    <th >Buttons</th>       
                     <th >Pipes</th>                                        
                   </tr>
                 </thead>
@@ -30,7 +31,8 @@ Data Verification Queue
                     <td class="text-danger">{{count($unassigned_ceramics)}}</td>
                     <td class="text-danger">..</td>
                     <td class="text-danger">{{count($unassigned_beads)}}</td>
-                    <td class="text-danger">{{count($unassigned_buckles)}}</td>         
+                    <td class="text-danger">{{count($unassigned_buckles)}}</td>  
+                    <td class="text-danger">{{count($unassigned_buttons)}}</td>         
                     <td class="text-danger">..</td>    
                   </tr>
             

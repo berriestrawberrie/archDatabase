@@ -6,6 +6,7 @@ use App\Models\Bead;
 use App\Models\BonesI;
 use App\Models\BonesII;
 use App\Models\Buckle;
+use App\Models\Button;
 use App\Models\Ceramic;
 use App\Models\Collection;
 use Illuminate\Http\Request;
@@ -86,6 +87,15 @@ class ArtifactController extends Controller
                     }
                     //RETURN THE PREVIEW FORM FILLED OUT
                     return view('forms.preview.previewbuckle', compact('artifact'));
+                case "button":
+                    $artifact = Button::where('token', $token)->get();
+                    //VERIFY THAT THE STATUS IS RECENTLY SUBMITTED IF NOT RETURN ERROR
+                    if ($artifact[0]["isValid"] != 2) {
+                        return redirect(route('entered.by', ['user' => $user]))
+                            ->with("error", "Artifact already submitted");
+                    }
+                    //RETURN THE PREVIEW FORM FILLED OUT
+                    return view('forms.preview.previewbutton', compact('artifact'));
                 default:
                     return back()->with("error", "Invalid form type");
             }
@@ -101,7 +111,9 @@ class ArtifactController extends Controller
             ->where('isValid', 2)->get();
         $buckles = Buckle::where('entered_by', $user)
             ->where('isValid', 2)->get();
+        $buttons = Button::where('entered_by', $user)
+            ->where('isValid', 2)->get();
 
-        return view('users.savedartifacts', compact('ceramics', 'beads', 'buckles'));
+        return view('users.savedartifacts', compact('ceramics', 'beads', 'buckles', 'buttons'));
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Bead;
 use App\Models\Buckle;
+use App\Models\Button;
 use App\Models\Ceramic;
 use App\Models\Collection;
 use Illuminate\Http\Request;
@@ -107,6 +108,7 @@ class AdminController extends Controller
         $ceramics = Ceramic::where('isValid', 0)->get();
         $beads = Bead::where('isValid', 0)->get();
         $buckles = Buckle::where('isValid', 0)->get();
+        $buttons = Button::where('isValid', 0)->get();
         $unassigned_ceramics = Ceramic::where('isValid', 0)
             ->where('checkout_by', null)
             ->get();
@@ -116,8 +118,23 @@ class AdminController extends Controller
         $unassigned_buckles = Buckle::where('isValid', 0)
             ->where('checkout_by', null)
             ->get();
+        $unassigned_buttons = Button::where('isValid', 0)
+            ->where('checkout_by', null)
+            ->get();
 
-        return view('admin.verifydata', compact('ceramics', 'beads', 'buckles', 'unassigned_ceramics', 'unassigned_buckles', 'unassigned_beads'));
+        return view(
+            'admin.verifydata',
+            compact(
+                'ceramics',
+                'beads',
+                'buckles',
+                'buttons',
+                'unassigned_ceramics',
+                'unassigned_buckles',
+                'unassigned_beads',
+                'unassigned_buttons'
+            )
+        );
     }
 
     public function checkoutData(Request $request)
@@ -127,6 +144,7 @@ class AdminController extends Controller
         $ceramics = intval($request->ceramics);
         $beads =  intval($request->beads);
         $buckles =  intval($request->buckles);
+        $buttons =  intval($request->buttons);
 
         //$bones = intval($request->bones);
 
@@ -140,7 +158,9 @@ class AdminController extends Controller
         $assign_buckles = Buckle::where('isValid', 0)
             ->where('checkout_by', null)
             ->take($buckles)->get();
-
+        $assign_buttons = Button::where('isValid', 0)
+            ->where('checkout_by', null)
+            ->take($buttons)->get();
 
         //ASSIGN TO THE USER
         foreach ($assign_ceramics as $item) {
@@ -161,6 +181,12 @@ class AdminController extends Controller
                 'checkout_by' => $user
             ]);
         } //END OF FOREACH
+        foreach ($assign_buttons as $item) {
+
+            button::where('id', $item->id)->update([
+                'checkout_by' => $user
+            ]);
+        } //END OF FOREACH
 
 
         return redirect()->route('verify.data')
@@ -174,6 +200,7 @@ class AdminController extends Controller
         $ceramic = $request->input('release_ceramic');
         $bead = $request->input('release_bead');
         $buckle = $request->input('release_buckle');
+        $button = $request->input('release_button');
 
         //CERAMICS
         if ($ceramic) {
@@ -210,6 +237,18 @@ class AdminController extends Controller
                 ]);
             return redirect()->route('verify.data')
                 ->with("success", "Successfully released buckle #:" . $buckle);
+        } //END BUCKLE IF
+
+        //BUTTON
+        if ($button) {
+            Button::where('id', $button)
+                ->where('checkout_by', $user)
+                ->update([
+                    'checkout_by' =>
+                    null
+                ]);
+            return redirect()->route('verify.data')
+                ->with("success", "Successfully released button #:" . $button);
         } //END BUCKLE IF
 
         return redirect()->route('verify.data')
@@ -263,6 +302,24 @@ class AdminController extends Controller
                 if ($artifact[0]["checkout_by"] == $user) {
                     //RETURN THE BEAD REIVEW FORM
                     return view('forms.verify.verifybuckle', compact('artifact'));
+                } else {
+
+                    //CHANGE ERROR MESSAGE IF RECORD IS NOT YET CHECKED OUT
+                    if ($artifact[0]["checkout_by"]) {
+                        return redirect()->route('verify.data')
+                            ->with("error", "Record is already being reviewed by User #: " . $artifact[0]["checkout_by"]);
+                    } else {
+                        return redirect()->route('verify.data')
+                            ->with("error", "Record needs to be checked out before you can review it");
+                    }
+                } //VERIFY THAT THE USER REVIEWING IS THE USER THAT CHECKED IT OUT
+                break;
+            case "button":
+                $artifact = Button::where('id', $id)->get();
+                //VERIFY THAT THE USER REVIEWING IS THE USER THAT CHECKED IT OUT
+                if ($artifact[0]["checkout_by"] == $user) {
+                    //RETURN THE BEAD REIVEW FORM
+                    return view('forms.verify.verifybutton', compact('artifact'));
                 } else {
 
                     //CHANGE ERROR MESSAGE IF RECORD IS NOT YET CHECKED OUT

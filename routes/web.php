@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BeadController;
 use App\Http\Controllers\BoneController;
 use App\Http\Controllers\BuckleController;
+use App\Http\Controllers\ButtonController;
 use App\Http\Controllers\CeramicController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\QueryController;
@@ -55,6 +56,10 @@ Route::middleware("auth")->group(function () {
     //LOGGEDIN BUCKLE ROUTES
     Route::post('/saveBuckle', [BuckleController::class, 'saveBuckle'])->name('save.buckle');
     Route::post('/submitBuckle/{token}', [BuckleController::class, 'submitBuckle']);
+
+    //LOGGED IN BUTTON ROUTES
+    Route::post('/saveButton', [ButtonController::class, 'saveButton'])->name('save.button');
+    Route::post('/submitButton/{token}', [ButtonController::class, 'submitButton']);
 });
 
 
@@ -79,6 +84,8 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     Route::post('/validateBead/{id}', [BeadController::class, 'validateBead']);
     //ADMIN BUCKLE ROUTES
     Route::post('/validateBuckle/{id}', [BuckleController::class, 'validateBuckle']);
+    //ADMIN BUTTON ROUTES
+    Route::post('/validateButton/{id}', [ButtonController::class, 'validateButton']);
 });
 
 

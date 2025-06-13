@@ -10,8 +10,8 @@ Saved Artifacts
 @section('content')
 
 
-<h2>Saved Artifacts Not Submitted for Validation: </h2>
-<p>Select the number of records you'd like to checkout and review for publishing:</p>
+<h2>Saved Artifacts Not Yet Submitted for Validation: </h2>
+<p>These are records that have been saved but not yet submitted to admin for validation.</p>
 
 
 <h2>Checked Out Records:</h2>
@@ -80,6 +80,23 @@ Saved Artifacts
                             <td>{{$buckle->collection}}</td>
                             <td>{{$buckle->material}}</td>
                             <td><a href="/previewData/buckle/{{$buckle->token.'/'.Auth::user()->id}}"><button class="btn btn-warning">Complete</button></a></td>
+
+                        </tr>
+                 @endforeach
+                @foreach($buttons as $button)
+                        <tr>
+                            <td>{{$button->artifact_id}}</td>
+                            <td>button</td>
+                            <td >
+                                @if($button->isValid === 2)
+                                Incomplete
+                                @else
+                                Error
+                                @endif
+                            </td>
+                            <td>{{$button->collection}}</td>
+                            <td>{{$button->material}}</td>
+                            <td><a href="/previewData/button/{{$button->token.'/'.Auth::user()->id}}"><button class="btn btn-warning">Complete</button></a></td>
 
                         </tr>
                  @endforeach

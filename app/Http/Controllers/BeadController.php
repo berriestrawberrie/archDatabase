@@ -91,30 +91,48 @@ class BeadController extends Controller
         $artifact_id = '31DV' . $bead[0]["collection_id"] . 'BE' . $digit_3;
 
         //PROCESS PHOTO SUBMISSION
-        if ($request->has_photo === 1) {
-            //KEEP THE SAME PHOTO
-            $filename = $bead[0]["photo"];
-        } elseif ($request->has_photo === 2) {
-            //DELETE THE OLD PHOTO
-            $image = public_path('uploads/beads/' . $bead[0]["photo"]);
-            if (file_exists($image)) {
-                unlink($image);
-            }
-            //UPLOAD THE NEW PHOTO
-            $file = $request->file('photo');
-            $extension =  $file->getClientOriginalExtension();
-            $path = 'uploads/beads/';
-            $filename = time() . '.' . $extension;
-            $file->move($path, $filename);
-        } else {
-            //DELETE THE OLD PHOTO
-            $image = public_path('uploads/beads/' . $bead[0]["photo"]);
-            if (file_exists($image)) {
-                unlink($image);
-            }
-            //USER REMOVED PHOTO
-            $filename = 'null.png';
-        } //END OF IF
+        switch ($request->has_photo) {
+            //USER KEEPS PHOTO
+            case "1":
+                //KEEP THE SAME PHOTO
+                $filename = $bead[0]["photo"];
+
+                break;
+            //USER REPLACES PHOTO
+            case "2":
+                //CHECK THAT THE PHOTO ISN'T PLACEHOLDER
+                if ($bead[0]["photo"] != "null.png") {
+                    //DELETE THE OLD PHOTO
+                    $image = public_path('uploads/beads/' . $bead[0]["photo"]);
+                    if (file_exists($image)) {
+                        unlink($image);
+                    }
+                }
+                //UPLOAD THE NEW PHOTO
+                $file = $request->file('photo');
+                $extension =  $file->getClientOriginalExtension();
+                $path = 'uploads/beads/';
+                $filename = time() . '.' . $extension;
+                $file->move($path, $filename);
+
+                break;
+            //USER REMOVES PHOTO
+            case "0":
+                //CHECK THAT THE PHOTO ISN'T PLACEHOLDER
+                if ($bead[0]["photo"] != "null.png") {
+                    //DELETE THE OLD PHOTO
+                    $image = public_path('uploads/beads/' . $bead[0]["photo"]);
+                    if (file_exists($image)) {
+                        unlink($image);
+                    }
+                }
+                $filename = 'null.png';
+
+                break;
+            default:
+                return back()->with('error', 'Issue processing photo submission');
+        } //END OF SWITCH
+
 
         //REASSIGN THE BEAD PROPRETIES TO THE INPUTS
         Bead::where('token', $token)
@@ -166,7 +184,7 @@ class BeadController extends Controller
             ->with("success", "Successfully submitted bead artifact for validation");
     } //END OF SUBMIT BEAD
 
-    //PROCESS THE CERAMIC PUBLISH FORM 
+    //PROCESS THE bead PUBLISH FORM 
     public function validateBead(Request $request, $artifact_id)
     {
 
@@ -221,7 +239,6 @@ class BeadController extends Controller
             default:
                 return back()->with('error', 'Issue processing photo submission');
         } //END OF SWITCH
-
 
         //REASSIGN THE bead PROPRETIES TO THE INPUTS
         Bead::where('artifact_id', $artifact_id)

@@ -11,29 +11,29 @@ Button Artifact Entry Form
 
 
 @section('content')
-
-<form class=" needs-validation" method="POST" action="{{route('save.button')}}" novalidate enctype="multipart/form-data">
+@include('forms.verify.popup')
+<form class=" needs-validation" method="POST" action="{{url('validateButton/'.$artifact[0]["artifact_id"])}}" novalidate enctype="multipart/form-data">
   @csrf
   <!--GENERAL INFORMATION & SITE -->
   <fieldset>
     <legend>Site & General Information</legend>
-    @include('forms.button.site')
+    @include('forms.button.previewsite')
   </fieldset>
 
   <fieldset>
     <legend>Fields I Information</legend>
-        @include('forms.button.fieldsI')
+        @include('forms.button.previewfieldsI')
   </fieldset>
 
   <fieldset>
     <legend>Fields II Information</legend>
-        @include('forms.button.fieldsII')
+        @include('forms.button.previewfieldsII')
   </fieldset>
 
 
 
   <fieldset class="mt-2">
-    <input type="submit" class="btn btn-primary" value="Save Form">
+    <input type="submit" class="btn btn-success" value="Submit Data for Validation">
   </fieldset>
 
 
@@ -45,7 +45,7 @@ Button Artifact Entry Form
   const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
   const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl)) 
 </script>
-<script src="{{asset('storage/js/nextform.js')}}"></script>
+<script src="{{asset('storage/js/verifynextform.js')}}"></script>
 <script src="{{asset('storage/js/query_collection.js')}}"></script>
 
 
