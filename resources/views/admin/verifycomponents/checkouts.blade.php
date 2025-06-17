@@ -73,3 +73,23 @@
         </div>
     </div><!--END OF buttons CHECKOUT-->
 @endif
+
+@if(count($unassigned_glasses)>0)
+    <!--glasses CHECKOUT-->
+    <div class="col-md-2">
+        <label for="glasses" class="form-label">Max ({{count($unassigned_glasses)}})</label>
+        <div class="input-group has-validation">
+            <span class="input-group-text" id="inputGroupPrepend">glass</span>
+            <select type="text" class="form-control" id="glasses" name="glasses"  onchange="requireRecord()" aria-describedby="inputGroupPrepend">
+                <option value="0" selected>-</option>
+                @for($i=1; $i <= count($unassigned_glasses); $i++)
+                    <option value="{{$i}}">{{$i}}</option>
+                @endfor
+            </select>
+            <div class="valid-feedback">
+            filled
+            </div>
+        </div>
+    </div><!--END OF glasses CHECKOUT-->
+@endif
+

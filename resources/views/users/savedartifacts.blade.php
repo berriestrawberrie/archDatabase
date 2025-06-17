@@ -100,6 +100,23 @@ Saved Artifacts
 
                         </tr>
                  @endforeach
+                @foreach($glasses as $glass)
+                        <tr>
+                            <td>{{$glass->artifact_id}}</td>
+                            <td>glass</td>
+                            <td >
+                                @if($glass->isValid === 2)
+                                Incomplete
+                                @else
+                                Error
+                                @endif
+                            </td>
+                            <td>{{$glass->collection}}</td>
+                            <td>{{$glass->material}}</td>
+                            <td><a href="/previewData/glass/{{$glass->token.'/'.Auth::user()->id}}"><button class="btn btn-warning">Complete</button></a></td>
+
+                        </tr>
+                 @endforeach
                 </tbody>
               </table>
         </div>

@@ -2,8 +2,8 @@
   <div class="row">
     <!--ENTEREDBY-->
     <div class="col">
-        <label for="entered_by" class="form-label">Entered By</label>
-        <input type="text" class="form-control border border-success bg-success-subtle" id="entered_by"  name="entered_by" value="{{Auth::user()->name}}" required>
+        <label for="added_by" class="form-label">Added By</label>
+        <input type="text" class="form-control border border-success bg-success-subtle" id="added_by"  name="added_by" value="{{Auth::user()->name}}" required>
         <div class="invalid-feedback">
             Required field.
         </div>
@@ -18,10 +18,10 @@
       </div>
     </div><!--END COL-->
 
-    <!--FORM-->
+    <!--COMPLETENESS-->
     <div class="col-3">
         <label for="completeness" class="form-label">Completeness</label>
-        <select class="form-control " id="completeness"  name="completeness" required>
+        <select class="form-select " id="completeness"  name="completeness" required>
             <option disabled selected value> -- select an option -- </option>
             <option>Complete</option>
             <option>Incomplete</option>
@@ -49,11 +49,40 @@
     <!--COLLECTION-->
     <div class="col">
         <label for="collection" class="form-label">Collection</label>
+        <input type="number" class="d-none" value="{{$collections[0]["collection_id"]}}" name="collection_id">
         <input type="text" class="form-control border border-success bg-success-subtle" id="collection"  name="collection" value="{{$collections[0]["collection"]}}" required>
         <div class="invalid-feedback">
             Title: {{$collections[0]["collection"]}}
         </div>
     </div><!--END COL-->
+    <!--START DATE-->
+        <div class="col-3">
+            <label for="start_date" class="form-label" >Start Date</label>
+            <select class="form-select" name="start_date" id="start_date" onchange="checkRange()" required>
+                <option value="0">--</option>
+                <option >1500</option>
+                <option>1600</option>
+                <option>1700</option>
+                <option>1800</option>
+                <option>1900</option>
+            </select>
+        </div><!--end OF START DATE-->
+        <!--END DATE-->
+        <div class="col-2">
+            <label for="end_date" class="form-label" >End Date</label>
+            <select class="form-select" name="end_date" id="end_date" onchange="checkRange()" required>
+                <option value="0">--</option>
+                <option>1500</option>
+                <option>1600</option>
+                <option>1700</option>
+                <option>1800</option>
+                <option>1900</option>
+            </select>
+                <div class="invalid-feedback " id="end_error">
+                End Date cannot be earlier than start date.
+                </div>
+        </div><!--end OF    end DATE-->
+
 </div><!--END ROW-->
 
 

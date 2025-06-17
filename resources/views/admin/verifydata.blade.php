@@ -16,27 +16,28 @@ Data Verification Queue
     <div class="row">
         <div class=" border mx-auto">
             <table class="table text-center" >
-                <thead>
                   <tr>
                     <th >Cermaics</th>
-                    <th >Bones</th>
                     <th >Beads</th>
                     <th >Buckles</th>
-                    <th >Buttons</th>       
-                    <th >Pipes</th>                                        
+                    <th >Buttons</th>                                           
                   </tr>
-                </thead>
-                <tbody>
                   <tr>
                     <td class="text-danger">{{count($unassigned_ceramics)}}</td>
-                    <td class="text-danger">..</td>
                     <td class="text-danger">{{count($unassigned_beads)}}</td>
                     <td class="text-danger">{{count($unassigned_buckles)}}</td>  
                     <td class="text-danger">{{count($unassigned_buttons)}}</td>         
-                    <td class="text-danger">..</td>    
                   </tr>
-            
-                </tbody>
+                  <tr>
+                    <th >Glass</th>
+                    <th >Utensil</th>
+                    <th >Pipes</th>
+                    <th >Other</th>                                           
+                  </tr>
+                    <td class="text-danger">{{count($unassigned_glasses)}}</td>
+                    <td>..</td>
+                    <td>..</td>
+                    <td>..</td>
               </table>
         </div>
     </div>

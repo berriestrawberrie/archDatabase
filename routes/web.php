@@ -8,9 +8,11 @@ use App\Http\Controllers\BoneController;
 use App\Http\Controllers\BuckleController;
 use App\Http\Controllers\ButtonController;
 use App\Http\Controllers\CeramicController;
+use App\Http\Controllers\GlassController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\QueryController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\UtensilController;
 use App\Http\Middleware\AdminMiddleware;
 use App\Models\Artifact;
 use Database\Seeders\AdminSeeder;
@@ -60,6 +62,13 @@ Route::middleware("auth")->group(function () {
     //LOGGED IN BUTTON ROUTES
     Route::post('/saveButton', [ButtonController::class, 'saveButton'])->name('save.button');
     Route::post('/submitButton/{token}', [ButtonController::class, 'submitButton']);
+
+    //LOGGED IN GLASS ROUTES
+    Route::post('/saveGlass', [GlassController::class, 'saveGlass'])->name('save.glass');
+    Route::post('/submitGlass/{token}', [GlassController::class, 'submitGlass']);
+
+    //LOGGED IN UTENSIL ROUTES
+    Route::post('/saveUtensil', [UtensilController::class, 'saveUtensil'])->name('save.utensil');
 });
 
 
@@ -86,6 +95,8 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     Route::post('/validateBuckle/{id}', [BuckleController::class, 'validateBuckle']);
     //ADMIN BUTTON ROUTES
     Route::post('/validateButton/{id}', [ButtonController::class, 'validateButton']);
+    //ADMIN GLASS ROUTES
+    Route::post('/validateGlass/{id}', [GlassController::class, 'validateGlass']);
 });
 
 

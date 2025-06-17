@@ -6,7 +6,7 @@
         <div class="col">
             <label for="material" class="form-label">Buckle Type</label>
             <select  class="form-select " id="material"  name="material" required>
-                <option selected disabled value=""> -- select an option -- </option>
+                <option value="{{$artifact[0]["material"]}}"> {{$artifact[0]["material"]}}</option>
                 <option>Lead Glass</option>
                 <option>Non-Lead Glass</option>
                 <option>Not Recorded</option>
@@ -21,7 +21,7 @@
         <div class="col">
             <label for="glass_color" class="form-label">Glass Color</label>
             <select  class="form-select " id="glass_color"  name="glass_color" required>
-                <option selected disabled value=""> -- select an option -- </option>
+                <option value="{{$artifact[0]["glass_color"]}}">{{$artifact[0]["glass_color"]}}</option>
                 <option>Amber</option>
                 <option>Amethyst</option>
                 <option>Aqua</option>
@@ -53,7 +53,7 @@
         <div class="col">
             <label for="vessel_category" class="form-label">Vessel Category</label>
             <select  class="form-select " id="vessel_category"  name="vessel_category" required>
-                <option disabled selected value> -- select an option -- </option>
+                <option value="{{$artifact[0]["vessel_category"]}}">{{$artifact[0]["vessel_category"]}}</option>
                   <option>Flat</option>
                 <option>Hollow</option>
                 <option>Not Recorded</option>
@@ -68,7 +68,7 @@
         <div class="col">
             <label for="form" class="form-label">Form</label>
             <select class="form-select" id="form" name="form" required>
-                <option selected disabled value=""> -- select an option -- </option>
+                <option  value="{{$artifact[0]["form"]}}">{{$artifact[0]["form"]}}</option>
                   <option>Bell Jar</option>
                 <option>Bottle Seal</option>
                 <option>Bottle, Beer</option>
@@ -113,24 +113,27 @@
 
         <!--HAS IMAGE -->
         <div class="col-2 form-check d-flex flex-column ">
-            <p style="margin-left: -30px;">Has Photo?</p>
+            <p style="margin-left: -30px;">Photo</p>
+            
             <label class="form-check-label" for="has_photo1">
-                <input onchange="showImgUpload(this)" class="form-check-input" type="radio" name="has_photo" id="has_photo1" value="1">Yes</label>
+                <input onchange="showImgUpload(this)" class="form-check-input" type="radio" name="has_photo" id="has_photo1" value="1"checked >Keep</label>
             <label class="form-check-label mt-3" for="has_photo2">
-                <input onchange="showImgUpload(this)" class="form-check-input" type="radio" name="has_photo" id="has_photo2" value="0">No</label>
+                <input onchange="showImgUpload(this)" class="form-check-input" type="radio" name="has_photo" id="has_photo2" value="0">Remove</label>
+            <label class="form-check-label mt-3" for="has_photo3">
+                <input onchange="showImgUpload(this)" class="form-check-input" type="radio" name="has_photo" id="has_photo3" value="2">Replace</label>
 
             <div class="invalid-feedback">
-            Required field.
+                Must make a selection.
             </div>
         </div><!--END COL-->
 
         <div class="col-8">
-            <img id="file-ip-1-preview" style="width: 200px; display: none;">
-            <img id="file-noimage" src="{{asset('storage/images/picture.png')}}" style="width: 200px; display:none; opacity: .5;">
+            <img  id="file-ip-1-preview" src="{{asset('uploads/glasses/'.$artifact[0]["photo"])}}"style="width: 200px; ">
+            <img id="file-noimage" src="{{asset('uploads/glasses/null.png')}}" style="width: 200px; display:none; opacity: .5;">
             <!--IMAGE UPLOAD -->
-            <div class="position-relative"id="image-uploader">
+            <div class="position-relative"id="image-uploader" style="opacity: 0;">
                 <label for="photo" class="form-label">Upload Photo</label>
-                <input onchange="showPreview(event);"type="file" class="form-control " id="file-ip-1"  name="photo" accept="image/png, image/jpeg, image/jpg" />
+                <input onchange="showPreview(event);" type="file" class="form-control " id="file-ip-1" name="photo" accept="image/png, image/jpeg, image/jpg"/>
                 <div class="invalid-feedback">
                     Must include image (png, jpeg).
                 </div>
@@ -153,7 +156,7 @@
     <div class="col">
         <label for="manufacturing_technique" class="form-label">Manufacturing Technique</label>
         <select  class="form-select " id="manufacturing_technique"  name="manufacturing_technique">
-            <option selected disabled value=""> -- select an option -- </option>
+            <option value="{{$artifact[0]["manufacturing_technique"]}}">{{$artifact[0]["manufacturing_technique"]}}</option>
             <option>Free Blown</option>
             <option>Machine Made</option>
             <option>Mold Blown</option>
@@ -171,7 +174,7 @@
     <div class="col">
         <label for="mold_type" class="form-label">Mold Type</label>
         <select  class="form-select " id="mold_type"  name="mold_type" required>
-            <option disabled selected value> -- select an option -- </option>
+            <option value="{{$artifact[0]["mold_type"]}}">{{$artifact[0]["mold_type"]}}</option>
             <option>Contact Mold</option>
             <option>Missing Information</option>
             <option>Not Applicable</option>
@@ -194,7 +197,7 @@
                 <i class="fa-solid fa-circle-question"></i></button>
         </label>
         <select  class="form-select " id="mended"  name="mended" required>
-            <option disabled selected value> -- select an option -- </option>
+            <option value="{{$artifact[0]["mended"]}}"> {{$artifact[0]["mended"]}} </option>
             <option>Yes</option>
             <option>No</option>
             <option>Not Applicable</option>
@@ -216,7 +219,7 @@
     <div class="col">
         <label for="post_manu_mod" class="form-label">Post-Manufacturing Modification</label>
         <select  class="form-select " id="post_manu_mod"  name="post_manu_mod" required>
-            <option disabled selected value> -- select an option -- </option>
+            <option value="{{$artifact[0]["post_manu_mod"]}}">{{$artifact[0]["post_manu_mod"]}}</option>
             <option>Yes</option>
             <option>No</option>
             <option>N/A (Not Applicable)</option>
@@ -232,7 +235,7 @@
     <div class="col">
         <label for="patination" class="form-label">Patination</label>
         <select  class="form-select " id="patination"  name="patination" required>
-            <option disabled selected value> -- select an option -- </option>
+            <option value="{{$artifact[0]["patination"]}}">{{$artifact[0]["patination"]}}</option>
             <option>Yes</option>
             <option>No</option>
             <option>Not Applicable</option>
@@ -249,8 +252,8 @@
     <!-- Solarized-->
     <div class="col">
         <label for="solarized" class="form-label">Solarized</label>
-        <select  class="form-select " id="solarized" name="solarized" required>
-                <option disabled selected value> -- select an option -- </option>
+        <select  class="form-select " id="solarized" name="solarized">
+                <option value="{{$artifact[0]["solarized"]}}">{{$artifact[0]["solarized"]}}</option>
             <option>Yes</option>
             <option>No</option>
             <option>Not Applicable</option>
@@ -271,7 +274,7 @@
      <div class="col">
         <label for="weather_eroded" class="form-label">Weathered/Eroded</label>
         <select  class="form-select " id="weather_eroded"  name="weather_eroded" required>
-            <option disabled selected value> -- select an option -- </option>
+            <option value="{{$artifact[0]["weather_eroded"]}}">{{$artifact[0]["weather_eroded"]}}</option>
             <option>Yes</option>
             <option>No</option>
             <option>Not Applicable</option>
@@ -287,7 +290,7 @@
     <div class="col">
         <label for="burned" class="form-label">Burned?</label>
         <select  class="form-select " id="burned"  name="burned" required>
-            <option disabled selected value> -- select an option -- </option>
+            <option value="{{$artifact[0]["burned"]}}">{{$artifact[0]["burned"]}}</option>
             <option>Yes</option>
             <option>No</option>
             <option>N/A (Not Applicable)</option>
@@ -304,7 +307,7 @@
     <div class="col">
         <label for="pontil_mark" class="form-label">Pontil Mark</label>
         <select  class="form-select " id="pontil_mark"  name="pontil_mark">
-            <option disabled selected value> -- select an option -- </option>
+            <option value="{{$artifact[0]["pontil_mark"]}}">{{$artifact[0]["pontil_mark"]}}</option>
             <option>Bare Iron</option>
             <option>Blow Pipe</option>
             <option>Empontilled improved and ground</option>
@@ -332,7 +335,7 @@
     <!--Conservation-->
     <div class="col">
         <label for="conservation" class="form-label">Conservation</label>
-        <input type="text" class="form-control " id="conservation"  name="conservation" required>
+        <input type="text" class="form-control " id="conservation"  name="conservation" value="{{$artifact[0]["conservation"]}}" required>
         <div class="invalid-feedback">
             Required field.
         </div>
@@ -342,7 +345,7 @@
     <div class="col">
         <label for="decorative_technique" class="form-label">Decorative Technique</label>
         <select  class="form-select " id="decorative_technique"  name="decorative_technique" required>
-            <option disabled selected value> -- select an option -- </option>
+            <option value="{{$artifact[0]["decorative_technique"]}}">{{$artifact[0]["decorative_technique"]}}</option>
             <option>Acid Etched</option>
             <option>Air Bubbles</option>
             <option>Air Twist</option>
@@ -379,7 +382,7 @@
     <div class="col">
         <label for="stylistic_element" class="form-label">Stylistic Element</label>
         <select  class="form-select " id="stylistic_element"  name="stylistic_element" required>
-            <option disabled selected value> -- select an option -- </option>
+            <option value="{{$artifact[0]["stylistic_element"]}}"> {{$artifact[0]["stylistic_element"]}}</option>
             <option>Band</option>
             <option>Botanical</option>
             <option>Cartouche</option>
@@ -430,7 +433,7 @@
     <div class="col">
         <label for="bottle_element" class="form-label"> Bottle Element</label>
         <select  class="form-select " id="bottle_element"  name="bottle_element" required>
-            <option disabled selected value> -- select an option -- </option>
+            <option value="{{$artifact[0]["bottle_element"]}}">{{$artifact[0]["bottle_element"]}}</option>
             <option>Base</option>
             <option>Body horizontal</option>
             <option>Finish</option>
@@ -448,7 +451,7 @@
     <div class="col">
         <label for="element_shape" class="form-label">Element Shape</label>
         <select  class="form-select " id="element_shape"  name="element_shape" required>
-            <option disabled selected value> -- select an option -- </option>
+            <option value="{{$artifact[0]["element_shape"]}}">{{$artifact[0]["element_shape"]}}</option>
             <option>1-Part Finish</option>
             <option>2-Part Finish</option>
             <option>3-Part Finish</option>
@@ -491,7 +494,7 @@
     <div class="col">
         <label for="element_manu_fact" class="form-label">Element Manufacturing Technique</label>
         <select  class="form-select " id="element_manu_fact"  name="element_manu_fact" required>
-            <option disabled selected value> -- select an option -- </option>
+            <option value="{{$artifact[0]["element_manu_fact"]}}">{{$artifact[0]["element_manu_fact"]}}</option>
             <option>Added Glass (non-tooled)</option>
             <option>Cracked-Off /Burst-Off</option>
             <option>Dip Mold</option>
@@ -521,7 +524,7 @@
     <div class="col">
         <label for="element_treatment" class="form-label">Element Treatment</label>
         <select  class="form-select " id="element_treatment"  name="element_treatment" required>
-            <option disabled selected value> -- select an option -- </option>
+            <option value="{{$artifact[0]["element_treatment"]}}">{{$artifact[0]["element_treatment"]}}</option>
             <option>Heat Treated</option>
             <option>Mamelon</option>
             <option>Not Applicable</option>
@@ -536,7 +539,7 @@
     <div class="col">
         <label for="stemware_body" class="form-label"> Stemware Body Shape</label>
         <select  class="form-select " id="stemware_body"  name="stemware_body" required>
-            <option disabled selected value> -- select an option -- </option>
+            <option value="{{$artifact[0]["stemware_body"]}}">{{$artifact[0]["stemware_body"]}}</option>
             <option>Bell</option>
             <option>Bucket</option>
             <option>Conical</option>
@@ -554,7 +557,7 @@
     <div class="col">
         <label for="stemware_foot" class="form-label">Stemware Foot Shape</label>
         <select  class="form-select " id="stemware_foot"  name="stemware_foot" required>
-            <option disabled selected value> -- select an option -- </option>
+            <option value="{{$artifact[0]["stemware_foot"]}}">{{$artifact[0]["stemware_foot"]}}</option>
             <option>Conical folded</option>
             <option>Conical plain</option>
             <option>Domed and Folded</option>
