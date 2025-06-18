@@ -11,28 +11,29 @@ Utensil Artifact Entry Form
 
 
 @section('content')
-<form class=" needs-validation" method="POST" action="#" novalidate enctype="multipart/form-data">
+@include('forms.preview.popup')
+<form class=" needs-validation" method="POST" action="{{url('submitUtensil/'.$artifact[0]["token"])}}" novalidate enctype="multipart/form-data">
   @csrf
   <!--GENERAL INFORMATION & SITE -->
   <fieldset>
     <legend>Site & General Information</legend>
-    @include('forms.utensil.site')
+    @include('forms.utensil.previewsite')
   </fieldset>
 
   <fieldset>
     <legend>Fields I Information</legend>
-        @include('forms.utensil.fieldsI')
+        @include('forms.utensil.previewfieldsI')
   </fieldset>
   
   <fieldset>
     <legend>Fields II Information</legend>
-        @include('forms.utensil.fieldsII')
+        @include('forms.utensil.previewfieldsII')
   </fieldset>
 
 
 
   <fieldset class="mt-2">
-    <input type="submit" class="btn btn-primary">
+    <input type="submit" class="btn btn-primary"  value="Submit Data for Validation">
   </fieldset>
 
 
@@ -44,8 +45,7 @@ Utensil Artifact Entry Form
   const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
   const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl)) 
 </script>
-<script src="{{asset('storage/js/nextform.js')}}"></script>
+<script src="{{asset('storage/js/verifynextform.js')}}"></script>
 <script src="{{asset('storage/js/query_collection.js')}}"></script>
-
 
 @endsection

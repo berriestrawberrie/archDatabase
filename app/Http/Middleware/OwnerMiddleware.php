@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
-class AdminMiddleware
+class OwnerMiddleware
 {
     /**
      * Handle an incoming request.
@@ -16,7 +16,7 @@ class AdminMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (Auth::check() && in_array(Auth::user()->user_type, ["admin", "owner"])) {
+        if (Auth::check() && Auth::user()->user_type === 'owner') {
             return $next($request);
         }
         return redirect('/')->with('error', 'Unauthorized access.');

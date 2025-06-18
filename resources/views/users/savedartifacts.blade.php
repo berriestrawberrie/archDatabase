@@ -117,6 +117,23 @@ Saved Artifacts
 
                         </tr>
                  @endforeach
+                @foreach($utensils as $utensil)
+                        <tr>
+                            <td>{{$utensil->artifact_id}}</td>
+                            <td>utensil</td>
+                            <td >
+                                @if($utensil->isValid === 2)
+                                Incomplete
+                                @else
+                                Error
+                                @endif
+                            </td>
+                            <td>{{$utensil->collection}}</td>
+                            <td>{{$utensil->material}}</td>
+                            <td><a href="/previewData/utensil/{{$utensil->token.'/'.Auth::user()->id}}"><button class="btn btn-warning">Complete</button></a></td>
+
+                        </tr>
+                 @endforeach
                 </tbody>
               </table>
         </div>

@@ -35,7 +35,7 @@ Data Verification Queue
                     <th >Other</th>                                           
                   </tr>
                     <td class="text-danger">{{count($unassigned_glasses)}}</td>
-                    <td>..</td>
+                    <td class="text-danger">{{count($unassigned_utensils)}}</td>
                     <td>..</td>
                     <td>..</td>
               </table>

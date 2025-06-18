@@ -1,39 +1,39 @@
 @extends('layouts.app')
-@section('title') Glass Form @endsection
+@section('title') Utensil Form @endsection
 
 
 @section('page-title')
 
-Glass Artifact Entry Form
+Utensil Artifact Entry Form
 
 @endsection
 
 
 
 @section('content')
-@include('forms.preview.popup')
-<form class=" needs-validation" method="POST" action="{{url('submitGlass/'.$artifact[0]["token"])}}" novalidate enctype="multipart/form-data">
+@include('forms.verify.popup')
+<form class=" needs-validation" method="POST" action="{{url('validateUtensil/'.$artifact[0]["artifact_id"])}}"  novalidate enctype="multipart/form-data">
   @csrf
   <!--GENERAL INFORMATION & SITE -->
   <fieldset>
     <legend>Site & General Information</legend>
-    @include('forms.glass.previewsite')
+    @include('forms.utensil.previewsite')
   </fieldset>
 
   <fieldset>
     <legend>Fields I Information</legend>
-        @include('forms.glass.previewfieldsI')
+        @include('forms.utensil.previewfieldsI')
   </fieldset>
-
+  
   <fieldset>
     <legend>Fields II Information</legend>
-        @include('forms.glass.previewfieldsII')
+        @include('forms.utensil.previewfieldsII')
   </fieldset>
 
 
 
   <fieldset class="mt-2">
-    <input type="submit" class="btn btn-primary"  value="Submit Data for Validation">
+    <input type="submit"  class="btn btn-success" value="Publish">
   </fieldset>
 
 

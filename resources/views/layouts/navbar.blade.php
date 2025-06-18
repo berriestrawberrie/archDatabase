@@ -31,7 +31,7 @@
             <a class="nav-link navfont disabled " aria-current="page" href="#">About the Database</a>
           </li>
           @if(Auth::check())
-          @if(Auth::user()->user_type === 'admin')
+          @if(in_array(Auth::user()->user_type,["admin","owner"]))
           <li class="nav-item dropdown">
             <a class="nav-link navfont dropdown-toggle" href="{{route('admin.dashboard')}}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               <i class="fa-solid fa-pen-to-square"></i>Admin
@@ -52,13 +52,15 @@
         <li>
           <a class="nav-link navfont" aria-current="page" href="/enteredby/{{Auth::user()->id}}"><i class="fa-solid fa-clipboard-list"></i>Saved Artifacts</a>
         </li>
+        @if(Auth::user()->user_type === 'owner')
+          <li>
+          <a class="nav-link navfont" aria-current="page" href="/owner/manageusers/"><i class="fa-solid fa-users"></i>Manage Users</a>
+        </li>
+        @endif
         @endif
         </ul>
-        <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-light navfont" type="submit">Search</button>
-        </form>
         @if(Auth::check())
+        <h3 class="text-white me-3">{{Auth::user()->name}}</h3>
         <form action="{{route('logout')}}" method="POST">
           @csrf
           @method('POST')

@@ -10,10 +10,12 @@ use App\Http\Controllers\ButtonController;
 use App\Http\Controllers\CeramicController;
 use App\Http\Controllers\GlassController;
 use App\Http\Controllers\ImageController;
+use App\Http\Controllers\OwnerController;
 use App\Http\Controllers\QueryController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UtensilController;
 use App\Http\Middleware\AdminMiddleware;
+use App\Http\Middleware\OwnerMiddleware;
 use App\Models\Artifact;
 use Database\Seeders\AdminSeeder;
 use Illuminate\Support\Facades\Route;
@@ -69,6 +71,7 @@ Route::middleware("auth")->group(function () {
 
     //LOGGED IN UTENSIL ROUTES
     Route::post('/saveUtensil', [UtensilController::class, 'saveUtensil'])->name('save.utensil');
+    Route::post('/submitUtensil/{token}', [UtensilController::class, 'submitUtensil']);
 });
 
 
@@ -97,6 +100,17 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     Route::post('/validateButton/{id}', [ButtonController::class, 'validateButton']);
     //ADMIN GLASS ROUTES
     Route::post('/validateGlass/{id}', [GlassController::class, 'validateGlass']);
+    //ADMIN UTENSIL ROUTES
+    Route::post('/validateUtensil/{id}', [UtensilController::class, 'validateUtensil']);
+});
+
+//OWNER RESTRICTED VIEWS
+Route::middleware([OwnerMiddleware::class])->group(function () {
+    Route::get('/owner/manageusers/', [OwnerController::class, 'manageUsers'])->name('manage.users');
+    Route::post('/newUser', [OwnerController::class, 'newUser']);
+    Route::get('/userSettings/{id}', [OwnerController::class, 'userSettings']);
+    Route::get('/owner/manageusers/quickaction/{id}/{type}', [OwnerController::class, 'quickAction']);
+    Route::post('updateUser/{id}', [OwnerController::class, 'updateSettings']);
 });
 
 

@@ -8,6 +8,7 @@ use App\Models\Button;
 use App\Models\Ceramic;
 use App\Models\Collection;
 use App\Models\Glass;
+use App\Models\Utensil;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -111,6 +112,7 @@ class AdminController extends Controller
         $buckles = Buckle::where('isValid', 0)->get();
         $buttons = Button::where('isValid', 0)->get();
         $glasses = Glass::where('isValid', 0)->get();
+        $utensils = Utensil::where('isValid', 0)->get();
 
         $unassigned_ceramics = Ceramic::where('isValid', 0)
             ->where('checkout_by', null)
@@ -127,6 +129,10 @@ class AdminController extends Controller
         $unassigned_glasses = Glass::where('isValid', 0)
             ->where('checkout_by', null)
             ->get();
+        $unassigned_utensils = Utensil::where('isValid', 0)
+            ->where('checkout_by', null)
+            ->get();
+
         return view(
             'admin.verifydata',
             compact(
@@ -135,11 +141,13 @@ class AdminController extends Controller
                 'buckles',
                 'buttons',
                 'glasses',
+                'utensils',
                 'unassigned_ceramics',
                 'unassigned_buckles',
                 'unassigned_beads',
                 'unassigned_buttons',
-                'unassigned_glasses'
+                'unassigned_glasses',
+                'unassigned_utensils'
             )
         );
     }
@@ -153,6 +161,7 @@ class AdminController extends Controller
         $buckles =  intval($request->buckles);
         $buttons =  intval($request->buttons);
         $glasses = intval($request->glasses);
+        $utensils = intval($request->utensils);
 
         //$bones = intval($request->bones);
 
@@ -172,6 +181,10 @@ class AdminController extends Controller
         $assign_glasses = Glass::where('isValid', 0)
             ->where('checkout_by', null)
             ->take($glasses)->get();
+        $assign_utensils = Utensil::where('isValid', 0)
+            ->where('checkout_by', null)
+            ->take($utensils)->get();
+
 
         //ASSIGN TO THE USER
         foreach ($assign_ceramics as $item) {
@@ -204,7 +217,12 @@ class AdminController extends Controller
                 'checkout_by' => $user
             ]);
         } //END OF FOREACH
+        foreach ($assign_utensils as $item) {
 
+            Utensil::where('id', $item->id)->update([
+                'checkout_by' => $user
+            ]);
+        } //END OF FOREACH
 
 
 
@@ -221,6 +239,7 @@ class AdminController extends Controller
         $buckle = $request->input('release_buckle');
         $button = $request->input('release_button');
         $glass = $request->input('release_glass');
+        $utensil = $request->input('release_utensil');
 
         //CERAMICS
         if ($ceramic) {
@@ -282,6 +301,19 @@ class AdminController extends Controller
             return redirect()->route('verify.data')
                 ->with("success", "Successfully released glass #:" . $glass);
         } //END BUCKLE IF
+
+        //UTENSIL
+        if ($utensil) {
+            utensil::where('id', $utensil)
+                ->where('checkout_by', $user)
+                ->update([
+                    'checkout_by' =>
+                    null
+                ]);
+            return redirect()->route('verify.data')
+                ->with("success", "Successfully released utensil #:" . $utensil);
+        } //END BUCKLE IF
+
 
         return redirect()->route('verify.data')
             ->with("error", "Failed to release. Artifact type not found.");
@@ -350,7 +382,7 @@ class AdminController extends Controller
                 $artifact = Button::where('id', $id)->get();
                 //VERIFY THAT THE USER REVIEWING IS THE USER THAT CHECKED IT OUT
                 if ($artifact[0]["checkout_by"] == $user) {
-                    //RETURN THE BEAD REIVEW FORM
+                    //RETURN THE BUTTON REIVEW FORM
                     return view('forms.verify.verifybutton', compact('artifact'));
                 } else {
 
@@ -368,8 +400,26 @@ class AdminController extends Controller
                 $artifact = Glass::where('id', $id)->get();
                 //VERIFY THAT THE USER REVIEWING IS THE USER THAT CHECKED IT OUT
                 if ($artifact[0]["checkout_by"] == $user) {
-                    //RETURN THE BEAD REIVEW FORM
+                    //RETURN THE GLASS REIVEW FORM
                     return view('forms.verify.verifyglass', compact('artifact'));
+                } else {
+
+                    //CHANGE ERROR MESSAGE IF RECORD IS NOT YET CHECKED OUT
+                    if ($artifact[0]["checkout_by"]) {
+                        return redirect()->route('verify.data')
+                            ->with("error", "Record is already being reviewed by User #: " . $artifact[0]["checkout_by"]);
+                    } else {
+                        return redirect()->route('verify.data')
+                            ->with("error", "Record needs to be checked out before you can review it");
+                    }
+                } //VERIFY THAT THE USER REVIEWING IS THE USER THAT CHECKED IT OUT
+                break;
+            case "utensil":
+                $artifact = Utensil::where('id', $id)->get();
+                //VERIFY THAT THE USER REVIEWING IS THE USER THAT CHECKED IT OUT
+                if ($artifact[0]["checkout_by"] == $user) {
+                    //RETURN THE UTENSIL REIVEW FORM
+                    return view('forms.verify.verifyutensil', compact('artifact'));
                 } else {
 
                     //CHANGE ERROR MESSAGE IF RECORD IS NOT YET CHECKED OUT

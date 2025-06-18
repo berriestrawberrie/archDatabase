@@ -11,7 +11,7 @@ Utensil Artifact Entry Form
 
 
 @section('content')
-<form class=" needs-validation" method="POST" action="#" novalidate enctype="multipart/form-data">
+<form class=" needs-validation" method="POST" action="{{route('save.utensil')}}" novalidate enctype="multipart/form-data">
   @csrf
   <!--GENERAL INFORMATION & SITE -->
   <fieldset>
