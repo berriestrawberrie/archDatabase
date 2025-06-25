@@ -25,7 +25,7 @@ class AuthController extends Controller
         $credentials = $request->only("email", "password");
         if (Auth::attempt($credentials)) {
 
-            if (Auth::user()->user_type === 'admin') {
+            if (in_array(Auth::user()->user_type, ['admin', 'owner'])) {
                 return redirect()->intended(route('admin.dashboard'));
             } else {
                 return redirect()->intended(route('users.dashboard'));

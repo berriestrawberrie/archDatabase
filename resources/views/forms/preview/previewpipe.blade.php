@@ -1,38 +1,31 @@
 @extends('layouts.app')
 
-@section('title') Osteology Form @endsection
+@section('title') Pipe Form @endsection
 
 
 @section('page-title')
 
-Osteology Artifact Entry Form
+Tobacco Pipe Artifact Entry Form
 @endsection
 
 @section('content')
-<form class=" needs-validation" method="POST" action="#" novalidate enctype="multipart/form-data">
+@include('forms.preview.popup')
+<form class=" needs-validation" method="POST" action="{{url('submitTobaccoPipe/'.$artifact[0]["token"])}}" novalidate enctype="multipart/form-data">
   @csrf
   <!--GENERAL INFORMATION & SITE -->
   <fieldset>
-    <div class="formkey bg-secondary-subtle">
-      <b>Codes:</b>
-      <ul>
-          <li>f = 1 - 25% percent</li>
-          <li>p = 25-75% percent</li>
-          <li>c = 75-100% percent</li>
-      </ul>
-   </div>
     <legend>Site & General Information</legend>
-    @include('forms.bones.site')
+    @include('forms.pipe.previewsite')
   </fieldset>
 
   <fieldset>
     <legend>Fields I Information</legend>
-    @include('forms.bones.fieldsI')
+    @include('forms.pipe.previewfieldsI')
   </fieldset>
 
   <fieldset>
     <legend>Fields II Information</legend>
-    @include('forms.bones.fieldsII')
+        @include('forms.pipe.previewfieldsII')
   </fieldset>
 
   <fieldset class="mt-2">
@@ -48,7 +41,8 @@ Osteology Artifact Entry Form
   const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
   const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl)) 
 </script>
-<script src="{{asset('storage/js/nextform.js')}}"></script>
+<script src="{{asset('storage/js/verifynextform.js')}}"></script>
+<script src="{{asset('storage/js/query_collection.js')}}"></script>
 
 
 @endsection

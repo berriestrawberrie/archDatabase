@@ -95,9 +95,9 @@ Query by Collection
             <div class="col-2">
                 <label for="perpage" class="form-label" >Artifacts Per Page</label>
                 <select class="form-select" name="perpage" id="perpage">
-                    <option value="150">Max</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
+                    <option value="500">Max</option>
+                    <option value="10">10</option>
+                    <option value="50">50</option>
                 </select>
             </div>
 

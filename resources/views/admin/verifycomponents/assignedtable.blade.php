@@ -141,3 +141,27 @@
         </tr>
     @endif
 @endforeach
+
+@foreach($pipes as $pipe)
+    @if($pipe->checkout_by == Auth::user()->id && $pipe->isValid == 0)
+        <tr>
+            <td>{{$pipe->artifact_id}}</td>
+            <td>pipe</td>
+            <td >
+                @if($pipe->isValid == 0)
+                Unverified
+                @else
+                Verified
+                @endif
+            </td>
+            <td>{{$pipe->collection}}</td>
+            <td>{{$pipe->material}}</td>
+            <td><a href="/reviewData/{{Auth::user()->id}}/pipe/{{$pipe->id}}"><button class="btn btn-success">Review</button></a></td>
+            <td>
+                <form method="POST" action="{{route('release.data')}}">@csrf<input type="number" class="d-none" value="{{$pipe->id}}" name="release_pipe">
+                </select><button class="btn btn-danger" type="submit">Release</button></form>
+            </td>
+    
+        </tr>
+    @endif
+@endforeach

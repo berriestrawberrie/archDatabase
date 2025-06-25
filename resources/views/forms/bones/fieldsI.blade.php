@@ -350,7 +350,7 @@
         </div><!--END OF CRANNIAL-->
 
     <!--TEETH & AXIAL-->
-        <div class="col">
+        <div class="col d-flex flex-column justify-content-between">
             <!--TEETH-->
             <div >
                 <table class="table">

@@ -134,6 +134,23 @@ Saved Artifacts
 
                         </tr>
                  @endforeach
+                @foreach($pipes as $pipe)
+                        <tr>
+                            <td>{{$pipe->artifact_id}}</td>
+                            <td>pipe</td>
+                            <td >
+                                @if($pipe->isValid === 2)
+                                Incomplete
+                                @else
+                                Error
+                                @endif
+                            </td>
+                            <td>{{$pipe->collection}}</td>
+                            <td>{{$pipe->material}}</td>
+                            <td><a href="/previewData/pipe/{{$pipe->token.'/'.Auth::user()->id}}"><button class="btn btn-warning">Complete</button></a></td>
+
+                        </tr>
+                 @endforeach
                 </tbody>
               </table>
         </div>

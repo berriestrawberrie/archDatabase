@@ -10,6 +10,7 @@ use App\Models\Button;
 use App\Models\Ceramic;
 use App\Models\Collection;
 use App\Models\Glass;
+use App\Models\TobaccoPipe;
 use App\Models\Utensil;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -32,21 +33,40 @@ class ArtifactController extends Controller
     public function getForm($collection, $art_type)
     {
         $collections = Collection::where('id', $collection)->get();
-
-        $artifacts = Ceramic::all();
-
-
-
-        return view('forms.' . $art_type, compact('collections', 'artifacts'));
+        return view('forms.' . $art_type, compact('collections'));
     }
 
     //VIEW A SINGLE ITEM 
-    public function singleItem($id)
+    public function singleItem($art_type, $artifact_id)
     {
+        switch ($art_type) {
+            case "bead":
+                $artifact = Bead::where('artifact_id', $artifact_id)->get();
+                break;
+            case "buckle":
+                $artifact = Buckle::where('artifact_id', $artifact_id)->get();
+                break;
+            case "button":
+                $artifact = Button::where('artifact_id', $artifact_id)->get();
+                break;
+            case "ceramic":
+                $artifact = Ceramic::where('artifact_id', $artifact_id)->get();
+                break;
+            case "glass":
+                $artifact = Glass::where('artifact_id', $artifact_id)->get();
+                break;
+            case "pipe":
+                $artifact = TobaccoPipe::where('artifact_id', $artifact_id)->get();
+                break;
+            case "utensil":
+                $artifact = Utensil::where('artifact_id', $artifact_id)->get();
+                break;
+            default:
+                back()->with('error', 'Artifact not found check ArtifactController::class {singleItem}');
+        }
 
-        $artifact = Ceramic::where('id', $id)->get();
 
-        return view('singleitem', compact('artifact'));
+        return view('forms.single.single' . $art_type, compact('artifact'));
     }
 
     //PREVIEW FORM BEFORE SUBMISSION
@@ -116,6 +136,15 @@ class ArtifactController extends Controller
                     }
                     //RETURN THE PREVIEW FORM FILLED OUT
                     return view('forms.preview.previewutensil', compact('artifact'));
+                case "pipe":
+                    $artifact = TobaccoPipe::where('token', $token)->get();
+                    //VERIFY THAT THE STATUS IS RECENTLY SUBMITTED IF NOT RETURN ERROR
+                    if ($artifact[0]["isValid"] != 2) {
+                        return redirect(route('entered.by', ['user' => $user]))
+                            ->with("error", "Artifact already submitted");
+                    }
+                    //RETURN THE PREVIEW FORM FILLED OUT
+                    return view('forms.preview.previewpipe', compact('artifact'));
                 default:
                     return back()->with("error", "Invalid form type");
             }
@@ -137,7 +166,8 @@ class ArtifactController extends Controller
             ->where('isValid', 2)->get();
         $utensils = Utensil::where('entered_by', $user)
             ->where('isValid', 2)->get();
-
-        return view('users.savedartifacts', compact('ceramics', 'beads', 'buckles', 'buttons', 'glasses', 'utensils'));
+        $pipes = TobaccoPipe::where('entered_by', $user)
+            ->where('isValid', 2)->get();
+        return view('users.savedartifacts', compact('ceramics', 'beads', 'buckles', 'buttons', 'glasses', 'utensils', 'pipes'));
     }
 }

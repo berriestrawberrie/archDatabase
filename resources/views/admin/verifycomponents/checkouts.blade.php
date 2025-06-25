@@ -112,4 +112,23 @@
     </div><!--END OF utensils CHECKOUT-->
 @endif
 
+@if(count($unassigned_pipes)>0)
+    <!--glasses CHECKOUT-->
+    <div class="col-md-2">
+        <label for="pipes" class="form-label">Max ({{count($unassigned_pipes)}})</label>
+        <div class="input-group has-validation">
+            <span class="input-group-text" id="inputGroupPrepend">pipes</span>
+            <select type="text" class="form-control" id="pipes" name="pipes"  onchange="requireRecord()" aria-describedby="inputGroupPrepend">
+                <option value="0" selected>-</option>
+                @for($i=1; $i <= count($unassigned_pipes); $i++)
+                    <option value="{{$i}}">{{$i}}</option>
+                @endfor
+            </select>
+            <div class="valid-feedback">
+            filled
+            </div>
+        </div>
+    </div><!--END OF pipes CHECKOUT-->
+@endif
+
 

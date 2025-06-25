@@ -18,7 +18,7 @@
 
     <table class="table table-striped text-center">
         <tr>
-            <th>Collection ID</td>
+            <th>Artifact ID</td>
             <th>Material</th>
             <th>Manufacturing Technique</th>
             <th>Start Period</th>
@@ -28,7 +28,9 @@
         
         <tr>
             @foreach($datas as $data)
-            <td>{{$data->collection_id}}</td>
+            <td>
+                @include('results.components.linktoview')
+            </td>
             <td>{{$data->material}}</td>
             <td>{{$data->manufacturing_technique}}</td>
             <td>{{$data->start_date}}</td>

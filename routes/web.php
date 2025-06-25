@@ -12,6 +12,7 @@ use App\Http\Controllers\GlassController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\OwnerController;
 use App\Http\Controllers\QueryController;
+use App\Http\Controllers\TobaccoPipeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UtensilController;
 use App\Http\Middleware\AdminMiddleware;
@@ -37,6 +38,7 @@ Route::get('/searchCollection', [QueryController::class, 'queryCollection'])->na
 Route::get('/query/byartifacttype', [QueryController::class, 'getQueryArtifact']);
 Route::get('users/export/', [QueryController::class, 'export']);
 Route::get('users/exportQuery/{collection_id}/{start}/{end}', [QueryController::class, 'exportQuery']);
+Route::get('/viewartifact/{art_type}/{id}', [ArtifactController::class, 'singleItem']);
 
 //REQUIRE LOGGED IN ROUTES
 Route::middleware("auth")->group(function () {
@@ -72,6 +74,10 @@ Route::middleware("auth")->group(function () {
     //LOGGED IN UTENSIL ROUTES
     Route::post('/saveUtensil', [UtensilController::class, 'saveUtensil'])->name('save.utensil');
     Route::post('/submitUtensil/{token}', [UtensilController::class, 'submitUtensil']);
+
+    //LOGGED IN TOBACCO ROUTES
+    Route::post('/saveTobaccoPipe', [TobaccoPipeController::class, 'saveTobaccoPipe'])->name('save.tobacco');
+    Route::post('/submitTobaccoPipe/{token}', [TobaccoPipeController::class, 'submitTobaccoPipe']);
 });
 
 
@@ -102,6 +108,8 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     Route::post('/validateGlass/{id}', [GlassController::class, 'validateGlass']);
     //ADMIN UTENSIL ROUTES
     Route::post('/validateUtensil/{id}', [UtensilController::class, 'validateUtensil']);
+    //ADMIN TOBACCO ROUTES
+    Route::post('/validatePipe/{id}', [TobaccoPipeController::class, 'validateTobaccoPipe']);
 });
 
 //OWNER RESTRICTED VIEWS

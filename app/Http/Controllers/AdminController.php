@@ -8,6 +8,7 @@ use App\Models\Button;
 use App\Models\Ceramic;
 use App\Models\Collection;
 use App\Models\Glass;
+use App\Models\TobaccoPipe;
 use App\Models\Utensil;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -113,6 +114,7 @@ class AdminController extends Controller
         $buttons = Button::where('isValid', 0)->get();
         $glasses = Glass::where('isValid', 0)->get();
         $utensils = Utensil::where('isValid', 0)->get();
+        $pipes = TobaccoPipe::where('isValid', 0)->get();
 
         $unassigned_ceramics = Ceramic::where('isValid', 0)
             ->where('checkout_by', null)
@@ -132,7 +134,9 @@ class AdminController extends Controller
         $unassigned_utensils = Utensil::where('isValid', 0)
             ->where('checkout_by', null)
             ->get();
-
+        $unassigned_pipes = TobaccoPipe::where('isValid', 0)
+            ->where('checkout_by', null)
+            ->get();
         return view(
             'admin.verifydata',
             compact(
@@ -142,12 +146,14 @@ class AdminController extends Controller
                 'buttons',
                 'glasses',
                 'utensils',
+                'pipes',
                 'unassigned_ceramics',
                 'unassigned_buckles',
                 'unassigned_beads',
                 'unassigned_buttons',
                 'unassigned_glasses',
-                'unassigned_utensils'
+                'unassigned_utensils',
+                'unassigned_pipes'
             )
         );
     }
@@ -162,6 +168,7 @@ class AdminController extends Controller
         $buttons =  intval($request->buttons);
         $glasses = intval($request->glasses);
         $utensils = intval($request->utensils);
+        $pipes = intval($request->pipes);
 
         //$bones = intval($request->bones);
 
@@ -184,7 +191,9 @@ class AdminController extends Controller
         $assign_utensils = Utensil::where('isValid', 0)
             ->where('checkout_by', null)
             ->take($utensils)->get();
-
+        $assign_pipes = TobaccoPipe::where('isValid', 0)
+            ->where('checkout_by', null)
+            ->take($pipes)->get();
 
         //ASSIGN TO THE USER
         foreach ($assign_ceramics as $item) {
@@ -223,7 +232,12 @@ class AdminController extends Controller
                 'checkout_by' => $user
             ]);
         } //END OF FOREACH
+        foreach ($assign_pipes as $item) {
 
+            TobaccoPipe::where('id', $item->id)->update([
+                'checkout_by' => $user
+            ]);
+        } //END OF FOREACH
 
 
         return redirect()->route('verify.data')
@@ -240,6 +254,7 @@ class AdminController extends Controller
         $button = $request->input('release_button');
         $glass = $request->input('release_glass');
         $utensil = $request->input('release_utensil');
+        $pipe = $request->input('release_pipe');
 
         //CERAMICS
         if ($ceramic) {
@@ -314,6 +329,17 @@ class AdminController extends Controller
                 ->with("success", "Successfully released utensil #:" . $utensil);
         } //END BUCKLE IF
 
+        //TOBACCO PIPE
+        if ($pipe) {
+            TobaccoPipe::where('id', $pipe)
+                ->where('checkout_by', $user)
+                ->update([
+                    'checkout_by' =>
+                    null
+                ]);
+            return redirect()->route('verify.data')
+                ->with("success", "Successfully released pipe #:" . $pipe);
+        } //END BUCKLE IF
 
         return redirect()->route('verify.data')
             ->with("error", "Failed to release. Artifact type not found.");
@@ -420,6 +446,24 @@ class AdminController extends Controller
                 if ($artifact[0]["checkout_by"] == $user) {
                     //RETURN THE UTENSIL REIVEW FORM
                     return view('forms.verify.verifyutensil', compact('artifact'));
+                } else {
+
+                    //CHANGE ERROR MESSAGE IF RECORD IS NOT YET CHECKED OUT
+                    if ($artifact[0]["checkout_by"]) {
+                        return redirect()->route('verify.data')
+                            ->with("error", "Record is already being reviewed by User #: " . $artifact[0]["checkout_by"]);
+                    } else {
+                        return redirect()->route('verify.data')
+                            ->with("error", "Record needs to be checked out before you can review it");
+                    }
+                } //VERIFY THAT THE USER REVIEWING IS THE USER THAT CHECKED IT OUT
+                break;
+            case "pipe":
+                $artifact = TobaccoPipe::where('id', $id)->get();
+                //VERIFY THAT THE USER REVIEWING IS THE USER THAT CHECKED IT OUT
+                if ($artifact[0]["checkout_by"] == $user) {
+                    //RETURN THE TOBACCO PIPE REIVEW FORM
+                    return view('forms.verify.verifypipe', compact('artifact'));
                 } else {
 
                     //CHANGE ERROR MESSAGE IF RECORD IS NOT YET CHECKED OUT

@@ -6,7 +6,7 @@
         <div class="col">
             <label for="non_plastic_inclu" class="form-label">Non-Plastic Paste Inclusions</label>
             <select class="form-select  " id="non_plastic_inclu"  name="non_plastic_inclu" required>
-                <option selected disabled value=""> -- select an option -- </option>
+                <option value="{{$artifact[0]["non_plastic_inclu"]}}">{{$artifact[0]["non_plastic_inclu"]}}</option>
                 <option>Black Crypto-crystalline</option>
                 <option>Grog</option>
                 <option>Hematite</option>
@@ -31,7 +31,7 @@
         <div class="col">
             <label for="material" class="form-label">Material</label>
             <select class="form-select  " id="material"  name="material" required>
-                <option disabled selected value> -- select an option -- </option>
+                <option value="{{$artifact[0]["material"]}}">{{$artifact[0]["material"]}}</option>
                 <option>Earthenware imported</option>
                 <option>Earthenware locally-made</option>
                 <option>Ivory</option>
@@ -53,7 +53,7 @@
         <div class="col">
             <label for="manufacturing_technique" class="form-label">Manufacturing Technique</label>
             <select class="form-select" id="manufacturing_technique" name="manufacturing_technique" required>
-                <option selected disabled value=""> -- select an option -- </option>
+                <option value="{{$artifact[0]["manufacturing_technique"]}}">{{$artifact[0]["manufacturing_technique"]}}</option>
                 <option>Carved</option>
                 <option>Handmade</option>
                 <option>Molded</option>
@@ -68,7 +68,7 @@
         <!--Manufacture Location-->
         <div class="col">
             <label for="manufact_location" class="form-label">Manufacture Location</label>
-            <input type="text" class="form-control " id="manufact_location"  name="manufact_location" required>
+            <input type="text" class="form-control " id="manufact_location" value="{{$artifact[0]["manufact_location"]}}"  name="manufact_location" required>
             <div class="invalid-feedback">
                 Must select ceramic bead form. 
             </div>
@@ -80,24 +80,27 @@
 
         <!--HAS IMAGE -->
         <div class="col-2 form-check d-flex flex-column ">
-            <p style="margin-left: -30px;">Has Photo?</p>
+            <p style="margin-left: -30px;">Photo</p>
+            
             <label class="form-check-label" for="has_photo1">
-                <input onchange="showImgUpload(this)" class="form-check-input" type="radio" name="has_photo" id="has_photo1" value="1">Yes</label>
+                <input onchange="showImgUpload(this)" class="form-check-input" type="radio" name="has_photo" id="has_photo1" value="1"checked >Keep</label>
             <label class="form-check-label mt-3" for="has_photo2">
-                <input onchange="showImgUpload(this)" class="form-check-input" type="radio" name="has_photo" id="has_photo2" value="0">No</label>
+                <input onchange="showImgUpload(this)" class="form-check-input" type="radio" name="has_photo" id="has_photo2" value="0">Remove</label>
+            <label class="form-check-label mt-3" for="has_photo3">
+                <input onchange="showImgUpload(this)" class="form-check-input" type="radio" name="has_photo" id="has_photo3" value="2">Replace</label>
 
             <div class="invalid-feedback">
-                Must make a selection. 
+                Must make a selection.
             </div>
         </div><!--END COL-->
 
         <div class="col-8">
-            <img id="file-ip-1-preview" style="width: 200px; display: none;">
-            <img id="file-noimage" src="{{asset('storage/images/picture.png')}}" style="width: 200px; display:none; opacity: .5;">
+            <img  id="file-ip-1-preview" src="{{asset('uploads/pipes/'.$artifact[0]["photo"])}}"style="width: 200px; ">
+            <img id="file-noimage" src="{{asset('uploads/pipes/null.png')}}" style="width: 200px; display:none; opacity: .5;">
             <!--IMAGE UPLOAD -->
-            <div class="position-relative"id="image-uploader">
+            <div class="position-relative"id="image-uploader" style="opacity: 0;">
                 <label for="photo" class="form-label">Upload Photo</label>
-                <input onchange="showPreview(event);"type="file" class="form-control " id="file-ip-1"  name="photo" accept="image/png, image/jpeg, image/jpg" />
+                <input onchange="showPreview(event);" type="file" class="form-control " id="file-ip-1" name="photo" accept="image/png, image/jpeg, image/jpg"/>
                 <div class="invalid-feedback">
                     Must include image (png, jpeg).
                 </div>
@@ -106,9 +109,9 @@
         </div>
 
 
+
+
     </div>
-
-
 
 </div><!--END ROW-->
 
@@ -118,7 +121,7 @@
     <div class="col">
         <label for="bowl_base_type" class="form-label">Bowl Base Type</label>
         <select class="form-select " id="bowl_base_type"  name="bowl_base_type" required>
-            <option disabled selected value> -- select an option -- </option>
+            <option value="{{$artifact[0]["bowl_base_type"]}}">{{$artifact[0]["bowl_base_type"]}}</option>
             <option>Flat</option>
             <option>Heel</option>
             <option>Heel-less</option>
@@ -136,7 +139,7 @@
     <div class="col">
         <label for="mouthpiece_form" class="form-label">Mouthpiece Form</label>
         <select class="form-select  " id="mouthpiece_form"  name="mouthpiece_form" required>
-            <option disabled selected value> -- select an option -- </option>
+            <option value="{{$artifact[0]["mouthpiece_form"]}}">{{$artifact[0]["mouthpiece_form"]}}</option>
             <option>Cut</option>
             <option>Diamond Nipple</option>
             <option>Diamond Shape</option>
@@ -160,7 +163,7 @@
             <button type="button" class="btn-xsm" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Helpful field explainer here?">
                 <i class="fa-solid fa-circle-question"></i></button>
         </label>
-        <input type="text" class="form-control " id="paste_color"  name="paste_color" required>
+        <input type="text" class="form-control " id="paste_color"  name="paste_color" value="{{$artifact[0]["paste_color"]}}" required>
         <div class="invalid-feedback">
             Must select an interior exterior
         </div>
@@ -176,7 +179,7 @@
     <div class="col">
         <label for="post_manu_mod" class="form-label">Post-Manufacturing Modification</label>
         <select class="form-select  " id="post_manu_mod"  name="post_manu_mod" required>
-            <option disabled selected value> -- select an option -- </option>
+            <option value="{{$artifact[0]["post_manu_mod"]}}">{{$artifact[0]["post_manu_mod"]}}</option>
             <option>Yes</option>
             <option>No</option>
             <option>Not Applicable</option>
@@ -193,7 +196,7 @@
     <div class="col">
         <label for="glaze_type" class="form-label">Glaze Type</label>
         <select class="form-select  " id="glaze_type"  name="glaze_type" required>
-            <option disabled selected value> -- select an option -- </option>
+            <option value="{{$artifact[0]["glaze_type"]}}">{{$artifact[0]["glaze_type"]}}</option>
             <option>Lead Glaze</option>
             <option>No Glaze</option>
             <option>Non-Lead Glaze</option>
@@ -210,7 +213,7 @@
     <!--Glaze Color-->
     <div class="col-2">
         <label for="glaze_color" class="form-label">Glaze Color</label>
-        <input type="number" class="form-control " id="glaze_color"  name="glaze_color" min="0"required>
+        <input type="number" class="form-control " id="glaze_color" value="{{$artifact[0]["glaze_color"]}}"  name="glaze_color" min="0"required>
         <div class="invalid-feedback">
             Must input number of facets. 
         </div>
@@ -224,7 +227,7 @@
      <!--Maker-->
      <div class="col">
         <label for="maker" class="form-label">Maker</label>
-        <input type="text" class="form-control " id="maker"  name="maker" required>
+        <input type="text" class="form-control " id="maker" value="{{$artifact[0]["maker"]}}"  name="maker" required>
         <div class="invalid-feedback">
             Must enter
         </div>
@@ -234,7 +237,7 @@
     <div class="col-2">
         <label for="mended" class="form-label">Mended?</label>
         <select class="form-select  " id="mended"  name="mended" required>
-            <option disabled selected value> -- select an option -- </option>
+            <option value="{{$artifact[0]["mended"]}}">{{$artifact[0]["mended"]}}</option>
             <option>Yes</option>
             <option>No</option>
             <option>Not Applicable</option>
@@ -251,7 +254,7 @@
     <div class="col">
         <label for="motif_location" class="form-label">Motif Location</label>
         <select class="form-select  " id="motif_location"  name="motif_location">
-            <option disabled selected value> -- select an option -- </option>
+            <option value="{{$artifact[0]["motif_location"]}}">{{$artifact[0]["motif_location"]}}</option>
             <option>BA: On the bowl facing away from the smoker</option>
             <option>BB: Beneath the Bowl, when pipe has neither heel nor spur</option>
             <option>BC: On Bowl, circumference of bowl rim.</option>
@@ -276,7 +279,7 @@
     <div class="col">
         <label for="decorative_motif" class="form-label">Decorative Motif</label>
         <select class="form-select  " id="decorative_motif"  name="decorative_motif" required>
-            <option disabled selected value> -- select an option -- </option>
+            <option value="{{$artifact[0]["decorative_motif"]}}"> {{$artifact[0]["decorative_motif"]}} </option>
             <option>Agate Paste</option>
             <option>Anthropomorphic</option>
             <option>Botanical</option>
@@ -300,7 +303,7 @@
     <!--Conservation-->
     <div class="col">
         <label for="conservation" class="form-label">Conservation</label>
-        <input type="text" class="form-control " id="conservation"  name="conservation" required>
+        <input type="text" class="form-control " id="conservation" value="{{$artifact[0]["conservation"]}}"  name="conservation" required>
         <div class="invalid-feedback">
             Must select
         </div>
@@ -311,7 +314,7 @@
     <div class="col-2">
         <label for="conserved" class="form-label">Conserved?</label>
         <select class="form-select  " id="conserved"  name="conserved" required>
-            <option disabled selected value> -- select an option -- </option>
+            <option value="{{$artifact[0]["conserved"]}}">{{$artifact[0]["conserved"]}}</option>
             <option>Yes</option>
             <option>No</option>
             <option>N/A (Not Applicable)</option>
@@ -326,7 +329,7 @@
     <div class="col">
         <label for="motif_manu_method" class="form-label">Motif Manufacturing Method</label>
         <select class="form-select  " id="motif_manu_method"  name="motif_manu_method" required>
-        <option disabled selected value> -- select an option -- </option>
+        <option value="{{$artifact[0]["motif_manu_method"]}}"> {{$artifact[0]["motif_manu_method"]}}</option>
         <option>Agatized</option>
         <option>Carved</option>
         <option>Incised</option>
@@ -345,7 +348,7 @@
     <div class="col">
         <label for="mark_type" class="form-label">Mark Type</label>
         <select class="form-select  " id="mark_type"  name="mark_type" required>
-            <option disabled selected value> -- select an option -- </option>
+            <option value="{{$artifact[0]["mark_type"]}}">{{$artifact[0]["mark_type"]}}</option>
             <option>Incised</option>
             <option>Ink/Rubber Stamp</option>
             <option>Molded</option>
@@ -366,7 +369,7 @@
     <div class="col">
         <label for="text_location" class="form-label">Location of Text</label>
         <select class="form-select  " id="text_location"  name="text_location" required>
-            <option disabled selected value> -- select an option -- </option>
+            <option value="{{$artifact[0]["text_location"]}}">{{$artifact[0]["text_location"]}}</option>
              <option>BA: On the bowl facing away from the smoker</option>
             <option>BB: Beneath the Bowl, when pipe has neither heel nor spur</option>
             <option>BC: On Bowl, circumference of bowl rim.</option>
@@ -392,7 +395,7 @@
     <!--Bowl Volume-->
         <div class="col-2">
         <label for="bowl_volume" class="form-label">Bowl Volume</label>
-        <input type="number" class="form-control " id="bowl_volume"  name="bowl_volume"  min="0"  step="0.01" required>
+        <input type="number" class="form-control " value="{{$artifact[0]["bowl_volume"]}}" id="bowl_volume"  name="bowl_volume"  min="0"  step="0.01" required>
         <div class="invalid-feedback">
             Must fill
         </div>
@@ -403,7 +406,7 @@
     <div class="col">
         <label for="text_frame_motif" class="form-label"> Text Frame Motif</label>
         <select class="form-select  " id="text_frame_motif"  name="text_frame_motif" required>
-            <option disabled selected value> -- select an option -- </option>
+            <option value="{{$artifact[0]["text_frame_motif"]}}">{{$artifact[0]["text_frame_motif"]}}</option>
             <option>Circular or sub-circular</option>
             <option>Crescent</option>
             <option>Four Lobes</option>
@@ -423,7 +426,7 @@
     <!--Slogan/Other-->
     <div class="col">
         <label for="slogan" class="form-label">Slogan/Other</label>
-        <input type="text" class="form-control " id="slogan"  name="slogan">
+        <input type="text" class="form-control " id="slogan"  name="slogan" value="{{$artifact[0]["slogan"]}}">
 
     </div><!--END COL-->
     
@@ -440,7 +443,7 @@
                 <i class="fa-solid fa-circle-question"></i>
           </button>
         </label>
-        <textarea class="form-control " id="mark_notes"  name="mark_notes" placeholder="(Optional)" rows="3"></textarea>
+        <textarea class="form-control " id="mark_notes"  name="mark_notes" value="{{$artifact[0]["mark_notes"]}}" rows="3"></textarea>
 
     </div><!--END COL-->
 
