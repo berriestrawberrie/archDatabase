@@ -85,7 +85,7 @@ Query by Collection
                 </label>
                 </div>
                 <div class="form-check">
-                <input class="form-check-input" type="radio" name="has_photo" id="has_photoUnk"  value="2">
+                <input class="form-check-input" type="radio" name="has_photo" id="has_photoUnk"  value="2" checked>
                 <label class="form-check-label" for="has_photoUnk">
                     Include Both
                 </label>
@@ -95,9 +95,9 @@ Query by Collection
             <div class="col-2">
                 <label for="perpage" class="form-label" >Artifacts Per Page</label>
                 <select class="form-select" name="perpage" id="perpage">
-                    <option value="500">Max</option>
                     <option value="10">10</option>
                     <option value="50">50</option>
+                    <option value="500">Max</option>
                 </select>
             </div>
 

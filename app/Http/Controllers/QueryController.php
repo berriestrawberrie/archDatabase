@@ -62,107 +62,322 @@ class QueryController extends Controller
             $photoend = 2;
         }
 
-
-        $beads_datas = DB::table('bead_tables')
-            ->select(DB::raw("bead_tables.material, 
-                bead_tables.collection_id,
-                bead_tables.artifact_id,
-                bead_tables.collection,
-                bead_tables.manufacturing_technique,
-                bead_tables.start_date,
-                bead_tables.end_date,
-                bead_tables.photo,
-                bead_tables.has_photo"));
-        $buckles_datas = DB::table('buckle_tables')
-            ->select(DB::raw("buckle_tables.material, 
-                buckle_tables.collection_id,
-                buckle_tables.artifact_id,
-                buckle_tables.collection,
-                buckle_tables.manufacturing_technique,
-                buckle_tables.start_date,
-                buckle_tables.end_date,
-                buckle_tables.photo,
-                buckle_tables.has_photo"));
-
-        $glasses_datas = DB::table('glass_tables')
-            ->select(DB::raw("glass_tables.material, 
-                glass_tables.collection_id,
-                glass_tables.artifact_id,
-                glass_tables.collection,
-                glass_tables.manufacturing_technique,
-                glass_tables.start_date,
-                glass_tables.end_date,
-                glass_tables.photo,
-                glass_tables.has_photo"));
+        //CLEAR NULL FROM ARTIFACT TYPES
+        $artifact_types = array_filter($request->artifact_types);
+        //SET THE FIRST TABLE SEARCHED TO FIRST ARTIFACT TYPE SELECTED
+        $table0 = $artifact_types[0] . '_tables';
 
 
-        $pipes_datas = DB::table('pipe_tables')
-            ->select(DB::raw("pipe_tables.material, 
-                pipe_tables.collection_id,
-                pipe_tables.artifact_id,
-                pipe_tables.collection,
-                pipe_tables.manufacturing_technique,
-                pipe_tables.start_date,
-                pipe_tables.end_date,
-                pipe_tables.photo,
-                pipe_tables.has_photo"));
+        //UNION BASED ON ARTIFACT SELECTION LENGHTS.
+        switch (count($artifact_types)) {
+            case 1:
+                $table0 = $artifact_types[0] . '_tables';
+                $merge = DB::table($table0)
+                    ->select(DB::raw("$table0.material, 
+                    $table0.collection_id,
+                    $table0.artifact_id,
+                    $table0.collection,
+                    $table0.manufacturing_technique,
+                    $table0.start_date,
+                    $table0.end_date,
+                    $table0.photo,
+                    $table0.has_photo"));
+                break;
+            case 2:
+                $table1 = $artifact_types[1] . '_tables';
+                $data1 = DB::table($table1)
+                    ->select(DB::raw(
+                        "$table1.material, 
+                    $table1.collection_id,
+                    $table1.artifact_id,
+                    $table1.collection,
+                    $table1.manufacturing_technique,
+                    $table1.start_date,
+                    $table1.end_date,
+                    $table1.photo,
+                    $table1.has_photo"
+                    ));
+                $merge = DB::table($table0)
+                    ->select(DB::raw("$table0.material, 
+                        $table0.collection_id,
+                        $table0.artifact_id,
+                        $table0.collection,
+                        $table0.manufacturing_technique,
+                        $table0.start_date,
+                        $table0.end_date,
+                        $table0.photo,
+                        $table0.has_photo"))
+                    ->unionAll($data1);
+                break;
+            case 3:
+                $table1 = $artifact_types[1] . '_tables';
+                $data1 = DB::table($table1)
+                    ->select(DB::raw(
+                        "$table1.material, 
+                    $table1.collection_id,
+                    $table1.artifact_id,
+                    $table1.collection,
+                    $table1.manufacturing_technique,
+                    $table1.start_date,
+                    $table1.end_date,
+                    $table1.photo,
+                    $table1.has_photo"
+                    ));
+                $table2 = $artifact_types[2] . '_tables';
+                $data2 = DB::table($table2)
+                    ->select(DB::raw(
+                        "$table2.material, 
+                    $table2.collection_id,
+                    $table2.artifact_id,
+                    $table2.collection,
+                    $table2.manufacturing_technique,
+                    $table2.start_date,
+                    $table2.end_date,
+                    $table2.photo,
+                    $table2.has_photo"
+                    ));
+                $merge = DB::table($table0)
+                    ->select(DB::raw("$table0.material, 
+                        $table0.collection_id,
+                        $table0.artifact_id,
+                        $table0.collection,
+                        $table0.manufacturing_technique,
+                        $table0.start_date,
+                        $table0.end_date,
+                        $table0.photo,
+                        $table0.has_photo"))
+                    ->unionAll($data1)
+                    ->unionAll($data2);
+                break;
+            case 4:
+                $table1 = $artifact_types[1] . '_tables';
+                $data1 = DB::table($table1)
+                    ->select(DB::raw(
+                        "$table1.material, 
+                    $table1.collection_id,
+                    $table1.artifact_id,
+                    $table1.collection,
+                    $table1.manufacturing_technique,
+                    $table1.start_date,
+                    $table1.end_date,
+                    $table1.photo,
+                    $table1.has_photo"
+                    ));
+                $table2 = $artifact_types[2] . '_tables';
+                $data2 = DB::table($table2)
+                    ->select(DB::raw(
+                        "$table2.material, 
+                    $table2.collection_id,
+                    $table2.artifact_id,
+                    $table2.collection,
+                    $table2.manufacturing_technique,
+                    $table2.start_date,
+                    $table2.end_date,
+                    $table2.photo,
+                    $table2.has_photo"
+                    ));
+                $table3 = $artifact_types[3] . '_tables';
+                $data3 = DB::table($table3)
+                    ->select(DB::raw(
+                        "$table3.material, 
+                    $table3.collection_id,
+                    $table3.artifact_id,
+                    $table3.collection,
+                    $table3.manufacturing_technique,
+                    $table3.start_date,
+                    $table3.end_date,
+                    $table3.photo,
+                    $table3.has_photo"
+                    ));
+                $merge = DB::table($table0)
+                    ->select(DB::raw("$table0.material, 
+                        $table0.collection_id,
+                        $table0.artifact_id,
+                        $table0.collection,
+                        $table0.manufacturing_technique,
+                        $table0.start_date,
+                        $table0.end_date,
+                        $table0.photo,
+                        $table0.has_photo"))
+                    ->unionAll($data1)
+                    ->unionAll($data2)
+                    ->unionAll($data3);
+                break;
+            case 5:
+                $table1 = $artifact_types[1] . '_tables';
+                $data1 = DB::table($table1)
+                    ->select(DB::raw(
+                        "$table1.material, 
+                    $table1.collection_id,
+                    $table1.artifact_id,
+                    $table1.collection,
+                    $table1.manufacturing_technique,
+                    $table1.start_date,
+                    $table1.end_date,
+                    $table1.photo,
+                    $table1.has_photo"
+                    ));
+                $table2 = $artifact_types[2] . '_tables';
+                $data2 = DB::table($table2)
+                    ->select(DB::raw(
+                        "$table2.material, 
+                    $table2.collection_id,
+                    $table2.artifact_id,
+                    $table2.collection,
+                    $table2.manufacturing_technique,
+                    $table2.start_date,
+                    $table2.end_date,
+                    $table2.photo,
+                    $table2.has_photo"
+                    ));
+                $table3 = $artifact_types[3] . '_tables';
+                $data3 = DB::table($table3)
+                    ->select(DB::raw(
+                        "$table3.material, 
+                    $table3.collection_id,
+                    $table3.artifact_id,
+                    $table3.collection,
+                    $table3.manufacturing_technique,
+                    $table3.start_date,
+                    $table3.end_date,
+                    $table3.photo,
+                    $table3.has_photo"
+                    ));
+                $table4 = $artifact_types[4] . '_tables';
+                $data4 = DB::table($table4)
+                    ->select(DB::raw(
+                        "$table4.material, 
+                    $table4.collection_id,
+                    $table4.artifact_id,
+                    $table4.collection,
+                    $table4.manufacturing_technique,
+                    $table4.start_date,
+                    $table4.end_date,
+                    $table4.photo,
+                    $table4.has_photo"
+                    ));
+                $merge = DB::table($table0)
+                    ->select(DB::raw("$table0.material, 
+                        $table0.collection_id,
+                        $table0.artifact_id,
+                        $table0.collection,
+                        $table0.manufacturing_technique,
+                        $table0.start_date,
+                        $table0.end_date,
+                        $table0.photo,
+                        $table0.has_photo"))
+                    ->unionAll($data1)
+                    ->unionAll($data2)
+                    ->unionAll($data3)
+                    ->unionAll($data4);
+                break;
+            case 6:
+                $table1 = $artifact_types[1] . '_tables';
+                $data1 = DB::table($table1)
+                    ->select(DB::raw(
+                        "$table1.material, 
+                    $table1.collection_id,
+                    $table1.artifact_id,
+                    $table1.collection,
+                    $table1.manufacturing_technique,
+                    $table1.start_date,
+                    $table1.end_date,
+                    $table1.photo,
+                    $table1.has_photo"
+                    ));
+                $table2 = $artifact_types[2] . '_tables';
+                $data2 = DB::table($table2)
+                    ->select(DB::raw(
+                        "$table2.material, 
+                    $table2.collection_id,
+                    $table2.artifact_id,
+                    $table2.collection,
+                    $table2.manufacturing_technique,
+                    $table2.start_date,
+                    $table2.end_date,
+                    $table2.photo,
+                    $table2.has_photo"
+                    ));
+                $table3 = $artifact_types[3] . '_tables';
+                $data3 = DB::table($table3)
+                    ->select(DB::raw(
+                        "$table3.material, 
+                    $table3.collection_id,
+                    $table3.artifact_id,
+                    $table3.collection,
+                    $table3.manufacturing_technique,
+                    $table3.start_date,
+                    $table3.end_date,
+                    $table3.photo,
+                    $table3.has_photo"
+                    ));
+                $table4 = $artifact_types[4] . '_tables';
+                $data4 = DB::table($table4)
+                    ->select(DB::raw(
+                        "$table4.material, 
+                    $table4.collection_id,
+                    $table4.artifact_id,
+                    $table4.collection,
+                    $table4.manufacturing_technique,
+                    $table4.start_date,
+                    $table4.end_date,
+                    $table4.photo,
+                    $table4.has_photo"
+                    ));
+                $table5 = $artifact_types[5] . '_tables';
+                $data5 = DB::table($table5)
+                    ->select(DB::raw(
+                        "$table5.material, 
+                    $table5.collection_id,
+                    $table5.artifact_id,
+                    $table5.collection,
+                    $table5.manufacturing_technique,
+                    $table5.start_date,
+                    $table5.end_date,
+                    $table5.photo,
+                    $table5.has_photo"
+                    ));
+                $merge = DB::table($table0)
+                    ->select(DB::raw("$table0.material, 
+                        $table0.collection_id,
+                        $table0.artifact_id,
+                        $table0.collection,
+                        $table0.manufacturing_technique,
+                        $table0.start_date,
+                        $table0.end_date,
+                        $table0.photo,
+                        $table0.has_photo"))
+                    ->unionAll($data1)
+                    ->unionAll($data2)
+                    ->unionAll($data3)
+                    ->unionAll($data4)
+                    ->unionAll($data5);
+                break;
+            default:
+                back()->with('error', 'Artifact not available in query check QueryController {queryCollection}');
+                break;
+        }
 
-        $utensils_datas = DB::table('utensil_tables')
-            ->select(DB::raw("utensil_tables.material, 
-                utensil_tables.collection_id,
-                utensil_tables.artifact_id,
-                utensil_tables.collection,
-                utensil_tables.manufacturing_technique,
-                utensil_tables.start_date,
-                utensil_tables.end_date,
-                utensil_tables.photo,
-                utensil_tables.has_photo"));
-
-
-        $ceramics = DB::table('ceramics_tables')
-            ->select(DB::raw("ceramics_tables.material, 
-                ceramics_tables.collection_id,
-                ceramics_tables.artifact_id,
-                ceramics_tables.collection,
-                ceramics_tables.manufacturing_technique,
-                ceramics_tables.start_date,
-                ceramics_tables.end_date,
-                ceramics_tables.photo,
-                ceramics_tables.has_photo"))
-            ->unionAll($beads_datas)
-            ->unionAll($buckles_datas)
-            ->unionAll($glasses_datas)
-            ->unionAll($pipes_datas)
-            ->unionAll($utensils_datas);
-
+        //RETURN BASED ON PAGINATION LIMIT
         if ($request->input('perpage') == "10") {
-            $datas = DB::table(DB::raw("({$ceramics->toSql()}) as combined"))
-                ->mergeBindings($ceramics)
+            $datas = DB::table(DB::raw("({$merge->toSql()}) as combined"))
+                ->mergeBindings($merge)
                 ->whereBetween('start_date', [$start, $end])
                 ->paginate(10)
-                ->appends('collection_id', $request->input('collection_id'))
-                ->appends('start_date', $start)
-                ->appends('end_date', $end)
-                ->appends('artifact_types', $request->input('artifact_types'));
+                ->withQueryString();
         } elseif ($request->input('perpage') == "50") {
-            $datas = DB::table(DB::raw("({$ceramics->toSql()}) as combined"))
-                ->mergeBindings($ceramics)
+            $datas = DB::table(DB::raw("({$merge->toSql()}) as combined"))
+                ->mergeBindings($merge)
                 ->whereBetween('start_date', [$start, $end])
                 ->paginate(50)
-                ->appends('collection_id', $request->input('collection_id'))
-                ->appends('start_date', $start)
-                ->appends('end_date', $end)
-                ->appends('artifact_types', $request->input('artifact_types'));
+                ->withQueryString();
         } else {
-            $datas = DB::table(DB::raw("({$ceramics->toSql()}) as combined"))
-                ->mergeBindings($ceramics)
+            $datas = DB::table(DB::raw("({$merge->toSql()}) as combined"))
+                ->mergeBindings($merge)
                 ->whereBetween('start_date', [$start, $end])
                 ->whereBetween('has_photo', [$photostart, $photoend])
                 ->paginate(500)
-                ->appends('collection_id', $request->input('collection_id'))
-                ->appends('start_date', $start)
-                ->appends('end_date', $end)
-                ->appends('artifact_types', $request->input('artifact_types'));
+                ->withQueryString();
         }
 
 

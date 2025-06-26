@@ -38,7 +38,7 @@ Route::get('/searchCollection', [QueryController::class, 'queryCollection'])->na
 Route::get('/query/byartifacttype', [QueryController::class, 'getQueryArtifact']);
 Route::get('users/export/', [QueryController::class, 'export']);
 Route::get('users/exportQuery/{collection_id}/{start}/{end}', [QueryController::class, 'exportQuery']);
-Route::get('/viewartifact/{art_type}/{id}', [ArtifactController::class, 'singleItem']);
+Route::get('/viewartifact/{art_type}/{artifact_id}', [ArtifactController::class, 'singleItem']);
 
 //REQUIRE LOGGED IN ROUTES
 Route::middleware("auth")->group(function () {

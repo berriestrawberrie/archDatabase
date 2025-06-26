@@ -1,6 +1,6 @@
 <div class="d-flex flex-column">
         <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="ceramic" id="checkceramic" name="artifact_types[]">
+                <input class="form-check-input" type="checkbox" value="ceramics" id="checkceramic" name="artifact_types[]">
                 <label class="form-check-label" for="checkceramic">
                 Ceramic
                 </label>
@@ -33,7 +33,7 @@
 
 <div class="d-flex flex-column">
         <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="tobacco_pipe" id="checktobacco_pipe" name="artifact_types[]">
+                <input class="form-check-input" type="checkbox" value="pipe" id="checktobacco_pipe" name="artifact_types[]">
                 <label class="form-check-label" for="checktobacco_pipe">
                 Tobacco Pipe
                 </label>
